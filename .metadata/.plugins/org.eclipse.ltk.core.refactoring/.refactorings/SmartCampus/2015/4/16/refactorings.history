@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;SmartCampus/templates/problems/own_problem.html&apos; to &apos;own_problems.html&apos;" description="Rename resource &apos;own_problem.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="templates/problems/own_problem.html" name="own_problems.html" stamp="1429455150086" updateReferences="true"/>
+</session>

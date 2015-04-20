@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{% endblock %}
+
+{% block body_block %}
+	{% if user.is_authenticated %}
+		
+		
+		{% if solution %}
+		
+		<h2>Are you sure, that you want to accept this solution by {{ solution.user_id }}?</h2>
+		<h2>You cannot undo it later!</h2>	
+            
+                <br> Descripton: {{solution.desc}}
+                <br> Served people: {{solution.served_ppl}} <br>
+         
+         <form action="/problems/accept_solution/{{ solution.slug }}">
+    				<input type="submit" value="Yes, accept this solution">
+		 </form>
+		 <form action="/problems/accept_solution/{{ solution.slug }}">
+    				<input type="submit" value="No, please take me back">
+		 </form>
+        {% else %}
+            <strong>There are no solution present.</strong>
+     	{% endif %}
+    {% endif %}
+    
+{% endblock %}

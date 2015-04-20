@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{% endblock %}
+
+{% block body_block %}
+<h1>SmartCampus</h1>	
+	{% if user.is_authenticated %}
+	
+	<h1>YOLOKA</h1>
+	{% endif %}
+{% endblock %}

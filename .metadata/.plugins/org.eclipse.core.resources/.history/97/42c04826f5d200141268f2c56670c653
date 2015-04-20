@@ -1,0 +1,75 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+    ]
+
+    operations = [
+        migrations.CreateModel(
+            name='Ignore',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Problem',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(max_length=30)),
+                ('place', models.CharField(max_length=30)),
+                ('desc', models.CharField(max_length=300)),
+                ('tags', models.CharField(max_length=50)),
+                ('status', models.CharField(max_length=10)),
+                ('rq_ppl', models.IntegerField(default=1)),
+                ('pub_date', models.DateTimeField(verbose_name=b'date published')),
+                ('deadline', models.DateTimeField(verbose_name=b'Dead Line')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Solution',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('desc', models.CharField(max_length=300)),
+                ('status', models.CharField(max_length=10)),
+                ('problem_id', models.ForeignKey(to='problems.Problem')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='User',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=30)),
+                ('password', models.CharField(max_length=15)),
+                ('email', models.EmailField(max_length=75, verbose_name=b'Email Adress')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='solution',
+            name='user_id',
+            field=models.ForeignKey(to='problems.User'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='ignore',
+            name='user_id',
+            field=models.ForeignKey(related_name='user_id', to='problems.User'),
+            preserve_default=True,
+        ),
+    ]

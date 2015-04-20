@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{% endblock %}
+
+{% block body_block %}
+	{% if user.is_authenticated %}
+		
+		
+		{% if solution %}
+		<h2>problem:{{ solution.problem }}, solution by {{ solution.user }}</h2>	
+            
+                <br> Descripton: {{solution.desc}}
+                <br> Served people: {{solution.served_ppl}} <br>
+                
+        {% else %}
+            <strong>There are no solution present.</strong>
+     	{% endif %}
+    {% endif %}
+    
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{% endblock %}
+
+{% block body_block %}
+<h1>SmartCampus</h1>	
+	{% if user.is_authenticated %}
+		
+		{% if problems %}
+            <h2>Current Proble</h2>
+            {% for problem in problems %}
+              
+              <h2> <a href="/problems/add_solution/{{ problem.slug }}">{{ problem.title }}</a></h2>
+              <h4>by {{problem.user}}</h4>
+              <h4>{{problem.desc}}</h4>
+              <br>
+            {% endfor %}
+        {% else %}
+            <strong>There are no problems present.</strong>
+        {% endif %}
+        
+	{% else %}
+		<h2>Please <a href="{% url 'login' %}">Login</a>, or <a href="{% url 'register' %}">Register Here</a></h2> 
+	{% endif %}
+{% endblock %}

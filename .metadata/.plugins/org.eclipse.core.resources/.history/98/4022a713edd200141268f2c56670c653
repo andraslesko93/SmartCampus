@@ -1,0 +1,14 @@
+from django.contrib import admin
+
+from django.contrib import admin
+from problems.models import User
+from problems.models import Solution
+from problems.models import Ignore
+from problems.models import Problem
+ 
+
+
+admin.site.register(User)
+admin.site.register(Solution)
+admin.site.register(Ignore)
+admin.site.register(Problem)

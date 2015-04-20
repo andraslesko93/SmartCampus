@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{% endblock %}
+
+{% block body_block %}
+<h1>SmartCampus</h1>	
+	{% if user.is_authenticated %}
+		<h2>Welcome {{ user.username }}!</h2>
+		
+		{% if problem %}
+            <h2>{{ problem.title }} by {{ problem.user }}</h2>
+                
+                <br> Place: {{problem.place}}
+                <br> Descripton: {{problem.desc}}
+                <br> Tags: {{problem.tags}}
+                <br> Status: {{problem.status}}
+                <br> Rquired people: {{problem.rq_ppl}}
+                <br> Deadline: {{problem.deadline}}
+                
+        {% else %}
+            <strong>There are no problems present.</strong>
+        {% endif %}
+        
+        
+        {% if solutions %}
+      	  <h2>Current Solutions:</h2>
+	        {% for solution in solutions %}
+	        	<br> USER: {{solution.user_id}}
+	        	<br> problem: {{solution.problem_id}}
+	        	<br> Descripton: {{solution.desc}} <br>
+	        	{% if problem.user == user %}
+                <h3>Accept this solution</h3>
+                {% endif %}
+	        {% endfor %}
+        {% else %}
+            <strong>No solutions yet.</strong>
+        {% endif %}
+        
+        {% if problem.user != user%}
+	        {% if problem.status == 'pending'%}
+	        <h2>Add a solution!</h2>
+	        <form id="solution_form" method="post" action="/problems/add_solution/{{ problem.slug }}/">
+	        	{% csrf_token %} 
+	            <br>  Description: {{sol_form.desc}}<br>
+	           
+	        <br><input type="submit" name="submit" value="Add a solution!" /> <br>
+	        </form>
+	        
+	        {% else %}
+	        <h1 style="color:green">
+	            <strong>This problem is solved.</strong>
+	        </h1>
+       		{% endif %}
+        {% endif %}
+        
+	{% else %}
+		<h2>Please login, or register</h2>
+	{% endif %}
+{% endblock %}

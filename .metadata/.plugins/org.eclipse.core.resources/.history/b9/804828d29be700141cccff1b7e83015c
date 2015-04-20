@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{% endblock %}
+
+{% block body_block %}
+<h1>SmartCampus</h1>	
+	{% if user.is_authenticated %}
+	
+	{% if ignored_users %}
+            <h3><strong> Ignored users:</strong></h3>
+            {% for ignored_user in ignored_users %}	
+			<h4>ignored_user.get_username</h4>		
+			{%endfor%}
+	{%endif%}
+		
+	{% endif %}
+{% endblock %}

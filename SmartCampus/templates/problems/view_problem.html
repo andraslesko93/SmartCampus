@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{{ category_name }}{% endblock %}
+
+{% block body_block %}
+<h1>SmartCampus</h1>	
+	{% if user.is_authenticated %}
+		<h2>Welcome {{ user.username }}!</h2>
+		
+		{% if problems %}
+            <h2>Current Problems:</h2>
+            {% for problem in problems %}
+                <h3>{{ problem.title }} by {{ problem.user }}</h3>
+                <br> Place: {{problem.place}}
+                <br> Descripton: {{problem.desc}}
+                <br> Tags: {{problem.tags}}
+                <br> Status: {{problem.status}}
+                <br> Rquired people: {{problem.rq_ppl}}
+                <br> Deadline: {{problem.deadline}}
+            {% endfor %}
+        {% else %}
+            <strong>There are no problems present.</strong>
+        {% endif %}
+        
+	{% else %}
+		<h2>Please login, or register</h2>
+	{% endif %}
+{% endblock %}

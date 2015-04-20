@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{% endblock %}
+
+{% block body_block %}
+<h1>SmartCampus</h1>	
+	{% if user.is_authenticated %}
+		<h2>Welcome {{ user.username }}!</h2>
+		
+		{% if problem %}
+            <h2>Current Problems:</h2>
+                <h3>{{ problem.title }} by {{ problem.user }}</h3>
+                <br> Place: {{problem.place}}
+                <br> Descripton: {{problem.desc}}
+                <br> Tags: {{problem.tags}}
+                <br> Status: {{problem.status}}
+                <br> Rquired people: {{problem.rq_ppl}}
+                <br> Deadline: {{problem.deadline}}
+        {% else %}
+            <strong>There are no problems present.</strong>
+        {% endif %}
+        
+        <h2>Add a solution!</h2>
+        <form id="solution_form" method="post" action="/problems/add_solution/">
+        	{% csrf_token %} 
+            <br>  Description: {{sol_form.desc}}<br>
+           
+        <br><input type="submit" name="submit" value="Add a solution!" /> <br>
+        </form>
+        
+	{% else %}
+		<h2>Please login, or register</h2>
+	{% endif %}
+{% endblock %}

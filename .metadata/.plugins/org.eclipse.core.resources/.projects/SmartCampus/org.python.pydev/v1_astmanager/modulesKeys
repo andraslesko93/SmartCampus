@@ -1,0 +1,15 @@
+MODULES_MANAGER_V2
+SmartCampus.__init__|C:\Users\onlab\Documents\SmartCampus\SmartCampus\SmartCampus\__init__.py
+SmartCampus.settings|C:\Users\onlab\Documents\SmartCampus\SmartCampus\SmartCampus\settings.py
+SmartCampus.urls|C:\Users\onlab\Documents\SmartCampus\SmartCampus\SmartCampus\urls.py
+SmartCampus.wsgi|C:\Users\onlab\Documents\SmartCampus\SmartCampus\SmartCampus\wsgi.py
+manage|C:\Users\onlab\Documents\SmartCampus\SmartCampus\manage.py
+problems.__init__|C:\Users\onlab\Documents\SmartCampus\SmartCampus\problems\__init__.py
+problems.admin|C:\Users\onlab\Documents\SmartCampus\SmartCampus\problems\admin.py
+problems.forms|C:\Users\onlab\Documents\SmartCampus\SmartCampus\problems\forms.py
+problems.migrations.0001_initial|C:\Users\onlab\Documents\SmartCampus\SmartCampus\problems\migrations\0001_initial.py
+problems.migrations.__init__|C:\Users\onlab\Documents\SmartCampus\SmartCampus\problems\migrations\__init__.py
+problems.models|C:\Users\onlab\Documents\SmartCampus\SmartCampus\problems\models.py
+problems.tests|C:\Users\onlab\Documents\SmartCampus\SmartCampus\problems\tests.py
+problems.urls|C:\Users\onlab\Documents\SmartCampus\SmartCampus\problems\urls.py
+problems.views|C:\Users\onlab\Documents\SmartCampus\SmartCampus\problems\views.py
