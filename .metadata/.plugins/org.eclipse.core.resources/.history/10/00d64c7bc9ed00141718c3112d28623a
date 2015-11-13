@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{% endblock %}
+
+{% block body_block %}
+
+        <h1>Create a new Problem</h1>
+
+        <form id="problem_form" method="post" action="/problems/add_problem/">
+            
+          	   {% csrf_token %} 
+          <br/>  <strong>Title:</strong><br/>{{form.title}}  <br/>
+          <br/>	 <strong>Place:</strong><br/>{{form.place}} <br/>
+          <br/>  <strong>Description:</strong><br/>{{form.desc}} <br/>
+          <br/>  <strong>Tags:</strong><br/>{{form.tags}} <br/>
+          <br/>  <strong>Required People:</strong><br/>{{form.rq_ppl}} <br/>
+          <br/>  <strong>Deadline:</strong><br/>{{form.deadline}} <br/>
+            
+          <br/><br/><input type="submit" name="submit" value="Create a problem" /> <br/>
+         
+
+        </form>
+{% endblock %}
+

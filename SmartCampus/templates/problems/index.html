@@ -5,24 +5,37 @@
 {% block title %}{% endblock %}
 
 {% block body_block %}
-<h1>SmartCampus</h1>	
 	{% if user.is_authenticated %}
-		
-		{% if problems %}
-            <h3><strong> Current Problems:</strong></h3>    
+		<br/>
+		{% if problems %}  
 	              {% for problem in problems %}
-					    
-			            <h3> <a href="/problems/add_solution/{{ problem.slug }}">{{ problem.title }}</a> by <a href="/problems/users/{{ problem.user }}">{{problem.user}}</a> </h3>
-						<h4>Description: {{problem.desc}}</h4>
-						<h4>Deadline: {{problem.deadline}}</h4>
-					    <br>
-					    
+	              
+						  <h4>
+						    <a href="/problems/users/{{ problem.user.userprofile }}">
+	        					<img src="{{problem.user.userprofile.picture.url}}" width="50"/>
+	        					<strong><a href="/problems/users/{{ problem.user }}">{{problem.user}}</a></strong>  posted a problem: 
+	        				</a>
+				                <strong><a href="/problems/add_solution/{{ problem.slug }}">{{ problem.title }}</a></strong> 
+						  </h4>
+						    
+						  	<h4><strong>Description:</strong> {{problem.desc}}</h4>
+							<h4><strong>Deadline:</strong> {{problem.deadline}}</h4>
+							<h4> <strong>Tags:</strong>
+                			{% for tag in problem.tags.all %}
+								<a href="/problems/tag/{{ tag.id }}">{{tag.tag_text}}</a></strong> 
+               				{%endfor%} </h4 >
+						    <br/>
             	{% endfor %}
         {% else %}
-           <h3><strong>There are no problems present.</strong></h3> 
+           <h4>There are no problems present.</h4> 
         {% endif %}
-        		
+        <form id="outdated_button" action="/problems/outdated/">
+
+    		<button type = "submit" class="btn btn-default">Outdated problems <span class="glyphicon glyphicon-time"></span></button>
+
+		 </form>
 	{% else %}
 		<h2>Please <a href="{% url 'login' %}">Login</a>, or <a href="{% url 'register' %}">Register Here</a></h2> 
 	{% endif %}
+		
 {% endblock %}

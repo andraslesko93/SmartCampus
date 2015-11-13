@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{% endblock %}
+
+{% block body_block %}
+	{% if user.is_authenticated %}
+		{% if rate_solution_authors %}
+		<h4>Your unrated rate_solution_authors:</h4>
+			{% for rate_solution_author  in rate_solution_authors %}
+		        	<h4>
+						<a href="/problems/users/{{ rate_solution_author.rated_user.userprofile }}">
+		        			<img src="{{rate_solution_author.rated_user.userprofile.picture.url}}" width="50"/>
+		        			<strong><a href="/problems/users/{{ rate_solution_author.rated_user }}">{{rate_solution_author.rated_user}}</a></strong>  
+		        			offered a solution to your problem:
+		        			<strong><a href="/problems/add_solution/{{ rate_solution_author.solution.problem_id.slug }}"> {{ rate_solution_author.solution.problem_id.title }} </a></strong>
+		        			, and you accepted it.
+		        		</a> 
+					</h4>
+					type = {{rate_solution_author.type}}<br/>
+					<strong>Served people:</strong> {{rate_solution_author.solution.served_ppl}} <br/>
+					<strong>Description:</strong> {{rate_solution_author.solution.desc}} <br/>
+		        	<br/>
+					
+		        	<form id = "rate_sol_auth_from_singl" action="" method="POST">
+		        		{% csrf_token %}
+		        		{{rate_problem_author.pk}}
+		        		<input type = "hidden" name = "rate_solution_author" value = "{{rate_solution_author.pk}}"/>
+		        		
+		        		{%if rate_solution_author.solution.served_ppl == 1 %}
+		        		<strong>Has {{rate_solution_author.rated_user}} appeared?</strong>
+	  					<br/>
+	  					<input type="radio" name="appeared" value="no">no &nbsp;
+	  					<input type="radio" name="appeared" value="yes" checked>yes
+						<br/>
+						<br/>
+						<strong>Please rate {{rate_solution_author.rated_user}}'s behaviour during the process!</strong>
+	  					<br/>
+	  					<input type="radio" name="behaviour" value="1">Bad &nbsp;
+	  					<input type="radio" name="behaviour" value="2" checked>Average &nbsp;
+	  					<input type="radio" name="behaviour" value="3">Good
+						<br/>
+						<br/>
+						<strong>How helpful was it?</strong>
+	  					<br/>
+	  					<input type="radio" name="helpful" value="1">Not so helpful &nbsp;
+	  					<input type="radio" name="helpful" value="2" checked>Average &nbsp;
+	  					<input type="radio" name="helpful" value="3">Very helpful 
+						<br/>
+						<br/>
+						<strong>Will you accept any further help from {{rate_solution_author.rated_user}} in the future?</strong>
+	  					<br/>
+	  					<input type="radio" name="further_help" value="1">No &nbsp;
+	  					<input type="radio" name="further_help" value="2" checked>Maybe &nbsp;
+	  					<input type="radio" name="further_help" value="3">Yes
+	  					<br/>
+	  					<br/>
+	  					<button type="submit" class="btn btn-xs btn-primary">Rate {{rate_solution_author.rated_user}}</button>						
+						
+						{%else%}
+						<strong>How many people did {{rate_solution_author.rated_user}} serve? (between 0 and {{rate_solution_author.solution.served_ppl}})</strong>
+						<br/>
+  						<input type="number" name="appeared_people" min="0" max="{{rate_solution_author.solution.served_ppl}}">
+  						
+  						<br/>
+						<br/>
+						<strong>Please rate {{rate_solution_author.rated_user}} and its crew's behaviour during the process!</strong>
+	  					<br/>
+	  					<input type="radio" name="behaviour" value="1">Bad &nbsp;
+	  					<input type="radio" name="behaviour" value="2" checked>Average &nbsp;
+	  					<input type="radio" name="behaviour" value="3">Good
+						<br/>
+						<br/>
+						<strong>How helpful were they?</strong>
+	  					<br/>
+	  					<input type="radio" name="helpful" value="1">Not so helpful &nbsp;
+	  					<input type="radio" name="helpful" value="2" checked>Average &nbsp;
+	  					<input type="radio" name="helpful" value="3">Very helpful 
+						<br/>
+						<br/>
+						<strong>Will you accept any further help from {{rate_solution_author.rated_user}} in the future?</strong>
+	  					<br/>
+	  					<input type="radio" name="further_help" value="1">No &nbsp;
+	  					<input type="radio" name="further_help" value="2" checked>Maybe &nbsp;
+	  					<input type="radio" name="further_help" value="3">Yes
+	  					<br/>
+	  					<br/>
+	  					<button type="submit" class="btn btn-xs btn-primary">Rate {{rate_solution_author.rated_user}}</button>
+						{%endif%}
+						
+
+					</form>
+					
+						<br/>
+		        {% endfor %}
+		{% elif rate_problem_authors %}
+		<h4>Your unrated rate_problem_authors:</h4> 
+		
+			{% for rate_problem_author in rate_problem_authors %}
+		        	<h4>
+						<a href="/problems/users/{{ rate_problem_author.rated_user.userprofile }}">
+		        			<img src="{{rate_problem_author.rated_user.userprofile.picture.url}}" width="50"/>
+		        			<strong><a href="/problems/users/{{ rate_problem_author.rated_user }}">{{ rate_problem_author.rated_user}}</a></strong>  had a problem:
+		        			<strong><a href="/problems/add_solution/{{ rate_problem_author.solution.problem_id.slug }}"> {{ rate_problem_author.solution.problem_id.title }}</a></strong>,
+		        			and you helped
+		        		</a> 
+					</h4>	
+					type = {{rate_problem_author.type}}
+					
+		        	
+		        	<br/>
+		        	<form id = "rate_probl_auth_form" action="" method="POST">
+		        		{% csrf_token %}
+		        		<input type = "hidden" name = "rate_problem_author" value = "{{rate_problem_author.pk}}"/>
+		        		<strong>Has {{rate_problem_author.rated_user}} appeared?</strong>
+						<br/>  					
+	  					<input type="radio" name="appeared" value="no">no &nbsp;
+	  					<input type="radio" name="appeared" value="yes" checked>yes
+						<br/>
+						<br/>
+						<strong>Please rate {{rate_problem_author.rated_user}}'s behaviour during the process!</strong>
+					    <br/>
+	  					<input type="radio" name="behaviour" value="1">Bad &nbsp;
+	  					<input type="radio" name="behaviour" value="2" checked>Average &nbsp;
+	  					<input type="radio" name="behaviour" value="3">Good
+						<br/>
+						<br/>
+						<strong>Has the problem fited to the descripton?</strong>
+						<br/>
+	  					<input type="radio" name="helpful" value="1"> No&nbsp;
+	  					<input type="radio" name="helpful" value="2" checked> So-so &nbsp;
+	  					<input type="radio" name="helpful" value="3"> Yes
+						<br/>
+						<br/>
+						<strong>Will you help {{rate_problem_author.rated_user}} in the future?</strong>
+						<br/>
+	  					<input type="radio" name="further_help" value="1">No &nbsp;
+	  					<input type="radio" name="further_help" value="2" checked>Maybe &nbsp;
+	  					<input type="radio" name="further_help" value="3">Yes
+	  					<br/>
+	  					<br/>
+	  					<button type="submit" class="btn btn-xs btn-primary">Rate {{rate_problem_author.rated_user}} </button>
+					</form>
+					<br/>
+		        
+		        {% endfor %}
+		{% else %}
+			<h4>You don't have to rate anybody right now :)</h4>
+		{% endif %}
+	{% else %}
+		<h3>Please login, or register</h3>
+	{% endif %}
+{% endblock %}

@@ -5,7 +5,6 @@
 {% block title %}{% endblock %}
 
 {% block body_block %}
-<h1>SmartCampus</h1>	
 	{% if user.is_authenticated %}
 		
 		{% if ref_user %}	
@@ -14,26 +13,25 @@
         
 	    <br> <strong>Username: </strong>{{ref_user.user.get_username}} 
 	    <br> <strong>Email adress</strong>: {{ref_user.user.email}}
-		<br> <strong>Time of registration:</strong>: {{ref_user.user.date_joined}}
+		<br> <strong>Joined at:</strong> {{ref_user.user.date_joined}}
+		<br> <strong>Last login:</strong> {{ref_user.user.last_login}}
+		<br> <strong>Last active:</strong> {{ref_user.user.last_active}}
+		<br> <strong>Reputation:</strong> {{ref_user.user.userprofile.reputation}}
+		
 		{% else %}
 	            <strong>This user does not exits</strong>
 	    {% endif %}
 	    
 	    {%if user != ref_user.user%}
 	    
-	    <br>
+	    <br/><br/>
 	    <form id="ignore_button" action="" method="POST">
-         	{% csrf_token %} 
-    	<input type="submit" value="Ignore">		
+         	{% csrf_token %} 	
+    	<button type ="submit" class="btn btn-primary btn-danger">Ignore <span class="glyphicon glyphicon-minus-sign"></span></button>	
 		 </form>
 	    
 	    
 	    {%endif%}
-	    
-	    
-	    
-	    
-	    
-	    
+  
 	{% endif %}
 {% endblock %}

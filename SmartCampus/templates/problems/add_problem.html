@@ -5,22 +5,29 @@
 {% block title %}{% endblock %}
 
 {% block body_block %}
-
-        <h1>Create a new Problem</h1>
+		
+		{%if user.userprofile.reputation > 50 %}
+        <h3>Let's create a problem!</h3>
 
         <form id="problem_form" method="post" action="/problems/add_problem/">
             
           	   {% csrf_token %} 
-          <br>  Title:	{{form.title}}  <br>
-          <br>	Place: {{form.place}} <br>
-          <br>  Description: {{form.desc}}<br>
-          <br>  Tags: {{form.tags}}<br>
-          <br>  Required People: {{form.rq_ppl}}<br>
-          <br>  Deadline: {{form.deadline}}<br>      
-            
-          <br><input type="submit" name="submit" value="Create a problem" /> <br>
+          <br/>  <strong>Title:</strong><br/>{{form.title}}  <br/>
+          <br/>	 <strong>Place:</strong><br/>{{form.place}} <br/>
+          <br/>  <strong>Required People:</strong><br/>{{form.rq_ppl}} <br/> 
+          <br/>  <strong>Tags:</strong><br/>{{form.tags}} <br/> 
+          <br/>  <strong>Deadline:</strong><br/>{{form.deadline}} <br/>
+          <br/>  <strong>Description:</strong><br/>{{form.desc}} <br/>
+          
+          <br/><br/>
+          <button type="submit" class="btn btn-primary">Create a problem</button>
+
          
 
         </form>
+        
+        {%else%}
+        <h4>You cannot create a problem with low reputation. You should help others first</h4>
+        {%endif%}
 {% endblock %}
 

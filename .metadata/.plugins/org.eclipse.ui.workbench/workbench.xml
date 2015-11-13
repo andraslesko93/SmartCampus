@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="48" version="2.0">
 <workbenchAdvisor/>
-<window height="362" maximized="true" width="1368" x="-175" y="-19">
+<window height="728" width="1131" x="0" y="0">
 <fastViewData fastViewLocation="1024">
 <orientation position="512" view="org.eclipse.ui.console.ConsoleView"/>
 </fastViewData>
@@ -40,6 +40,21 @@
 <part id="5"/>
 <part id="6"/>
 <part id="7"/>
+<part id="8"/>
+<part id="9"/>
+<part id="10"/>
+<part id="11"/>
+<part id="12"/>
+<part id="13"/>
+<part id="14"/>
+<part id="15"/>
+<part id="16"/>
+<part id="17"/>
+<part id="18"/>
+<part id="19"/>
+<part id="20"/>
+<part id="21"/>
+<part id="22"/>
 </presentation>
 </folder>
 </info>
@@ -50,31 +65,91 @@
 </editor>
 <editor id="com.aptana.editor.html" name="index.html" partName="index.html" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/templates/problems/index.html" title="index.html" tooltip="SmartCampus/templates/problems/index.html" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/templates/problems/index.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="588" selectionTopPixel="37"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="112" selectionTopPixel="300"/>
 </editor>
 <editor id="com.aptana.editor.html" name="add_solution.html" partName="add_solution.html" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/templates/problems/add_solution.html" title="add_solution.html" tooltip="SmartCampus/templates/problems/add_solution.html" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/templates/problems/add_solution.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1281" selectionTopPixel="787"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="925" selectionTopPixel="808"/>
 </editor>
 <editor id="org.python.pydev.editor.PythonEditor" name="models.py" partName="models" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/problems/models.py" title="models" tooltip="SmartCampus/problems/models.py" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/problems/models.py"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="314" selectionTopPixel="472"/>
-</editor>
-<editor id="org.python.pydev.editor.PythonEditor" name="forms.py" partName="forms" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/problems/forms.py" title="forms" tooltip="SmartCampus/problems/forms.py" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/problems/forms.py"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="290" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1473" selectionTopPixel="0"/>
 </editor>
 <editor id="com.aptana.editor.html" name="ignored_users.html" partName="ignored_users.html" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/templates/problems/ignored_users.html" title="ignored_users.html" tooltip="SmartCampus/templates/problems/ignored_users.html" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/templates/problems/ignored_users.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="446" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="112" selectionTopPixel="60"/>
 </editor>
-<editor activePart="true" focus="true" id="org.python.pydev.editor.PythonEditor" name="views.py" partName="views" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/problems/views.py" title="views" tooltip="SmartCampus/problems/views.py" workbook="DefaultEditorWorkbook">
+<editor id="org.python.pydev.editor.PythonEditor" name="views.py" partName="views" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/problems/views.py" title="views" tooltip="SmartCampus/problems/views.py" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/problems/views.py"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="11508" selectionTopPixel="2797"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="908" selectionTopPixel="0"/>
+</editor>
+<editor id="com.aptana.editor.html" name="view_problem.html" partName="view_problem.html" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/templates/problems/view_problem.html" title="view_problem.html" tooltip="SmartCampus/templates/problems/view_problem.html" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/templates/problems/view_problem.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="131" selectionTopPixel="0"/>
+</editor>
+<editor id="com.aptana.editor.html" name="own_problems.html" partName="own_problems.html" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/templates/problems/own_problems.html" title="own_problems.html" tooltip="SmartCampus/templates/problems/own_problems.html" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/templates/problems/own_problems.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="112" selectionTopPixel="480"/>
 </editor>
 <editor id="com.aptana.editor.html" name="users.html" partName="users.html" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/templates/problems/users.html" title="users.html" tooltip="SmartCampus/templates/problems/users.html" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/templates/problems/users.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="153" selectionOffset="636" selectionTopPixel="120"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="438" selectionTopPixel="105"/>
+</editor>
+<editor id="org.python.pydev.editor.PythonEditor" name="admin.py" partName="admin" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/problems/admin.py" title="admin" tooltip="SmartCampus/problems/admin.py" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/problems/admin.py"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="380" selectionTopPixel="0"/>
+</editor>
+<editor id="com.aptana.editor.html" name="tag.html" partName="tag.html" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/templates/problems/tag.html" title="tag.html" tooltip="SmartCampus/templates/problems/tag.html" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/templates/problems/tag.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="112" selectionTopPixel="240"/>
+</editor>
+<editor id="org.python.pydev.editor.PythonEditor" name="urls.py" partName="urls (problems)" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/problems/urls.py" title="urls (problems)" tooltip="SmartCampus/problems/urls.py" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/problems/urls.py"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="212" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="com.aptana.editor.html" name="base.html" partName="base.html" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/templates/base.html" title="base.html" tooltip="SmartCampus/templates/base.html" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/templates/base.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="7" selectionOffset="1043" selectionTopPixel="60"/>
+</editor>
+<editor id="com.aptana.editor.html" name="outdated.html" partName="outdated.html" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/templates/problems/outdated.html" title="outdated.html" tooltip="SmartCampus/templates/problems/outdated.html" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/templates/problems/outdated.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="112" selectionTopPixel="240"/>
+</editor>
+<editor id="com.aptana.editor.html" name="accept_solution.html" partName="accept_solution.html" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/templates/problems/accept_solution.html" title="accept_solution.html" tooltip="SmartCampus/templates/problems/accept_solution.html" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/templates/problems/accept_solution.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="945" selectionTopPixel="195"/>
+</editor>
+<editor id="com.aptana.editor.html" name="add_problem.html" partName="add_problem.html" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/templates/problems/add_problem.html" title="add_problem.html" tooltip="SmartCampus/templates/problems/add_problem.html" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/templates/problems/add_problem.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="45"/>
+</editor>
+<editor id="com.aptana.editor.html" name="login.html" partName="login.html" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/templates/problems/login.html" title="login.html" tooltip="SmartCampus/templates/problems/login.html" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/templates/problems/login.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="com.aptana.editor.html" name="register.html" partName="register.html" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/templates/problems/register.html" title="register.html" tooltip="SmartCampus/templates/problems/register.html" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/templates/problems/register.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="150"/>
+</editor>
+<editor id="org.python.pydev.editor.PythonEditor" name="__init__.py" partName="problems" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/problems/__init__.py" title="problems" tooltip="SmartCampus/problems/__init__.py" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/problems/__init__.py"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.python.pydev.editor.PythonEditor" name="__init__.py" partName="SmartCampus" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/SmartCampus/__init__.py" title="SmartCampus" tooltip="SmartCampus/SmartCampus/__init__.py" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/SmartCampus/__init__.py"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.python.pydev.editor.PythonEditor" name="settings.py" partName="settings" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/SmartCampus/settings.py" title="settings" tooltip="SmartCampus/SmartCampus/settings.py" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/SmartCampus/settings.py"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="225" selectionTopPixel="1215"/>
+</editor>
+<editor id="org.python.pydev.editor.PythonEditor" name="wsgi.py" partName="wsgi" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/SmartCampus/wsgi.py" title="wsgi" tooltip="SmartCampus/SmartCampus/wsgi.py" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/SmartCampus/wsgi.py"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.python.pydev.editor.PythonEditor" name="forms.py" partName="forms" path="C:/Users/onlab/Documents/SmartCampus/SmartCampus/problems/forms.py" title="forms" tooltip="SmartCampus/problems/forms.py" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SmartCampus/problems/forms.py"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="469" selectionTopPixel="450"/>
 </editor>
 </editors>
 <views>
@@ -118,18 +193,16 @@
 <viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0">
 <expanded IMemento.internal.id="C:/Users/onlab/Documents/SmartCampus/SmartCampus"/>
 <expanded IMemento.internal.id="C:/Users/onlab/Documents/SmartCampus/SmartCampus/media"/>
-<expanded IMemento.internal.id="C:/Users/onlab/Documents/SmartCampus/SmartCampus/media/profile_images"/>
 <expanded IMemento.internal.id="C:/Users/onlab/Documents/SmartCampus/SmartCampus/problems"/>
-<expanded IMemento.internal.id="C:/Users/onlab/Documents/SmartCampus/SmartCampus/problems/forms.py"/>
-<expanded IMemento.internal.id="C:/Users/onlab/Documents/SmartCampus/SmartCampus/problems/models.py"/>
 <expanded IMemento.internal.id="C:/Users/onlab/Documents/SmartCampus/SmartCampus/SmartCampus"/>
+<expanded IMemento.internal.id="C:/Users/onlab/Documents/SmartCampus/SmartCampus/static"/>
 <expanded IMemento.internal.id="C:/Users/onlab/Documents/SmartCampus/SmartCampus/templates"/>
 <expanded IMemento.internal.id="C:/Users/onlab/Documents/SmartCampus/SmartCampus/templates/problems"/>
-<selected IMemento.internal.id="C:/Users/onlab/Documents/SmartCampus/SmartCampus/templates/problems/ignored_users.html"/>
+<selected IMemento.internal.id="C:/Users/onlab/Documents/SmartCampus/SmartCampus/templates/base.html"/>
 </viewState>
 </view>
 </views>
-<perspectives activePart="org.python.pydev.editor.PythonEditor" activePerspective="org.python.pydev.ui.PythonPerspective">
+<perspectives activePart="com.aptana.editor.html" activePerspective="org.python.pydev.ui.PythonPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="com.aptana.ui.internal.WebPerspectiveFactory" id="com.aptana.ui.WebPerspective" label="Web"/>
 <alwaysOnActionSet id="com.aptana.browser.actionSet"/>
@@ -249,7 +322,7 @@
 <new_wizard_action id="org.eclipse.ui.editors.wizards.UntitledTextFileWizard"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <view id="org.python.pydev.navigator.view"/>
-<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="com.aptana.terminal.views.terminal"/>
 <fastViewBars/>
 <layout>
@@ -272,23 +345,27 @@
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.196868" ratioLeft="264" ratioRight="1077" relationship="2" relative="topLeft"/>
 <info folder="true" part="bottom" ratio="0.83774835" ratioLeft="506" ratioRight="98" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="com.aptana.terminal.views.terminal" appearance="2" expanded="2">
-<page content="com.aptana.terminal.views.terminal" label="Terminal"/>
-<page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
+<folder appearance="2" expanded="2">
 <page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ProblemView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@1fcb359" ratio="0.8498498" ratioLeft="849" ratioRight="150" relationship="2" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1f5a5e7" ratio="0.7322581" ratioLeft="454" ratioRight="166" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="com.aptana.terminal.views.terminal" appearance="2" expanded="2">
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="com.aptana.terminal.views.terminal" label="Terminal"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
+<part id="1"/>
 </presentation>
 </folder>
 </info>
@@ -299,166 +376,192 @@
 <workingSets/>
 <navigationHistory>
 <editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/SmartCampus/templates/base.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/problems/models.py"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/problems/views.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/SmartCampus/settings.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/SmartCampus/urls.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/SmartCampus/templates/problems/accept_solution.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/SmartCampus/templates/problems/add_problem.html"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/SmartCampus/templates/problems/add_solution.html"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/SmartCampus/templates/problems/ignored_users.html"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/SmartCampus/templates/problems/index.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/SmartCampus/templates/problems/login.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/SmartCampus/templates/problems/outdated.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/SmartCampus/templates/problems/own_problems.html"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/SmartCampus/templates/problems/register.html"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/problems/forms.py"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/SmartCampus/urls.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/SmartCampus/templates/problems/tag.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/SmartCampus/templates/problems/users.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/problems/views.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/problems/__init__.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/SmartCampus/__init__.py"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/problems/models.py"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/problems/views.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/problems/__init__.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/problems/models.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/problems/views.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/problems/__init__.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/problems/models.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/problems/views.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/problems/__init__.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/problems/models.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/problems/views.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/SmartCampus/problems/__init__.py"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/SmartCampus/templates/problems/users.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/SmartCampus/templates/base.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/SmartCampus/templates/problems/view_problem.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/SmartCampus/templates/problems/add_problem.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/SmartCampus/templates/problems/add_solution.html"/>
 </editors>
-<item historyLabel="views" index="0">
-<position info="not_deleted" x="10761" y="0"/>
+<item historyLabel="settings" index="3">
+<position info="not_deleted" x="225" y="0"/>
 </item>
-<item historyLabel="index.html" index="3">
-<position/>
-</item>
-<item historyLabel="ignored_users.html" index="2">
-<position info="not_deleted" x="343" y="0"/>
-</item>
-<item historyLabel="register.html" index="4">
-<position info="not_deleted" x="824" y="0"/>
-</item>
-<item historyLabel="ignored_users.html" index="2">
-<position info="not_deleted" x="343" y="0"/>
-</item>
-<item historyLabel="index.html" index="3">
-<position/>
-</item>
-<item historyLabel="forms" index="5">
-<position info="not_deleted" x="290" y="0"/>
-</item>
-<item historyLabel="views" index="0">
-<position/>
-</item>
-<item historyLabel="index.html" index="3">
-<position info="not_deleted" x="429" y="0"/>
-</item>
-<item historyLabel="urls (SmartCampus)" index="6">
+<item historyLabel="urls (SmartCampus)" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="models" index="7">
-<position info="not_deleted" x="314" y="0"/>
+<item historyLabel="accept_solution.html" index="5">
+<position info="not_deleted" x="945" y="0"/>
 </item>
-<item historyLabel="views" index="0">
-<position info="not_deleted" x="549" y="0"/>
-</item>
-<item historyLabel="index.html" index="3">
-<position/>
-</item>
-<item historyLabel="views" index="0">
-<position info="not_deleted" x="549" y="0"/>
-</item>
-<item historyLabel="index.html" index="3">
-<position info="not_deleted" x="216" y="0"/>
-</item>
-<item historyLabel="urls (SmartCampus)" index="6">
+<item historyLabel="add_problem.html" index="6">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="index.html" index="3">
-<position/>
+<item historyLabel="add_solution.html" index="7">
+<position info="not_deleted" x="925" y="0"/>
 </item>
-<item historyLabel="urls (SmartCampus)" index="6">
+<item historyLabel="add_problem.html" index="6">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="index.html" index="3">
-<position info="not_deleted" x="294" y="0"/>
+<item historyLabel="ignored_users.html" index="8">
+<position info="not_deleted" x="112" y="0"/>
 </item>
-<item historyLabel="views" index="0">
-<position info="not_deleted" x="903" y="0"/>
+<item historyLabel="index.html" index="9">
+<position info="not_deleted" x="112" y="0"/>
 </item>
-<item historyLabel="urls (SmartCampus)" index="6">
+<item historyLabel="ignored_users.html" index="8">
+<position info="not_deleted" x="112" y="0"/>
+</item>
+<item historyLabel="add_solution.html" index="7">
+<position info="not_deleted" x="925" y="0"/>
+</item>
+<item historyLabel="ignored_users.html" index="8">
+<position info="not_deleted" x="112" y="0"/>
+</item>
+<item historyLabel="index.html" index="9">
+<position info="not_deleted" x="112" y="0"/>
+</item>
+<item historyLabel="login.html" index="10">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="views" index="0">
-<position info="not_deleted" x="903" y="0"/>
+<item historyLabel="outdated.html" index="11">
+<position info="not_deleted" x="112" y="0"/>
 </item>
-<item historyLabel="index.html" index="3">
-<position/>
+<item historyLabel="own_problems.html" index="12">
+<position info="not_deleted" x="112" y="0"/>
 </item>
-<item historyLabel="ignored_users.html" index="2">
-<position info="not_deleted" x="212" y="0"/>
-</item>
-<item historyLabel="urls (SmartCampus)" index="6">
+<item historyLabel="register.html" index="13">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="add_solution.html" index="1">
-<position info="not_deleted" x="1560" y="0"/>
+<item historyLabel="tag.html" index="14">
+<position info="not_deleted" x="112" y="0"/>
 </item>
-<item historyLabel="ignored_users.html" index="2">
-<position info="not_deleted" x="212" y="0"/>
+<item historyLabel="users.html" index="15">
+<position info="not_deleted" x="887" y="0"/>
 </item>
-<item historyLabel="forms" index="5">
-<position info="not_deleted" x="290" y="0"/>
+<item historyLabel="base.html" index="0">
+<position info="not_deleted" x="4698" y="0"/>
 </item>
-<item historyLabel="index.html" index="3">
-<position/>
+<item historyLabel="views" index="2">
+<position info="not_deleted" x="10773" y="0"/>
 </item>
-<item historyLabel="views" index="0">
-<position info="not_deleted" x="903" y="0"/>
+<item historyLabel="users.html" index="15">
+<position info="not_deleted" x="887" y="0"/>
 </item>
-<item historyLabel="index.html" index="3">
-<position/>
+<item historyLabel="views" index="2">
+<position info="not_deleted" x="7145" y="0"/>
 </item>
-<item historyLabel="urls (SmartCampus)" index="6">
+<item historyLabel="base.html" index="0">
+<position info="not_deleted" x="3415" y="0"/>
+</item>
+<item historyLabel="views" index="2">
+<position info="not_deleted" x="908" y="0"/>
+</item>
+<item historyLabel="models" index="1">
+<position info="not_deleted" x="2538" y="0"/>
+</item>
+<item historyLabel="views" index="16">
+<position info="not_deleted" x="908" y="0"/>
+</item>
+<item historyLabel="problems" index="17">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="views" index="0">
-<position info="not_deleted" x="903" y="0"/>
-</item>
-<item historyLabel="urls (SmartCampus)" index="6">
+<item historyLabel="SmartCampus" index="18">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="views" index="0">
-<position info="not_deleted" x="903" y="0"/>
+<item historyLabel="models" index="19">
+<position info="not_deleted" x="2538" y="0"/>
 </item>
-<item historyLabel="urls (SmartCampus)" index="6">
+<item historyLabel="views" index="20">
+<position info="not_deleted" x="908" y="0"/>
+</item>
+<item historyLabel="problems" index="21">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="index.html" index="3">
-<position/>
-</item>
-<item historyLabel="views" index="0">
-<position info="not_deleted" x="903" y="0"/>
-</item>
-<item historyLabel="index.html" index="3">
-<position info="not_deleted" x="588" y="0"/>
-</item>
-<item historyLabel="views" index="0">
-<position info="not_deleted" x="949" y="0"/>
-</item>
-<item historyLabel="index.html" index="3">
-<position info="not_deleted" x="588" y="0"/>
-</item>
-<item historyLabel="views" index="8">
-<position info="not_deleted" x="7270" y="0"/>
-</item>
-<item historyLabel="add_solution.html" index="1">
-<position info="not_deleted" x="1281" y="0"/>
-</item>
-<item historyLabel="users.html" index="9">
-<position info="not_deleted" x="636" y="153"/>
-</item>
-<item historyLabel="ignored_users.html" index="2">
-<position info="not_deleted" x="491" y="0"/>
-</item>
-<item historyLabel="index.html" index="3">
-<position info="not_deleted" x="588" y="0"/>
-</item>
-<item historyLabel="add_solution.html" index="1">
-<position info="not_deleted" x="1281" y="0"/>
-</item>
-<item historyLabel="ignored_users.html" index="2">
-<position info="not_deleted" x="446" y="0"/>
-</item>
-<item historyLabel="urls (SmartCampus)" index="6">
+<item historyLabel="SmartCampus" index="18">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item active="true" historyLabel="views" index="8">
-<position info="not_deleted" x="7270" y="0"/>
+<item historyLabel="models" index="22">
+<position info="not_deleted" x="2538" y="0"/>
+</item>
+<item historyLabel="views" index="23">
+<position info="not_deleted" x="908" y="0"/>
+</item>
+<item historyLabel="problems" index="24">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="SmartCampus" index="18">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="models" index="25">
+<position info="not_deleted" x="2538" y="0"/>
+</item>
+<item historyLabel="views" index="26">
+<position info="not_deleted" x="908" y="0"/>
+</item>
+<item historyLabel="problems" index="27">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="SmartCampus" index="18">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="models" index="28">
+<position info="not_deleted" x="2538" y="0"/>
+</item>
+<item historyLabel="views" index="29">
+<position info="not_deleted" x="908" y="0"/>
+</item>
+<item historyLabel="problems" index="30">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="SmartCampus" index="18">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="users.html" index="31">
+<position info="not_deleted" x="886" y="0"/>
+</item>
+<item historyLabel="base.html" index="32">
+<position info="not_deleted" x="3415" y="0"/>
+</item>
+<item historyLabel="view_problem.html" index="33">
+<position info="not_deleted" x="131" y="0"/>
+</item>
+<item historyLabel="add_problem.html" index="34">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="add_solution.html" index="35">
+<position info="not_deleted" x="925" y="0"/>
+</item>
+<item active="true" historyLabel="base.html" index="32">
+<position info="not_deleted" x="1050" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -466,12 +569,6 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="topLeft"/>
-</trimArea>
-<trimArea IMemento.internal.id="131072">
-<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@1fcb359"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -479,31 +576,27 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
-<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" name="users.html" tooltip="SmartCampus/templates/problems/users.html">
-<persistable path="/SmartCampus/templates/problems/users.html"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="views.py" tooltip="SmartCampus/problems/views.py">
-<persistable path="/SmartCampus/problems/views.py"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" name="ignored_users.html" tooltip="SmartCampus/templates/problems/ignored_users.html">
-<persistable path="/SmartCampus/templates/problems/ignored_users.html"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="forms.py" tooltip="SmartCampus/problems/forms.py">
 <persistable path="/SmartCampus/problems/forms.py"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="ignored_users" tooltip="SmartCampus/templates/problems/ignored_users">
-<persistable path="/SmartCampus/templates/problems/ignored_users"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="wsgi.py" tooltip="SmartCampus/SmartCampus/wsgi.py">
+<persistable path="/SmartCampus/SmartCampus/wsgi.py"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="urls.py" tooltip="SmartCampus/problems/urls.py">
-<persistable path="/SmartCampus/problems/urls.py"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="settings.py" tooltip="SmartCampus/SmartCampus/settings.py">
+<persistable path="/SmartCampus/SmartCampus/settings.py"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" name="accept_solution.html" tooltip="SmartCampus/templates/problems/accept_solution.html">
-<persistable path="/SmartCampus/templates/problems/accept_solution.html"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="__init__.py" tooltip="SmartCampus/SmartCampus/__init__.py">
+<persistable path="/SmartCampus/SmartCampus/__init__.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="__init__.py" tooltip="SmartCampus/problems/__init__.py">
+<persistable path="/SmartCampus/problems/__init__.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" name="register.html" tooltip="SmartCampus/templates/problems/register.html">
+<persistable path="/SmartCampus/templates/problems/register.html"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" name="login.html" tooltip="SmartCampus/templates/problems/login.html">
 <persistable path="/SmartCampus/templates/problems/login.html"/>
@@ -511,23 +604,26 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" name="add_problem.html" tooltip="SmartCampus/templates/problems/add_problem.html">
 <persistable path="/SmartCampus/templates/problems/add_problem.html"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" name="register.html" tooltip="SmartCampus/templates/problems/register.html">
-<persistable path="/SmartCampus/templates/problems/register.html"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" name="accept_solution.html" tooltip="SmartCampus/templates/problems/accept_solution.html">
+<persistable path="/SmartCampus/templates/problems/accept_solution.html"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" name="outdated.html" tooltip="SmartCampus/templates/problems/outdated.html">
+<persistable path="/SmartCampus/templates/problems/outdated.html"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" name="base.html" tooltip="SmartCampus/templates/base.html">
 <persistable path="/SmartCampus/templates/base.html"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="models.py" tooltip="SmartCampus/problems/models.py">
-<persistable path="/SmartCampus/problems/models.py"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="urls.py" tooltip="SmartCampus/problems/urls.py">
+<persistable path="/SmartCampus/problems/urls.py"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" name="add_solution.html" tooltip="SmartCampus/templates/problems/add_solution.html">
-<persistable path="/SmartCampus/templates/problems/add_solution.html"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" name="tag.html" tooltip="SmartCampus/templates/problems/tag.html">
+<persistable path="/SmartCampus/templates/problems/tag.html"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" name="index.html" tooltip="SmartCampus/templates/problems/index.html">
-<persistable path="/SmartCampus/templates/problems/index.html"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" name="tag_search.html" tooltip="SmartCampus/templates/problems/tag_search.html">
+<persistable path="/SmartCampus/templates/problems/tag_search.html"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="yolo.png" tooltip="SmartCampus/media/profile_images/yolo.png">
-<persistable path="/SmartCampus/media/profile_images/yolo.png"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="admin.py" tooltip="SmartCampus/problems/admin.py">
+<persistable path="/SmartCampus/problems/admin.py"/>
 </file>
 </mruList>
 </workbench>

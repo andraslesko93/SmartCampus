@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{% endblock %}
+
+{% block body_block %}
+	{% if user.is_authenticated %}
+		
+		
+		{% if solution and user == solution.problem_id.user %}
+		
+		<h2>Are you sure, that you want to accept this solution by by <a href="/problems/users/{{ problem.user }}">{{problem.user}}</a>?</h2>
+		<h2>You cannot undo it later!</h2>	
+            
+                <br> Descripton: {{solution.desc}}
+                <br> Served people: {{solution.served_ppl}} <br> <br>
+         
+         <form id="yes_button" action="/problems/accept_solution/{{ solution.slug }}/" method="POST">
+         	{% csrf_token %} 
+    		<input type="submit" value="Yes, accept this solution">
+    		
+		 </form>
+		 
+		 <br>
+		 <form id ="no_button" action="/problems/add_solution/{{ solution.problem_id.slug }}">
+    				<input type="submit" value="No, please take me back">
+		 </form>
+        {% else %}
+            <strong>There are no solution present.</strong>
+     	{% endif %}
+    {% endif %}
+    
+{% endblock %}

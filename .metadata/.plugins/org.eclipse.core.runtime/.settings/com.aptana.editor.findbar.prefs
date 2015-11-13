@@ -1,2 +1,3 @@
-FIND_BAR_DECORATOR_FIND_ENTRIES=\#\r\n\#Mon Apr 20 22\:07\:08 CEST 2015\r\n18\=render\r\n17\=cate\r\n16\=category\r\n15\=category_name_slug'\r\n14\=category_name_slug\r\n13\=category_name_slugcategory_name_slug\r\n12\=response\r\n11\=current\r\n10\=problem.user\r\n9\=.user\r\n8\=key_\r\n7\=all\r\n6\=filter\r\n5\=date\r\n4\=regtime\r\n3\=datetime\r\n2\=key\r\n1\=restric\r\n0\=since\r\n
+FIND_BAR_DECORATOR_FIND_ENTRIES=\#\r\n\#Mon May 04 18\:46\:32 CEST 2015\r\n9\=empty\r\n8\=problem\r\n7\=time\r\n6\=default\r\n5\=home\r\n4\=get\r\n12\=no\r\n3\=view\r\n11\=>\r\n2\=indec\r\n10\=empt\r\n1\=index\r\n0\=view_problem\r\n
+FIND_BAR_DECORATOR_REPLACE_ENTRIES=\#\r\n\#Thu Apr 30 12\:30\:39 CEST 2015\r\n1\=<br/>\r\n0\=problem.problem_key\r\n
 eclipse.preferences.version=1

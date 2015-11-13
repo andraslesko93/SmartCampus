@@ -4,20 +4,22 @@
 
 {% block title %}{% endblock %}
 
-{% block body_block %}
-<h1>SmartCampus</h1>	
+{% block body_block %}	
 	{% if user.is_authenticated %}
-	<h3><strong> Ignored users:</strong></h3>
 	{% if ignored_users %}
-	
+		<h3><strong> Ignored users:</strong></h3>
             {% for ignored_user in ignored_users %}	
-			<h4>{{ignored_user.ref_user_id.get_username}}
 	    		<form id="rem_ignore_button" action="" method="POST">
+	    			<h4>{{ignored_user.ref_user_id.get_username}} 
          			{% csrf_token %} 
-    			<input type="submit" value="Remove">		
+         			<input type = "hidden" name = "user_rem_ignore_list" value = "{{ignored_user.id}}"/>
+    				<button type="submit" class="btn btn-success">Remove</button>	
+    				</h4>
 		 		</form>
-	    	</h4>		
+	    			
 			{%endfor%}
+	{% else %}
+		<h4>You don't have any issues with other users. :)</h4>
 	{%endif%}
 		
 	{% endif %}

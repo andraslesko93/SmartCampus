@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{% endblock %}
+
+{% block body_block %}
+	{% if user.is_authenticated %}
+		<br/>
+		{% if problems %}  
+				<h3><font color="blue"><strong> Active problems:</strong></font></h3>
+				<br/>
+	              {% for problem in problems %}
+	              	{%if problem.status == 'pending' %}
+						  <h4>
+						    <a href="/problems/users/{{ problem.userprofile }}">
+	        					<img src="{{problem.user.userprofile.picture.url}}" width="50"/>
+	        					<strong><a href="/problems/users/{{ problem.user }}">{{problem.user}}</a></strong>  posted a problem: 
+	        				</a>
+				                <strong><a href="/problems/add_solution/{{ problem.slug }}">{{ problem.title }}</a></strong> 
+						  </h4>
+						    
+						  	<h4><strong>Description:</strong> {{problem.desc}}</h4>
+							<h4><strong>Deadline:</strong> {{problem.deadline}}</h4>
+							<h4> <strong>Tags:</strong>
+							{% for tag in problem.tags.all %}
+								<a href="/problems/tag/{{ tag.id }}">{{tag.tag_text}}</a></strong> 
+               				{%endfor%} </h4 >
+						    <br/>
+					{% endif %}
+            	{% endfor %}
+            	<h3><font color="grey"><strong> Solved problems:</strong></font></h3>
+				<br/>
+            	{% for problem in problems %}
+	              	{%if problem.status == 'accepted' %}
+						  <h4>
+						    <a href="/problems/users/{{ problem.userprofile }}">
+	        					<img src="{{problem.user.userprofile.picture.url}}" width="50"/>
+	        					<strong><a href="/problems/users/{{ problem.user }}">{{problem.user}}</a></strong>  posted a problem: 
+	        				</a>
+				                <strong><a href="/problems/add_solution/{{ problem.slug }}" style="color:grey">{{ problem.title }}</a></strong> 
+						  </h4>
+						    
+						  	<h4><strong>Description:</strong> {{problem.desc}}</h4>
+							<h4><strong>Deadline:</strong> {{problem.deadline}}</h4>
+							<h4> <strong>Tags:</strong>
+							{% for tag in problem.tags.all %}
+								<a href="/problems/tag/{{ tag.id }}">{{tag.tag_text}}</a></strong> 
+               				{%endfor%} </h4 >
+						    <br/>
+					{% endif %}
+            	{% endfor %}
+        {% else %}
+           <h3><strong>There are no problems present.</strong></h3> 
+        {% endif %}
+        		
+	{% else %}
+		<h2>Please <a href="{% url 'login' %}">Login</a>, or <a href="{% url 'register' %}">Register Here</a></h2> 
+	{% endif %}
+		
+{% endblock %}

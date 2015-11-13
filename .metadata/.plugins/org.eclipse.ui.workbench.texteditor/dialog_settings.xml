@@ -5,16 +5,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="wholeword"/>
-		<item value="since" key="selection"/>
+		<item value="view_problem" key="selection"/>
 		<list key="findhistory">
-			<item value="since"/>
-			<item value="restric"/>
-			<item value="key"/>
-			<item value="datetime"/>
-			<item value="regtime"/>
-			<item value="date"/>
-			<item value="filter"/>
-			<item value="all"/>
+			<item value="view_problem"/>
+			<item value="index"/>
+			<item value="indec"/>
+			<item value="view"/>
+			<item value="get"/>
+			<item value="home"/>
+			<item value="default"/>
+			<item value="time"/>
 		</list>
 	</section>
 </section>

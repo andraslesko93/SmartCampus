@@ -10,21 +10,22 @@
 		
 		{% if solution and user == solution.problem_id.user %}
 		
-		<h2>Are you sure, that you want to accept this solution by {{ solution.user_id }}?</h2>
-		<h2>You cannot undo it later!</h2>	
-            
-                <br> Descripton: {{solution.desc}}
-                <br> Served people: {{solution.served_ppl}} <br> <br>
+		<h3>Are you sure, that you want to accept this solution by <a href="/problems/users/{{ solution.user_id }}">{{solution.user_id}}</a>?</h3>
+		<h3>You cannot undo it later!</h3>	
+            <br/>
+                <h4><strong>Descripton:</strong> {{solution.desc}}</h4>
+                <h4><strong>Served people:</strong>  {{solution.served_ppl}}</h4> <br/>
          
          <form id="yes_button" action="/problems/accept_solution/{{ solution.slug }}/" method="POST">
          	{% csrf_token %} 
-    		<input type="submit" value="Yes, accept this solution">
+    		
+    		<button type="submit" class="btn btn-primary btn-success">Yes, accept this solution <span class="glyphicon glyphicon-ok"></span></button>
     		
 		 </form>
 		 
 		 <br>
 		 <form id ="no_button" action="/problems/add_solution/{{ solution.problem_id.slug }}">
-    				<input type="submit" value="No, please take me back">
+    		<button type="submit" class="btn btn-primary btn-danger">No, please take me back <span class="glyphicon glyphicon-ban-circle"></span></button>
 		 </form>
         {% else %}
             <strong>There are no solution present.</strong>
