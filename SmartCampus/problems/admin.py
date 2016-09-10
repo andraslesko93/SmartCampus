@@ -1,5 +1,6 @@
 from django.contrib import admin
-from problems.models import  Solution, Ignore, Problem, UserProfile, Tag, Rating, Notification
+from problems.models import  Solution, Ignore, Problem, UserProfile, Tag, Rating, Notification,\
+    Confidence_Problem
 
 class ProblemAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('title',)}
@@ -14,3 +15,4 @@ admin.site.register(Tag)
 admin.site.register(Problem, ProblemAdmin)
 admin.site.register(Rating)
 admin.site.register(Notification)
+admin.site.register(Confidence_Problem)

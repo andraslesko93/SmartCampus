@@ -1,0 +1,67 @@
+.btn-navbar {
+  color: #198983;
+  background-color: #ffffff;
+  border-color: #198983;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 7px;
+}
+.btn-navbar:hover, .btn-navbar:focus  {
+    color: #fff;
+    background-color: #198983;
+    border-color: #198983;
+}
+
+.btn-circle.btn-xl {
+  background-color: #1DA075;
+  border-color: #198983;
+  color: #ffffff;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
+.btn-basic {
+  color: #ffffff;
+  background-color: #1DA075;
+  border-color: #198983;
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 15px;
+  line-height: 1.428571429;
+  border-radius: 5px;
+}
+.btn-basic:hover, .btn-basic:focus {
+    color: #fff;
+    background-color: #198983;
+    border-color: #198983;
+}
+
+.btn-basic-small {
+  color: #ffffff;
+  background-color: #1DA075;
+  border-color: #198983;
+  width: 50px;
+  height: 25px;
+  text-align: center;
+  padding: 1px 0;
+  font-size: 13px;
+  line-height: 1.428571429;
+  border-radius: 2px;
+}
+
+.btn-basic-small:hover, .btn-basic-small:focus {
+    color: #fff;
+    background-color: #198983;
+    border-color: #198983;
+}

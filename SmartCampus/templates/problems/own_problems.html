@@ -11,11 +11,11 @@
 		<h4><font color="blue"><strong> Your pending problems:</strong></font></h4>
 			{% for problem in pending_problems %}
 	              	<h4>
-						 <a href="/problems/users/{{ problem.user.userprofile }}">
-	        				<img src="{{problem.user.userprofile.picture.url}}" width="50"/>
-	        				<strong><a href="/problems/users/{{ problem.user }}">You</a></strong>  posted a problem: 
+						 <a href="/users/{{ problem.user.userprofile.slug }}">
+	        				<img src="{{problem.user.userprofile.picture_url}}" width="50"/>
 	        			 </a>
-				         <strong><a href="/problems/add_solution/{{ problem.slug }}">{{ problem.title }}</a></strong> 
+	        				<strong><a href="/users/{{ problem.user.userprofile.slug }}">You</a></strong>  posted a problem: 
+				         <strong><a href="/problems/{{ problem.slug }}">{{ problem.title }}</a></strong> 
 				    </h4>
 					<h4><strong>Description:</strong> {{problem.desc}}</h4>
 					<h4><strong>Posted on:</strong> {{problem.pub_date}}</h4>
@@ -28,14 +28,14 @@
         <h4><font color="orange"><strong>Your in progress problems:</strong></font></h4>
         	{% for problem in in_progress_problems %}
               	<h4>
-					<a href="/problems/users/{{ problem.user.userprofile }}">
-	        			<img src="{{problem.user.userprofile.picture.url}}" width="50"/>
-	        			<strong><a href="/problems/users/{{ problem.user }}">You</a></strong>  posted a problem: 
+					<a href="/users/{{ problem.user.userprofile.slug }}">
+	        			<img src="{{problem.user.userprofile.picture_url}}" width="50"/>
 	        		</a>
-					<strong><a href="/problems/add_solution/{{ problem.slug }}">{{ problem.title }}</a></strong> 
+	        			<strong><a href="/users/{{ problem.user.userprofile.slug }}">You</a></strong>  posted a problem: 
+					<strong><a href="/problems/{{ problem.slug }}">{{ problem.title }}</a></strong> 
 				</h4>
 			    <h4><strong>Description:</strong> {{problem.desc}}</h4>
-				<h4><strong>Posted on:</strong> {{problem.pub_date}}</h4>
+				<h4><strong>Posted on:</strong> {{problem.added_at}}</h4>
 				<h4><strong>Deadline:</strong> {{problem.deadline}}</h4>
 				<br/>
             {% endfor %}
@@ -45,11 +45,11 @@
         <h4><font color="grey"><strong>Your solved problems:</strong></font></h4>
         	{% for problem in solved_problems %}
               	<h4>
-					<a href="/problems/users/{{ problem.user.userprofile }}">
-	        			<img src="{{problem.user.userprofile.picture.url}}" width="50"/>
-	        			<strong><a href="/problems/users/{{ problem.user }}">You</a></strong>  posted a problem: 
+					<a href="/users/{{ problem.user.userprofile.slug }}">
+	        			<img src="{{problem.user.userprofile.picture_url}}" width="50"/>
 	        		</a>
-					<strong><a href="/problems/add_solution/{{ problem.slug }}"style="color:grey">{{ problem.title }}</a></strong> 
+	        			<strong><a href="/users/{{ problem.user.userprofile.slug }}">You</a></strong>  posted a problem: 
+					<strong><a href="/problems/{{ problem.slug }}"style="color:grey">{{ problem.title }}</a></strong> 
 				</h4>
 			    <h4><strong>Description:</strong> {{problem.desc}}</h4>
 				<h4><strong>Posted on:</strong> {{problem.pub_date}}</h4>

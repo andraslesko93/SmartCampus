@@ -1,10 +1,15 @@
 from django.shortcuts import render
 from problems.forms import UserForm, UserProfileForm
 from eventlog.models import Log
+from problems.views.user_authentication import user_login
+from problems.models import Notification
+from django.contrib.contenttypes.models import ContentType
+from django.http import HttpResponseRedirect
 
 def register(request):
 
     registered = False
+    welcome_reputation = 100
 
     if request.method == 'POST':
         # Attempt to grab information from the raw form information.
@@ -20,12 +25,13 @@ def register(request):
             profile = profile_form.save(commit=False)
             profile.user = user
 
-            if 'picture' in request.FILES:
-                profile.picture = request.FILES['picture']
-
+            if 'local_picture' in request.FILES:
+                profile.local_picture = request.FILES['local_picture']
             # Now we save the UserProfile model instance.
             profile.save()
-
+            profile.picture_url=profile.local_picture.url
+            profile.reputation = welcome_reputation
+            profile.save()
             # Update our variable to tell the template registration was successful.
             registered = True
             
@@ -33,7 +39,15 @@ def register(request):
                                 action = "Registration",                            
                                 )
             new_log_entry.save()
-
+            
+            welcome_notification = Notification(user = user,
+                                                content_type = ContentType.objects.get_for_model(user)
+                                                )
+            welcome_notification.save()
+            
+            user_login(request)
+            retlink = '/'
+            return HttpResponseRedirect(retlink)
         # Invalid form or forms - mistakes or something else?
         # Print problems to the terminal.
         # They'll also be shown to the user.

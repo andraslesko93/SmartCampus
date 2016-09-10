@@ -5,33 +5,16 @@
 {% block title %}{% endblock %}
 
 {% block body_block %}
-	{% if user.is_authenticated %}
-		
-		{% if ref_user %}	
-        
-        <img src="{{ref_user.picture.url}}" width="200"/> <br>
-        
-	    <br> <strong>Username: </strong>{{ref_user.user.get_username}} 
-	    <br> <strong>Email adress</strong>: {{ref_user.user.email}}
-		<br> <strong>Joined at:</strong> {{ref_user.user.date_joined}}
-		<br> <strong>Last login:</strong> {{ref_user.user.last_login}}
-		<br> <strong>Last active:</strong> {{ref_user.user.last_active}}
-		<br> <strong>Reputation:</strong> {{ref_user.user.userprofile.reputation}}
-		
-		{% else %}
-	            <strong>This user does not exits</strong>
-	    {% endif %}
-	    
-	    {%if user != ref_user.user%}
-	    
-	    <br/><br/>
-	    <form id="ignore_button" action="" method="POST">
-         	{% csrf_token %} 	
-    	<button type ="submit" class="btn btn-primary btn-danger">Ignore <span class="glyphicon glyphicon-minus-sign"></span></button>	
-		 </form>
-	    
-	    
-	    {%endif%}
-  
-	{% endif %}
+{% csrf_token %}
+<div class ="row">
+	<div class ="col-xs-12 col-md-5">
+		<div class="round-box">
+			<div id="user_details"></div>
+		</div>
+	</div>
+</div>
 {% endblock %}
+
+{% block script_block %}
+<script src="{{ STATIC_URL }}js/onUsersPage.js"></script>
+{%endblock%}

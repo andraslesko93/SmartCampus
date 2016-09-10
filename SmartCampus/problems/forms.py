@@ -17,7 +17,7 @@ class UserProfileForm(forms.ModelForm):
     #has_notification = forms.BooleanField
     class Meta:
         model = UserProfile
-        fields = ('picture',)
+        fields = ('local_picture',)
 
 class ProblemForm(forms.ModelForm):   
     title = forms.CharField (max_length = 30, help_text ="Title:", widget=forms.TextInput(attrs={'size': 30}))

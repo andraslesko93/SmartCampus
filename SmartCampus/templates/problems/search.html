@@ -5,51 +5,11 @@
 {% block title %}{% endblock %}
 
 {% block body_block %}
-	{% if user.is_authenticated %}	
-		{% if problems %}  
-		<h3><strong>Results in problems for: {{ hit }}</strong> </h3> 
-		              {% for problem in problems %}
-		              
-							  <h4>
-							    <a href="/problems/users/{{ problem.user.userprofile }}">
-		        					<img src="{{problem.user.userprofile.picture.url}}" width="50"/>
-		        					<strong><a href="/problems/users/{{ problem.user }}">{{problem.user}}</a></strong>  posted a problem: 
-		        				</a>
-					                <strong><a href="/problems/add_solution/{{ problem.slug }}">{{ problem.title }}</a></strong> 
-							  </h4>
-							    
-							  	<h4><strong>Description:</strong> {{problem.desc}}</h4>
-								<h4><strong>Deadline:</strong> {{problem.deadline}}</h4>
-								<h4> <strong>Tags:</strong>
-	                			{% for tag in problem.tags.all %}
-									<a href="/problems/tag/{{ tag.id }}">{{tag.tag_text}}</a></strong> 
-	               				{%endfor%} </h4 >
-							    <br/>
-	            	{% endfor %}
-	            	
-	    {% else %}
-	    	<h3><strong>No problems match to your query: {{hit}}</strong></h3> 
-	    {% endif %}
-	    {% if users %}
-		    <h3><strong>Results in users for: {{ hit }} </strong></h3> 
-			              {% for user in users %}
-			              
-								  <h4>
-									    <a href="/problems/users/{{ user.userprofile }}">
-				        				<img src="{{user.userprofile.picture.url}}" width="50"/>
-				        				<strong><a href="/problems/users/{{ user }}">{{user}}</a></strong>
-				        				</a>  
-								  </h4>
-								  
-								  <strong>Username: </strong>{{user.get_username}} 
-	    						  <br> <strong>Email adress</strong>: {{user.user.email}}
-								  <br> <strong>Joined at:</strong> {{user.date_joined}}
-								    
-								    <br/>
-		            	{% endfor %}	            	
-	    {% else %}
-	    		<h3><strong>No users match to your query: {{hit}}</strong></h3>
-	    {% endif %}
-	
-	{%endif%}
+<div class="row">	
+	<div id="search_problem_list"></div>
+	<div id="search_user_list"></div>
+</div>
 {% endblock %}
+{% block script_block %}
+<script src="{{ STATIC_URL }}js/onSearchPage.js"></script>
+{%endblock%}

@@ -1,158 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html>
+
+<head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="{{ STATIC_URL }}icon.ico">
-    <title>SmartCampus{% block title %}{% endblock %}</title>
+    <title>SmartCampus</title>
+    <meta name="description" content="Social network for community problems">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Codeply">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome-4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/styles.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/notifications.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/buttons.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/smartcampus.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/range_selector.css" />
+    <link rel="icon" href="{{ STATIC_URL }}images/icon.png">
+</head>
+<body>
 
-    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}dashboard.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+    {% block clear_block %}{% endblock %} {% if user.is_authenticated %}
+    <div class="navbar navbar-fixed-top"id="header-wrap">
+    <nav class="navbar navbar-fixed-top navbar-light" id="header" style="background-color: #1DA075;">
+        <button class="navbar-toggler hidden-md-up pull-left" type="button" data-toggle="offcanvas">
+            ☰
+        </button>
+        <asd class="hidden-sm-down">
+            <a class="navbar-brand" href="/"><font color="#f7f7f7">SmartCampus</font></a>
+        </asd>
 
-  <body>
+        <div class="nav navbar-nav pull-right">
+            <div class="nav navbar-brand">
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/problems">SmartCampus</a>	
+                <asd class="hidden-md-up pull-left" style="padding-right:5px">
+                    <button onclick="location.href = '/';" type="button" class="btn btn-primary-outline btn-navbar">
+                        <i class="fa fa-home fa-lg"></i>
+                    </button>
+                </asd>
+                
+                <asd class="pull-right">
+                
+
+                <button onclick="location.href = '/add_problem/';" type="button" class="btn btn-primary-outline btn-navbar" id="add-button-desktop">
+                    <i class="fa fa-plus fa-lg"></i>
+                </button>
+                
+                <button onclick="location.href = '/ratings/';" type="button" class="btn btn-primary-outline btn-navbar">
+                    <i class="fa fa-star-half-o"></i>
+                    {% if rating_count != 0 %}
+                		<small><span class="label label-danger">{{rating_count}}</span></small> 
+                	{%endif%}
+                </button>
+                
+                <asd class="hidden-md-up">
+                	  <button id="notification_button_mobile" onclick="location.href = '/notifications/';" class="btn btn-primary-outline btn-navbar">
+	                            <i class="fa fa-bell-o"></i>
+	                            {% if notification_count != 0 %}
+                					<small><span id="notification_count_mobile" class="label label-danger">{{notification_count}}</span></small>
+                 				{% endif %}
+	                  </button>
+                </asd>
+                
+                <asd class="hidden-sm-down">
+	                <div class="dropdown">
+	                    <a id="dLabel" role="button" data-toggle="dropdown">
+	                        <button id="notification_button" class="btn btn-primary-outline btn-navbar">
+	                            <i class="fa fa-bell-o"></i>
+	                            {% if notification_count != 0 %}
+                					<small><span id="notification_count" class="label label-danger">{{notification_count}}</span></small>
+                 				{% endif %}
+	                        </button>
+	                    </a>
+	                    <div class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel" id="notification">
+	                        
+	                        <asd class="hidden-sm-down">
+	                        <div class="notification-heading">
+	                            <h4 class="menu-title">Notifications</h4>
+	                            <a href="/notifications">
+	                            <h4 class="menu-title pull-right">View all <i class="fa fa-arrow-circle-right"></i></h4>
+	                            </a>
+	                        </div>
+	                        </asd>
+	                        <li class="divider"></li>
+	                        <div class="notifications-wrapper" id="tiny_notification_list">
+	                        </div>
+	                        <li class="divider"></li>
+	                        
+	                    </div>
+	                </div>
+                </asd>
+
+                </asd>
+
+
+
+            </div>
         </div>
-        
- 		<div class="collapse navbar-collapse navbar-ex1-collapse">
-				    	<div class="col-sm-6 col-md-6">
-				    	{% if user.is_authenticated %}
-				    	
-					    	<form class="navbar-form" role="search" method="get" id="search-form" name="search-form" action="/problems/search"/>								
-						        <div class="input-group" >
-						            <input type="text" style="resize:horizontal; width:500px" class="form-control" placeholder="Search" id="query" name="query" value="">
-							            <div class="input-group-btn">
-						            		<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-						            	</div>
-						        </div>
-					        </form>
-					    
-					    {% endif %}
-				        </div>
-		
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="{% url 'register' %}">User guide</a></li>
-							{% if user.is_authenticated %}
-                       		<li><a href="{% url 'ignored_users' %}">Ignored users</a></li>
-                        	<li><a href="/problems/logout/">Logout</a></li>
-                    		{% else %}
-                        	<li><a href="{% url 'register' %}">Register Here</a></li>
-                        	<li><a href="{% url 'login' %}">Login</a></li>
-                    		{% endif %}
-						</ul>
-		 </div>
-			
-        
-        
-        
-      </div>
+
+        <div class="collapse navbar-toggleable-xs" id="collapsingNavbar">
+         <asd class="hidden-sm-down">
+            <form class="form-inline pull-xs-left" action="/search/">
+                <input class="form-control" type="text" style="background-color:#ffffff" placeholder="Search" id="query" name="query" value="">
+               
+                    <button class="btn btn-primary-outline btn-navbar" type="submit"><i class="fa fa-search"></i> </button>
+               
+
+            </form>
+             </asd>
+        </div>
+
+
+    </nav>
     </div>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-3 sidebar"> 
-	        	{% if user.is_authenticated %}
-	        	<div align="center">
-		        	{% if user.userprofile.picture %}	
-		        	<a href="/problems/users/{{ user }}">
-		        		<img src="{{user.userprofile.picture.url}}" width="200"/> <!-- New line -->
-		        	</a>
-		        	{% endif %}
-		        	<br>
-		        	<h1>{{user.username}} </h1>
-		        	
-		        	{%if user.userprofile.reputation > 50 %}
-		        	<form action="{% url 'add_problem' %}">
-		    			 <button type="submit" class="btn btn-primary btn-primary btn-block">Create a problem <span class="glyphicon glyphicon-plus"></span></button>
-					</form>
-					{%else%}
-					
-					
-					<form action="{% url 'add_problem' %}">
-		    			 <button type="submit" class="btn btn-default btn-block">Create a problem <span class="glyphicon glyphicon-plus"></span></button>
-					</form>
-			
-					{% endif %}
-					
-					<br>
-					<form action="{% url 'own_problems' %}">
-		    			 <button type="submit" class="btn btn-primary btn-primary btn-block">My problems</button>
-					</form>
-					<br>
-					{% if user.userprofile.notification_number == 0 %}
-					<form action="{% url 'notification' %}">
-		    			 <button type="submit" class="btn btn-primary btn-primary btn-block">Notifications</button>
-					</form>
-					
-					{% else %}
-					<form action="{% url 'notification' %}">
-		    			 <button type="submit" class="btn btn-primary btn-success btn-block">Notifications + {{user.userprofile.notification_number}} <span class="glyphicon glyphicon-bell"></span></button>
-					</form>
-					{% endif %}
-					
-					<br/>
-					{% if user.userprofile.rating_number == 0 %}
-					<form action="{% url 'rate' %}">
-		    			 <button type="submit" class="btn btn-primary btn-primary btn-block">Ratings</button>
-					</form>
-					
-					{% else %}
-					<form action="{% url 'rate' %}">
-		    			 <button type="submit" class="btn btn-primary btn-success btn-block">Ratings + {{user.userprofile.rating_number}} <span class="glyphicon glyphicon-bell"></span></button>
-					</form>
-					{% endif %}
-					<br/>
-					
-					
-					
-					<br/>
-					<h4>Your current reputation: {{user.userprofile.reputation}}</h4>
-					
-        		</div>
-        	
-        	<div align="right">
-        		<br/><here>here</here>
-        	</div>
-        	<meta charset="utf-8">
-			
-			
-			place for word cloud
-        	{% endif %}
-                {% block side_block %}{% endblock %}
-
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 main">
-           <div>
-           	<h2>SmartCampus</h2>        	
-                {% block body_block %}{% endblock %}
+    <div class="container-fluid" id="main">
+        <div class="row row-offcanvas row-offcanvas-left">
+            <div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation">
+                <div class="round-box">
+                   
+                    
+                     <asd class="hidden-md-up">
+           			 <form class="form-inline pull-xs-left" action="/search">
+                		<input class="form-control" type="text" style="width:100%" placeholder="Search" id="query" name="query" value="">
+           				 </form>
+           				 <br/> <br/>
+             		</asd>
+             		 <div align="center">
+             		
+                    
+                        {% if user.userprofile.picture_url %}
+                        <a href="/users/{{ user.userprofile.slug }}">
+                            <img src="{{user.userprofile.picture_url}}" width="100" height=auto/>
+                            <!-- New line -->
+                        </a>
+                         <br/><br/>
+                        {% endif %}
+                       
+                        <div class=text-breaker-sidebar>
+	                        <h6><strong>{{user.username}}</strong> </h6> 
+	                        <h6>Your daily reputation:</h6>
+	                        <small>{{daily_reputation}}/{{limit}}</small>
+                        </div>
+                    </div>
+                    <progress class="progress" value="{{daily_reputation}}" max="{{limit}}"></progress>
+                    <div align="center">
+                        <h6>Your overall reputation:</h6>
+                        <strong>{{user.userprofile.reputation}}</strong>
+                    </div>
+                    <br/>
+                    <ul class="nav nav-pills nav-stacked">
+                    </ul>
+                    
+                    <br/>
+                    <div align="left">
+                        <a href = "/ignored_users/">
+                    		<i class="fa fa-user-times"></i> Ignored users                   
+                		</a>
+                    	<br/>
+                    	<a href = "/about/">
+                    		<i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp; About us                   
+                		</a>
+                    	<br/>
+	                    <a href="mailto:feedback.smartcampus@gmail.com?Subject=Bug%20report" >
+	                    	<i class="fa fa-bug" aria-hidden="true"></i>&nbsp;&nbsp;Report a bug
+	                    </a>
+	                    <br/>
+	                    <a href="/logout/">
+	                        <i class="fa fa-sign-out" id="rev-icon"></i>&nbsp;&nbsp;Logout
+	                    </a>
+                    </div>
                 </div>
-        </div>
-      </div>
-    </div>
+            </div>
+            <!--/col-->
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+            <div class="col-md-9 col-lg-10 main">
+                <!--/.CONTENT-->
+				{% block body_block %}{% endblock %}
+
+            </div>
+
+        </div>
+
+    </div>
+    <!--scripts loaded here-->
+	<script src="{{ STATIC_URL }}js/tether.min.js"></script><!-- Tether for Bootstrap --> 
+    <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="{{ STATIC_URL }}ie10-viewport-bug-workaround.js"></script>
-  </body>
+    <script src="{{ STATIC_URL }}js/scripts.js"></script>
+    <script src="{{ STATIC_URL }}js/createNotificationList.js"></script>
+    <script src="{{ STATIC_URL }}js/createProblemList.js"></script>
+    <script src="{{ STATIC_URL }}js/onNotificationButton.js"></script>
+    <script src="{{ STATIC_URL }}js/scroll.js"></script>
+    <script src="{{ STATIC_URL }}js/getUrlParameter.js"></script>
+    {% block script_block %} {% endblock %}
+    {%endif%}
+
+</body>
+
 </html>

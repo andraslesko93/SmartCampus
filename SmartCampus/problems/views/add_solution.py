@@ -11,72 +11,51 @@ from problems.views.support_functions import reputation_adder
 
 @login_required
 def add_solution(request, problem_title_slug):
-    context_dict = {} 
     try:
-        ignored_user = Ignore.objects.all()
-        ignored_user = Ignore.objects.filter(ref_user_id__exact=request.user)
+        ignored_users = Ignore.objects.all()
+        ignored_users = Ignore.objects.filter(ref_user_id__exact=request.user)
         problem = Problem.objects.get(slug=problem_title_slug)
         userprofile = UserProfile.objects.get(user__exact = request.user)
-        
-    except UserProfile.DoesNotExist, Problem.DoesNotExist:
+        solutions = Solution.objects.filter (problem_id__exact = problem)
+        solutions = solutions.filter( ~Q(user_id=ignored_users.values('ref_user_id')))        
+        own_solutions = Solution.objects.filter(problem_id__exact = problem, user_id__exact= request.user)
+    except (UserProfile.DoesNotExist, Problem.DoesNotExist, Ignore.DoesNotExist, Solution.DoesNotExist):
         pass
     
+    user_added_solution = False
+    if (own_solutions.count()>0):
+        user_added_solution = True
+        return render(request, 'problems/problems.html',{'problem':problem, 'solutions':solutions, 'user_added_solution':user_added_solution } )
+
     if request.method == 'POST':    
         reputation = 15
-        new_data = request.POST.copy()
-        new_data['status'] = 'pending'
-        new_data['user'] = request.user.id
-        sol_form = SolutionForm(data=new_data)
-        up_form = UserProfileForm(data=new_data)
-        if sol_form.is_valid():
-            pk_in = request.POST.get ("add_solution", None)
-            problem = get_object_or_404(Problem, pk = pk_in)            
-            temp = sol_form.save(commit=False)
-            temp.user_id = request.user
-            temp.problem_id = problem
-            
-            temp.save()
-            
-            new_log_entry = Log(user = request.user, 
+        served_ppl = request.POST.get("served_ppl", None)
+        desc =  request.POST.get("desc", None)
+        pk_in = request.POST.get ("problems", None)
+        problem = get_object_or_404(Problem, pk = pk_in)
+        
+        new_solution = Solution(user_id = request.user,
+                                served_ppl = served_ppl,
+                                desc = desc,
+                                problem_id = problem
+                                )
+        new_solution.save()
+        new_log_entry = Log(user = request.user, 
                                 action = "New Solution", 
-                                content_type= ContentType.objects.get_for_model(temp),
-                                object_id = temp.pk,
+                                content_type= ContentType.objects.get_for_model(new_solution),
+                                object_id = new_solution.pk,
                                 extra = reputation
                                 )
-            new_log_entry.save()
+        new_log_entry.save()
+        if ignored_users.count()<1:
             
-            if ignored_user.count()<1:
-                
-                notification_entry = Notification(
-                            user = problem.user,
-                            content_type= ContentType.objects.get_for_model(temp),
-                            object_id = temp.pk
-                            )
-                notification_entry.save()
-        
-                unchecked_notifications = Notification.objects.filter(user__exact = problem.user, status__exact = "unchecked")
-                problem.user.userprofile.notification_number = unchecked_notifications.count()
-                problem.user.userprofile.save()
-            
-            reputation_adder(userprofile.user, reputation)               
-           # userprofile.reputation += reputation
-           # userprofile.save()
-            retlink = '/problems/add_solution/'+ problem.slug+'/'
-            return HttpResponseRedirect(retlink)
-        
-        else:
-            print sol_form.errors
-    else:
-        sol_form = SolutionForm()
-        try:
-            problem = Problem.objects.get(slug=problem_title_slug)
-            context_dict['problem'] = problem
-            ignored_users = Ignore.objects.all()
-            ignored_users = ignored_users.filter (user_id__exact=request.user)
-            solutions = Solution.objects.all()
-            solutions = solutions.filter (problem_id__exact = problem)
-            solutions= solutions.filter(~Q(user_id=ignored_users.values('ref_user_id')))
-            context_dict['solutions'] = solutions
-        except Problem.DoesNotExist:
-            pass
-        return render(request, 'problems/add_solution.html',{'problem':problem, 'sol_form':sol_form, 'solutions':solutions} )
+            notification_entry = Notification(
+                        user = problem.user,
+                        content_type= ContentType.objects.get_for_model(new_solution),
+                        object_id = new_solution.pk
+                        )
+            notification_entry.save()     
+        reputation_adder(userprofile.user, reputation)  
+        retlink = '/problems/'+ problem.slug+'/'
+        return HttpResponseRedirect(retlink)
+    return render(request, 'problems/problems.html',{'problem':problem, 'user_added_solution': user_added_solution, 'solutions':solutions} )

@@ -5,33 +5,11 @@
 {% block title %}{% endblock %}
 
 {% block body_block %}
-	{% if user.is_authenticated %}
-		<br/>
-		{% if outdated_problems %}  
-	              {% for problem in outdated_problems %}
-	              
-						  <h4>
-						    <a href="/problems/users/{{ problem.user.userprofile }}">
-	        					<img src="{{problem.user.userprofile.picture.url}}" width="50"/>
-	        					<strong><a href="/problems/users/{{ problem.user }}">{{problem.user}}</a></strong>  posted a problem: 
-	        				</a>
-				                <strong><a href="/problems/add_solution/{{ problem.slug }}">{{ problem.title }}</a></strong> 
-						  </h4>
-						    
-						  	<h4><strong>Description:</strong> {{problem.desc}}</h4>
-							<h4><strong>Deadline:</strong> {{problem.deadline}}</h4>
-							<h4> <strong>Tags:</strong>
-                			{% for tag in problem.tags.all %}
-								<a href="/problems/tag/{{ tag.id }}">{{tag.tag_text}}</a></strong> 
-               				{%endfor%} </h4 >
-						    <br/>
-            	{% endfor %}
-        {% else %}
-           <h4>There are no outdated problems.</h4> 
-        {% endif %}
-        		
-	{% else %}
-		<h2>Please <a href="{% url 'login' %}">Login</a>, or <a href="{% url 'register' %}">Register Here</a></h2> 
-	{% endif %}
-		
+<div class="row">	
+	<div id="outdated_classic_problem_list"></div>
+	<div id="outdated_confidence_problem_list"></div>
+</div>
 {% endblock %}
+{% block script_block %}
+<script src="{{ STATIC_URL }}js/onOutdatedPage.js"></script>
+{%endblock%}

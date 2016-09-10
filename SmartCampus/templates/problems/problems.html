@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{% endblock %}
+
+{% block body_block %}
+
+<style>
+		input[type="number"]
+		{
+				width:100%;
+		}
+		
+		textarea
+		{
+				width:100%;
+				height:150px;
+		}
+</style>
+
+<div class ="row">
+<div class ="col-xs-12 col-md-5">
+<div class="round-box">
+
+	<a href="/users/{{ problem.user.userprofile.slug }}">
+		<img src="{{problem.user.userprofile.picture_url}}" width="50"/>
+	</a>
+		<strong><a href="/users/{{ problem.user.userprofile.slug }}">{{problem.user}}</a></strong>:  
+		<strong>{{problem.title}}</strong>
+
+		
+		{% if problem %}
+            
+                
+                <br/> <strong>Place:</strong> {{problem.place}}
+                <br/> <strong>Descripton:</strong> <p align="justify">{{problem.desc}} </p>
+                <br/> <strong>Required people:</strong> {{problem.rq_ppl}}
+                <br/> <strong>Deadline:</strong> {{problem.deadline}}
+                
+                {% if problem.confidence_problem.min_rq_reputation %}
+                <br/> <strong>Minimum required reputation:</strong> {{problem.confidence_problem.min_rq_reputation}}
+                {% endif %}
+                
+                <br/> <strong>Tags:</strong>
+                {% for tag in problem.tags.all %}
+					<strong><a href="/tag/{{ tag.slug }}">{{tag.tag_text}}</a></strong>
+                {%endfor%} 
+                <br/>
+                {%if problem.bounty %}             					
+               			<font color="green"><strong>Bounty:{{problem.bounty}}</strong></font> <font size="2"> <span class="glyphicon glyphicon-gift"></span></font>
+               	{%endif%}
+				<br/>
+        {% endif %}
+        {% if problem.status == 'in_progress' %}
+	        <b style="color:lightgreen">
+	            <strong>The solution of the problem is in progress</strong> 
+	        </b>
+	        
+        {% endif %}
+        {% if problem.status == 'solved' %}
+	        <b style="color:green">
+	            <strong>This problem is solved</strong> 
+	        </b>
+        {% endif %}
+        
+        
+        </div>
+        
+        <br/>
+        
+        {% if solutions %}
+      	  <h3>Avaible Solutions:</h3>
+	        {% for solution in solutions %}
+	        <div class="round-box">
+	        	
+					<a href="/users/{{ solution.user_id.userprofile }}">
+	        			<img src="{{solution.user_id.userprofile.picture_url}}" width="50"/>
+	        			<strong><a href="/users/{{ solution.user_id }}">{{solution.user_id}}</a></strong>  offered a solution: 
+	        		</a> 
+				
+				<strong>Served people:</strong> {{solution.served_ppl}} <br/>
+				<strong>Description:</strong> <p align ="justify">{{solution.desc}}</p> <br/>
+	        	{%if solution.status == 'pending'%}
+	            	<strong>Status:</strong>  <font color="orange"><strong>{{solution.status}}</strong> </font>
+	        	
+	        	{%else%}
+	        	<strong>Solution status:</strong>  <font color="green"><strong>{{solution.status}}</strong> </font>
+	        	{%endif%}
+	        	
+	        	{%if solution.user_id == user and solution.status == 'pending'%}
+	        		<br/>
+	        		<strong><a href="/edit_solution/{{ solution.slug }}"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit </a> </strong>
+	        	{%endif%}
+	        
+	        	{% if problem.user == user and problem.status == 'pending' %}
+	        		{%if solution.status == 'pending'%}
+	        		
+		                <form action="/accept_solution/{{ solution.slug }}">
+		                	 <div align="right">
+		    				<button type="submit" class="btn btn-primary btn-basic-small">Accept</button>
+		    				</div>
+						</form>
+					{% endif %}	
+				
+               
+                {% endif %}
+                </div>
+                 <br/>
+	        {% endfor %}
+        {% else %}
+        	{% if problem.user == user %}
+        	
+        	 <div class="round-box">
+		        <div style="color:red">
+		            <strong>No solutions yet.</strong>
+		        </div>
+		     </div>
+		    {% endif %}
+        {% endif %}
+        
+        
+        
+        {% if problem.status == 'pending' %}
+	        {% if problem.user != user %}
+	        
+		        {%if user_added_solution == False %}
+		        
+				        {% if problem.confidence_problem.min_rq_reputation %}
+	                		
+	                		{% if user.userprofile.reputation >= problem.confidence_problem.min_rq_reputation %}
+	                		
+	                			<h3>Add a solution!</h3>
+						        <form id="conf_solution_form" method="POST" >			        	
+						        	{% csrf_token %} 
+						        	
+						        	<input type = "hidden" name = "problems" value = "{{problem.id}}"/>
+						            <strong>Served people:</strong> <br/>
+									<input type="number" name="served_ppl" min="1" max = "{{problem.rq_ppl}}"value = 1 >
+						        	<br/>
+			  						<br/>
+			  						<textarea name="desc" form="conf_solution_form">Enter some description here...</textarea>
+									<br/>
+									<br/>
+									
+									<br/><button type="submit" class="btn btn-primary btn-basic">Add a solution!</button> <br/>		
+						        </form>
+						        
+						        
+						        <script type="text/javascript">
+									var conf_solution_form_validator = new Validator("conf_solution_form");
+									
+									conf_solution_form_validator.addValidation("desc","req","Please enter the description of the problem"); 
+									
+									conf_solution_form_validator.addValidation("desc","maxlen=300",
+									"Max length for Description is 300"); 
+									
+									conf_solution_form_validator.addValidation("desc","minlen=15",
+									"Min length for Description is 15");
+								</script>
+							
+	                		{%else%}
+	                		 <div class="round-box">
+	                			You don't have enough reputation to solve this problem
+	                		</div>
+	                		{%endif%}
+	                	
+				        
+				        {%else%}
+				         <div class="round-box">
+					        <h3>Add a solution!</h3>
+					        <form id="solution_form" method="POST" >			        	
+					        	{% csrf_token %} 
+					        	
+					        	<input type = "hidden" name = "problems" value = "{{problem.id}}"/>
+					            <strong>Served people:</strong> <br/>
+								<input type="number" name="served_ppl" min="1" max = "{{problem.rq_ppl}}"value = 1 >
+					        	<br/>
+		  						<br/>
+		  						<textarea name="desc" form="solution_form">Enter some description here...</textarea>
+								<br/>
+								<br/>
+								
+								<br/><button type="submit" class="btn btn-primary btn-basic">Add a solution!</button> <br/>		
+					        </form>  
+					        </div>
+					        
+					        <script type="text/javascript">
+							
+								var solution_form_validator = new Validator("solution_form");
+								
+								solution_form_validator.addValidation("desc","req","Please enter the description of the problem"); 
+								
+								solution_form_validator.addValidation("desc","maxlen=300",
+								"Max length for Description is 300"); 
+								
+								solution_form_validator.addValidation("desc","minlen=15",
+								"Min length for Description is 15"); 
+							
+							</script>
+				        {%endif%}
+			        
+			        {% endif %}
+			    {%endif%}
+		    {%endif%}
+	    
+        
+</div>
+</div>
+{% endblock %}
+

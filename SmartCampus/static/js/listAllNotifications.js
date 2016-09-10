@@ -1,0 +1,1 @@
+createNotificationList("notification_list", "all", "full_page");

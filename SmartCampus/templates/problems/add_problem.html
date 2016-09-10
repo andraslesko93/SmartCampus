@@ -5,29 +5,219 @@
 {% block title %}{% endblock %}
 
 {% block body_block %}
+
+<style>
+		input[type="number"]
+		{
+				width:100%;
+		}
+
+		input[type="text"]
+		{
+				width:100%;
+		}
 		
-		{%if user.userprofile.reputation > 50 %}
-        <h3>Let's create a problem!</h3>
+		input[type="datetime-local"]
+		{
+				width:100%;
+		}
+		
+		textarea
+		{
+				width:100%;
+				height:150px;
+		}
+		
+		#textBox {
+    			width:100%;
+		}
+		
+		
+</style>
+		
+		<div class ="row">
+		<div class ="col-xs-12 col-md-5">
+		<div class="round-box">
+		{%if below_rep_limit == false %}
+	        {%if reached_problem_limit == false%}			
+	        <div class="container">
+	        <div class ="row">
+	        	<ul class="nav nav-tabs">
+				    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Classic<br/>problem</a></li>   
+				    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu1">Confidental<br/>problem</a></li>				    
+				  </ul>
+				  </div>
 
-        <form id="problem_form" method="post" action="/problems/add_problem/">
-            
-          	   {% csrf_token %} 
-          <br/>  <strong>Title:</strong><br/>{{form.title}}  <br/>
-          <br/>	 <strong>Place:</strong><br/>{{form.place}} <br/>
-          <br/>  <strong>Required People:</strong><br/>{{form.rq_ppl}} <br/> 
-          <br/>  <strong>Tags:</strong><br/>{{form.tags}} <br/> 
-          <br/>  <strong>Deadline:</strong><br/>{{form.deadline}} <br/>
-          <br/>  <strong>Description:</strong><br/>{{form.desc}} <br/>
-          
-          <br/><br/>
-          <button type="submit" class="btn btn-primary">Create a problem</button>
+				  <div class="tab-content">
+				    <div id="home" class="tab-pane fade in active">
+				    
+				      <br/>
+				      <h3>Create a classic problem!</h3>
+		        		        
+				        <form id ="problem_form" method="POST">
+		  					{% csrf_token %} 
+		  					<strong>Title:</strong><br/>
+		  					<input type="text" name="title">
+		  					<br/>
+		  					<br/>
+		  					<strong>Place:</strong><br/>
+		  					<input type="text" name="place" >
+		  					<br/>
+		  					<br/>
+		  					<strong>Required people:</strong> <br/>
+							<input type="number" name="rq_ppl" min="1" value = 1 >
+							<br/>
+		  					<br/>
+		  					<strong>Tags:</strong><br/>
+		  					<input type="text" name="tags">
+		  					<br/>
+		  					<br/>
+		  					<strong>Deadline:</strong> <br/>
+		  					<input type="datetime-local" name="deadline" >
+		  					<br/>
+		  					<br/>
+		  					<strong>Description:</strong> <br/>
+		  					<textarea name="desc" form="problem_form">...</textarea>
+							<br/>
+							<br/>
+							{% if user.userprofile.reputation >= bounty_limit %}
+								<div  id="textBox">
+								<p align="justify">Since you got more than {{bounty_limit}} reputation you can now add a maximum {{max_bounty}} bounty reputation to your problems.</p> <br/><br/>
+								</div>
+		  						<strong>Bounty:</strong> <br/>
+		  						<input type="number" value ="0" name="bounty" min="0" max={{max_bounty}} >
+		  						<br/>
+		  						<br/>
+		  					{%endif%}
+		  					
+		  					
+							<button type="submit" class="btn btn-primary btn-basic">Create a problem</button>
+		
+						</form>
+				    
+				    </div>
+				    <div id="menu1" class="tab-pane fade">
+				      <br/>
+				      {% if user.userprofile.reputation >= confidence_problem_repu_limit %}
+				      <h3>Create a confidental problem!</h3>
+		        		        
+				        <form id ="conf_problem_form" method="POST">
+		  					{% csrf_token %} 
+		  					<strong>Title:</strong><br/>
+		  					<input type="text" name="title">
+		  					<br/>
+		  					<br/>
+		  					<strong>Minimum required reputation:</strong> <br/>
+							<input type="number" name="rq_repu" min="1000" value = 1000 >
+							<br/>
+		  					<br/>
+		  					<strong>Place:</strong><br/>
+		  					<input type="text" name="place">
+		  					<br/>
+		  					<br/>
+		  					<strong>Required people:</strong> <br/>
+							<input type="number" name="rq_ppl" min="1" value = 1 >
+							<br/>
+		  					<br/>
+		  					<strong>Tags:</strong><br/>
+		  					<input type="text" name="tags">
+		  					<br/>
+		  					<br/>
+		  					<strong>Deadline:</strong> <br/>
+		  					<input type="datetime-local" name="deadline" >
+		  					<br/>
+		  					<br/>
+		  					<strong>Description:</strong> <br/>
+		  					<textarea name="desc" form="conf_problem_form">...</textarea>
+							<br/>
+							<br/>
+	  						<strong>Bounty:</strong> <br/>
+	  						<input type="number" value ="0" name="bounty" min="0" max={{max_bounty}} >
+	  						<br/>
+	  						<br/>				
+							<button type="submit" class="btn btn-primary btn-basic">Create a problem</button>
+						</form>
+						{%else%}
+						 
+						 <p align="justify"> You don't have enough reputation point to create a confidental problem.</p>
+						
+						{%endif%}
+				    </div>
 
-         
-
-        </form>
-        
-        {%else%}
-        <h4>You cannot create a problem with low reputation. You should help others first</h4>
+				  </div>
+			</div>
+	
+	        {%else%}
+	        <div class="round-box">
+	        	<h4>You reached your hourly problem limit</h4>
+	        </div>
+	        {%endif%}
+		{%else%}
+		<div class="round-box">
+        	<h4>You cannot create a problem with low reputation. You should help others first</h4>
         {%endif%}
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        
+<script  type="text/javascript">
+
+ var classic_form_validator = new Validator("problem_form");
+ 
+ classic_form_validator.addValidation("title","req","Please enter the title of the problem");
+ classic_form_validator.addValidation("title","maxlen=30", "Max length for Title is 30");
+ 
+
+ classic_form_validator.addValidation("place","req","Please enter the place of the problem");
+ classic_form_validator.addValidation("title","maxlen=30", "Max length for Place is 30");
+ 
+
+ classic_form_validator.addValidation("rq_ppl","req","Please enter the ammount of the required people");
+ 
+ classic_form_validator.addValidation("tags","req","Please enter some tags for the problem");
+ 
+ classic_form_validator.addValidation("deadline","req","Please enter the deadline of the problem");
+ 
+ classic_form_validator.addValidation("desc","req","Please enter the description of the problem"); 
+
+ classic_form_validator.addValidation("desc","maxlen=300",
+ "Max length for Description is 300"); 
+ 
+ classic_form_validator.addValidation("desc","minlen=15",
+ "Min length for Description is 15"); 
+ 
+ {% if user.userprofile.reputation >= confidence_problem_repu_limit %}
+
+ var confidence_form_validator = new Validator("conf_problem_form");
+ 
+ confidence_form_validator.addValidation("title","req","Please enter the title of the problem");
+ confidence_form_validator.addValidation("title","maxlen=30", "Max length for Title is 30");
+ 
+ confidence_form_validator.addValidation("rq_repu","req","Please enter the ammount of the minimum required reputation");
+ 
+ confidence_form_validator.addValidation("place","req","Please enter the place of the problem");
+ confidence_form_validator.addValidation("title","maxlen=30", "Max length for Place is 30");
+ 
+
+ confidence_form_validator.addValidation("rq_ppl","req","Please enter the ammount of the required people");
+ 
+ confidence_form_validator.addValidation("tags","req","Please enter some tags for the problem");
+ 
+ confidence_form_validator.addValidation("deadline","req","Please enter the deadline of the problem");
+ 
+ confidence_form_validator.addValidation("desc","req","Please enter the description of the problem"); 
+
+ confidence_form_validator.addValidation("desc","maxlen=300",
+ "Max length for Description is 300"); 
+ 
+ confidence_form_validator.addValidation("desc","minlen=15",
+ "Min length for Description is 15"); 
+ 
+ confidence_form_validator.addValidation("FirstName","maxlen=20",
+        "Max length for FirstName is 20");
+ {%endif%}
+</script>
 {% endblock %}
 

@@ -8,15 +8,14 @@ from django.contrib.contenttypes.models import ContentType
 class UserProfile(models.Model):
    
     user = models.OneToOneField(User)
-    picture = models.ImageField(upload_to='profile_images', blank=True, default='profile_images/default.png')
-    notification_number = models.IntegerField(default=0)
-    rating_number = models.IntegerField(default=0)
+    local_picture = models.ImageField(upload_to='profile_images', blank=True, default='profile_images/default.png')
+    picture_url=models.URLField(blank=True)
     reputation = models.IntegerField(default=100)
     
     slug = models.SlugField(unique=True)
     def save(self, *args, **kwargs):
                 super(UserProfile, self).save(*args, **kwargs)
-                self.slug = slugify(self.user.username)
+                self.slug = slugify(self.user.username)+ "-" + str(self.id)
                 super(UserProfile, self).save(*args, **kwargs)
     
     def __unicode__(self):
@@ -29,15 +28,15 @@ class Tag (models.Model):
                 self.slug = slugify(self.id)
                 super(Tag, self).save(*args, **kwargs)
     def __unicode__(self):
-        return u'%s' % (self.tag_text)   
-    
+        return u'%s' % (self.tag_text)     
 class Problem(models.Model):
-    title = models.CharField (max_length = 30)
-    place = models.CharField (max_length = 30)
-    desc = models.CharField (max_length = 300)
-    status = models.CharField (max_length = 10)
+    title = models.CharField (max_length = 150)
+    place = models.CharField (max_length = 50)
+    desc = models.CharField (max_length = 2000)
+    status = models.CharField (max_length = 10, default = "pending")
     rq_ppl =models.IntegerField (default = 1)
-    added_at = models.DateTimeField('date published')
+    added_at = models.DateTimeField('date published', default = datetime.now)
+    bounty = models.IntegerField(default = 0, null=True)
     deadline= models.DateTimeField(blank = True, null=True)
     user = models.ForeignKey(User, null = True)
     tags = models.ManyToManyField(Tag, related_name='problems')
@@ -55,7 +54,7 @@ class Solution(models.Model):
     problem_id = models.ForeignKey(Problem)
     desc = models.CharField (max_length = 300)
     served_ppl =models.IntegerField (default = 1)
-    status = models.CharField (max_length = 10)
+    status = models.CharField (max_length = 10, default = "pending")
     added_at = models.DateTimeField (default = datetime.now)
     slug = models.SlugField(unique=True)
     def save(self, *args, **kwargs):
@@ -73,8 +72,10 @@ class Rating (models.Model):
     rated_user =  models.ForeignKey(User, related_name ='rated_user')
     type = models.CharField (max_length = 10)
     reputation = models.IntegerField(default = 0)
+    granted_reputation = models.IntegerField(default = 0, null = True)
+    bounty = models.IntegerField(default = 0)
     timestamp = models.DateTimeField (default = datetime.now)
-    status = models.CharField (max_length = 10, default = "pending")
+    status = models.CharField (max_length = 10, default = "waiting")
     solution = models.ForeignKey(Solution, related_name = 'rating_solutions', null = True)
 
 class Notification (models.Model):
@@ -84,4 +85,8 @@ class Notification (models.Model):
     content_type = models.ForeignKey(ContentType, null=True, related_name = 'content_type')
     object_id = models.PositiveIntegerField(null=True)
     obj = GenericForeignKey("content_type", "object_id")
+    
+class Confidence_Problem (Problem):
+    min_rq_reputation = models.IntegerField(default = 0)
+    
     

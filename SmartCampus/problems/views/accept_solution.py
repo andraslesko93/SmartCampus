@@ -1,11 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from problems.models import Solution, UserProfile, Rating, Notification
+from problems.models import Solution, Rating, Notification
 from eventlog.models import Log
 from django.contrib.contenttypes.models import ContentType
-
-
     
 
 @login_required
@@ -14,22 +12,27 @@ def accept_solution(request, solution_id_slug):
     try:
         
         solution = Solution.objects.get(slug=solution_id_slug)
+        problem = solution.problem_id
         context_dict['solution'] = solution
         
-    except Solution.DoesNotExist, UserProfile.DoesNotExist:
+    except Solution.DoesNotExist:
         # We get here if we didn't find the specified category.
         # Don't do anything - the template displays the "no category" message for us.
         pass
     
-    if request.method == 'POST' and request.user == solution.problem_id.user:   
+    if request.method == 'POST' and request.user == problem.user:   
         solution.status = 'accepted'
         solution.save()
-        solution.problem_id.rq_ppl = solution.problem_id.rq_ppl - solution.served_ppl
-        solution.problem_id.save()
-        if (solution.problem_id.rq_ppl <= 0):
+        problem.rq_ppl = problem.rq_ppl - solution.served_ppl
+        problem.save()
+        if (problem.rq_ppl <= 0):
             try:
-                accepted_solutions = Solution.objects.filter(problem_id__exact = solution.problem_id)
+                accepted_solutions = Solution.objects.filter(problem_id__exact = problem)
                 accepted_solutions = accepted_solutions.filter(status__exact = 'accepted')
+                total_served_ppl = 0
+                for accepted_solution in accepted_solutions:
+                    total_served_ppl += accepted_solution.served_ppl
+                
                 for accepted_solution in accepted_solutions:
                     
                     rate_problem_author_entry = Rating(
@@ -45,23 +48,17 @@ def accept_solution(request, solution_id_slug):
                                 user = request.user,
                                 rated_user = accepted_solution.user_id,
                                 solution = accepted_solution,
+                                bounty = accepted_solution.served_ppl * (problem.bounty/total_served_ppl),
                                 type = "rate solution author"             
                                 )
                     rate_solution_author_entry.save()
                     
-                    solution_giver_ratings = Rating.objects.filter (user__exact= accepted_solution.user_id, status__exact ="pending") 
-                    accepted_solution.user_id.userprofile.rating_number = solution_giver_ratings.count()
-                    accepted_solution.user_id.userprofile.save()
-                
-                solution_accepter_rating = Rating.objects.filter (user__exact = request.user, status__exact ="pending")
-                request.user.userprofile.rating_number = solution_accepter_rating.count()
+                request.user.userprofile.reputation -= problem.bounty
                 request.user.userprofile.save()
-                    
-                    
             except Solution.DoesNotExist:
                 pass
-            solution.problem_id.status = 'accepted'
-            solution.problem_id.save()
+            problem.status = 'in_progress'
+            problem.save()
 
         
         notification_entry = Notification(
@@ -70,10 +67,6 @@ def accept_solution(request, solution_id_slug):
                             object_id = solution.pk
                             )
         notification_entry.save()
-        
-        unchecked_notifications = Notification.objects.filter(user__exact = solution.user_id, status__exact = "unchecked")
-        solution.user_id.userprofile.notification_number = unchecked_notifications.count()
-        solution.user_id.userprofile.save() 
         
         new_log_entry = Log(user = request.user, 
                                 action = "Accept a solution", 
@@ -84,6 +77,6 @@ def accept_solution(request, solution_id_slug):
         
         
         
-        retlink = '/problems/add_solution/'+ solution.problem_id.slug+'/'
+        retlink = '/problems/'+ problem.slug+'/'
         return HttpResponseRedirect(retlink)
     return render(request, 'problems/accept_solution.html', context_dict)

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{% endblock %}
+
+{% block body_block %}
+
+<style>
+		input[type="number"]
+		{
+				width:100%;
+		}
+		
+		textarea
+		{
+				width:100%;
+				height:150px;
+		}
+		
+		
+</style>
+<div class ="row">
+<div class ="col-xs-12 col-md-5">
+<div class="round-box">
+	{%if solution.user_id == user %}
+
+		<br/>
+		<h4> Edit your solution:</h4>
+		
+		
+		<form id="edit_solution_form" method="POST" >			        	
+    		{% csrf_token %} 
+            <strong>Served people:</strong> <br/>
+			<input type="number" name="served_ppl" min="1" max = "{{solution.problem_id.rq_ppl}}" value = "{{solution.served_ppl}}" > 
+        	<br/>
+			<br/>
+			<textarea name="desc" form="edit_solution_form">{{solution.desc}}</textarea>
+			<br/>
+			<br/>
+			
+			<div align ="center">
+			<br/><button style="width:200px" type="submit" class="btn btn-primary btn-basic">Apply changes<span class="glyphicon glyphicon-ok"></span></button> <br/>	
+			</div>
+        </form>
+		
+		<br/>
+		<div align ="center">	
+		<form id ="no_button" action="/problems/{{ solution.problem_id.slug }}">
+    		<button style="width:200px"; type="submit" class="btn btn-default">Cancel <span class="glyphicon glyphicon-ban-circle"></span></button>
+		</form>
+		</div>
+	
+	{%endif%}		
+	</div>
+	</div>
+	</div>        
+<script type="text/javascript">
+
+var solution_form_validator = new Validator("edit_solution_form");
+
+solution_form_validator.addValidation("desc","req","Please enter the description of the problem"); 
+
+solution_form_validator.addValidation("desc","maxlen=300",
+"Max length for Description is 300"); 
+
+solution_form_validator.addValidation("desc","minlen=15",
+"Min length for Description is 15"); 
+
+</script>			        
+{% endblock %}
+

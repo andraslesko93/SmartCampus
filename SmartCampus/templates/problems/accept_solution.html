@@ -5,31 +5,36 @@
 {% block title %}{% endblock %}
 
 {% block body_block %}
-	{% if user.is_authenticated %}
-		
-		
+
 		{% if solution and user == solution.problem_id.user %}
 		
-		<h3>Are you sure, that you want to accept this solution by <a href="/problems/users/{{ solution.user_id }}">{{solution.user_id}}</a>?</h3>
-		<h3>You cannot undo it later!</h3>	
-            <br/>
-                <h4><strong>Descripton:</strong> {{solution.desc}}</h4>
-                <h4><strong>Served people:</strong>  {{solution.served_ppl}}</h4> <br/>
-         
-         <form id="yes_button" action="/problems/accept_solution/{{ solution.slug }}/" method="POST">
+		<div class ="row">
+		<div class ="col-xs-12">
+		
+		<div class="round-box">
+			<div align ="center">
+			<strong>Are you sure, that you want to accept this solution by <a href="/users/{{ solution.user_id.userprofile.slug }}">{{solution.user_id}}</a></strong>?
+			<br/>
+			<strong>You cannot undo it later!</strong>
+			</div>
+			<br/>
+                <strong>Descripton:</strong> {{solution.desc}} <br/>
+                <strong>Served people:</strong>  {{solution.served_ppl}} <br/>
+         <div align = "center">
+         <form id="yes_button" action="/accept_solution/{{ solution.slug }}/" method="POST">
          	{% csrf_token %} 
-    		
-    		<button type="submit" class="btn btn-primary btn-success">Yes, accept this solution <span class="glyphicon glyphicon-ok"></span></button>
+    		<button style="width:200px" type="submit" class="btn btn-primary btn-basic">Yes, accept this solution <span class="glyphicon glyphicon-ok"></span></button>
     		
 		 </form>
 		 
 		 <br>
-		 <form id ="no_button" action="/problems/add_solution/{{ solution.problem_id.slug }}">
-    		<button type="submit" class="btn btn-primary btn-danger">No, please take me back <span class="glyphicon glyphicon-ban-circle"></span></button>
+		 <form id ="no_button" action="/problems/{{ solution.problem_id.slug }}">
+    		<button style="width:200px" type="submit" class="btn btn-default">Cancel <span class="glyphicon glyphicon-ban-circle"></span></button>
 		 </form>
-        {% else %}
-            <strong>There are no solution present.</strong>
+		 </div>
+		 </div>
+		 </div>
+		</div>
      	{% endif %}
-    {% endif %}
     
 {% endblock %}

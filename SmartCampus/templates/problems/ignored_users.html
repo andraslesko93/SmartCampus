@@ -5,22 +5,14 @@
 {% block title %}{% endblock %}
 
 {% block body_block %}	
-	{% if user.is_authenticated %}
-	{% if ignored_users %}
-		<h3><strong> Ignored users:</strong></h3>
-            {% for ignored_user in ignored_users %}	
-	    		<form id="rem_ignore_button" action="" method="POST">
-	    			<h4>{{ignored_user.ref_user_id.get_username}} 
-         			{% csrf_token %} 
-         			<input type = "hidden" name = "user_rem_ignore_list" value = "{{ignored_user.id}}"/>
-    				<button type="submit" class="btn btn-success">Remove</button>	
-    				</h4>
-		 		</form>
-	    			
-			{%endfor%}
-	{% else %}
-		<h4>You don't have any issues with other users. :)</h4>
-	{%endif%}
-		
-	{% endif %}
+{% csrf_token %}
+<div class ="row">
+	<div id="ignored_users_list"></div>
+</div>
+	
 {% endblock %}
+
+{% block script_block %}
+
+<script src="{{ STATIC_URL }}js/onIgnoredUsersPage.js"></script>
+{%endblock%}

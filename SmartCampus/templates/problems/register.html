@@ -4,14 +4,22 @@
 
 {% block title %}{{ category_name }}{% endblock %}
 
-{% block body_block %}
-        <h2><strong>Registration</strong></h2>
+
+{% block clear_block %}
+{% if user.is_authenticated == False or registered == True%}
+<div class="row" align="center">
+<div class="col-xs-12">
+
 
         {% if registered %}
-        <strong>Thank you for registering!</strong>
-        <a href="/problems/">Return to the homepage.</a><br />
+
+        <strong>You already registered to the system</strong>
+        <a href="/">Please return to the homepage.</a><br />
+
         {% else %}
-        <form id="user_form" method="post" action="/problems/register/"
+        <div class="round-box" align = "center">
+		<h2><strong>Registration</strong></h2>
+        <form id="user_form" method="post" action="/register/"
                 enctype="multipart/form-data">
 
             {% csrf_token %}
@@ -22,10 +30,16 @@
            <h4><strong>Username:</strong></h4>{{user_form.username}}
            <h4><strong>Email:</strong></h4>{{user_form.email}}
            <h4><strong>Password:</strong></h4>{{ user_form.password }} 
-           <h4><strong>Picture:</strong></h4>{{ profile_form.picture }}
-		   <br/>
+           <h4><strong>Picture:</strong></h4>{{ profile_form.local_picture }}
+		   <br/><br/>
             <!-- Provide a button to click to submit the form. -->
-            <button type = "submit" class="btn btn-primary">Register</button>
+            <button type = "submit" class="btn btn-primary btn-basic">Register</button>
         </form>
+        </div>
         {% endif %}
+
+</div>
+</div>
+{%endif%}
 {% endblock %}
+

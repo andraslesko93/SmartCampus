@@ -1,21 +1,41 @@
 from django.conf.urls import patterns, url
+from django.views.generic import TemplateView
 import views
 
 urlpatterns = patterns('',
-        url(r'^$', views.index, name='index'), 
+        
         url(r'^outdated/$', views.outdated, name='outdated'),
         url(r'^register/$', views.register, name='register'),
         url(r'^login/$', views.user_login, name='login'),
         url(r'^logout/$', views.user_logout, name='logout'),
-        url(r'^ignored_users/$', views.ignored_users, name='ignored_users'),
-        url(r'^add_problem/$', views.add_problems, name='add_problem'), 
-        url(r'^own_problems/$', views.own_problems, name='own_problems'),  
-        url(r'^add_solution/(?P<problem_title_slug>[\w\-]+)/$', views.add_solution, name='add_solution'),
-        url(r'^accept_solution/(?P<solution_id_slug>[\w\-]+)/$', views.accept_solution, name='accept_solution'),
-        url(r'^users/(?P<user_id_slug>[\w\-]+)/$', views.list_users, name='users'),
-        url(r'^tag/(?P<tag_id_slug>[\w\-]+)/$', views.tag_search, name='tag_search'),
-        url(r'^notification/$', views.list_notification, name='notification'),
-        url(r'^search/$', views.search, name='search'),
-        url(r'^rate/$', views.rate, name='rate'),
+        url(r'^add_problem/$', views.add_problem, name='add_problem'),
+        url(r'^own_problems/$', views.own_problems, name='own_problems'),
+        url(r'^problems/(?P<problem_title_slug>[\w\-]+)/$', views.add_solution, name='add_solution'),
+        url(r'^accept_solution/(?P<solution_id_slug>[\w\-]+)/$', views.accept_solution, name='accept_solution'),     
+       
+        url(r'^edit_solution/(?P<solution_id_slug>[\w\-]+)/$', views.edit_solution, name='edit_solution'),
         
+        #Urls with Post methods:
+        url(r'^users/(?P<user_id_slug>[\w\-]+)/$', views.post_user_ignore, name='users'),
+        url(r'^ignored_users/$', views.post_user_unblock, name='post_user_unblock'),
+        url(r'^ratings/$', views.post_ratings, name='ratings'),
+        
+        #TemplateView as views:
+        url(r'^about/$', TemplateView.as_view(template_name="problems/about.html"), name='about'),
+        url(r'^outdated/$', TemplateView.as_view(template_name="problems/outdated.html"), name='outdated'),
+        url(r'^$', TemplateView.as_view(template_name="problems/index.html"), name='index'),
+        url(r'^notifications', TemplateView.as_view(template_name="problems/notifications.html"), name='notifications'),
+        url(r'^tag/(?P<tag_id_slug>[\w\-]+)/$', TemplateView.as_view(template_name="problems/tag.html"), name='tag_filter'),        
+        url(r'^search/$', TemplateView.as_view(template_name="problems/search.html"), name='search'),
+        #JSON URLS:
+        url(r'^check_the_unchecked_notifications.json', views.check_the_unchecked_notifications),
+        url(r'^get_notifications_(?P<count>[\w\-]+).json', views.get_notifications),
+        url(r'^get_problems-(?P<deadline>[\w\-]+)-(?P<problem_type>[\w\-]+).json', views.get_problems),
+        url(r'^tag_cloud.json', views.tag_cloud),
+        url(r'^get_problems_by_tag-(?P<tag_id_slug>[\w\-]+)-(?P<problem_type>[\w\-]+).json', views.get_problems_by_tag, name='get_problems_by_tag'),
+        url(r'^get_user_details_by_id-(?P<user_id_slug>[\w\-]+).json', views.get_user_details, name='get_user_details'),
+        url(r'^get_problems_by_keyword/$', views.get_problems_by_keyword, name='get_problems_by_keyword'),
+        url(r'^get_users_by_keyword/$', views.get_users_by_keyword, name='get_users_by_keyword'),
+        url(r'^get_ignored_users.json', views.get_ignored_users, name='get_ignored_users'),
+        url(r'^get_ratings-(?P<requested_type>[\w\-]+).json', views.get_ratings),
 )
