@@ -73,7 +73,7 @@ function createNotificationList (appendElementId, uncheckedNotificationNumber, l
 							}
 						else if (String(obj.model_type)=="user")
 							{
-								textnode.append(" Welcome to SmartCampus, an ideal place to solve your problems and help others! Please allow me help you to discover the application. :)");
+								textnode.append(" Welcome to SmartCampus, an ideal place to solve your problems and help others! Please allow me to help you to discover the application. :)");
 							}
 						if (typeof obj.problem_title!=="undefined")
 						{
