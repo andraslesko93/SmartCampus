@@ -11,7 +11,7 @@ $.getJSON("/get_ignored_users.json", function(data)
 	{
 		var hFour=$('<h4>').appendTo(roundBox);
 		var name=$('<c>'+String(obj.username)+' </c>').appendTo(hFour);		
-		var button=$('<button type="submit" class="btn btn-success">Unblock</button>').appendTo(hFour);
+		var button=$('<button type="submit" class="btn btn-primary btn-basic">Unblock</button>').appendTo(hFour);
 		button.click(function() { 
 	        $.ajax({
 	            url: document.url,
