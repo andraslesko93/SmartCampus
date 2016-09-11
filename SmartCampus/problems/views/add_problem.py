@@ -9,7 +9,7 @@ from problems.views.support_functions import reputation_adder, within_one_hour
 
 @login_required
 def add_problem(request):
-    problem_limit = 15
+    problem_limit = 5
     reputation_limit = 50
     bounty_limit = 1000
     max_bounty = 100

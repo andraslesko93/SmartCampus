@@ -11,7 +11,8 @@
 		<div class ="round-box">
 		<h5>Welcome</h5>
 			<p>
-			Welcome to SmartCampus, an ideal place to solve your problems and help others :). 
+			Did you ever needed someone to help you to move a couch, explain Fourier transformation, or just someone to drink a beer with? 
+			Well you find the perfect place to find these people! Welcome to SmartCampus, an ideal place to solve your problems and help others :). 
 			In this article I will guide you through the main functions of the application.
 			These are the following:</p>
 			<ul>
@@ -19,40 +20,104 @@
 			<li><a href="#Adding solutions">Adding solutions</a></li>
 			<li><a href="#Accepting solutions">Accepting solutions</a></li>
 			<li><a href="#Ratings">Ratings</a></li>
-			<li><a href="#Ignore users">Ignore users</a></li>
 			<li><a href="#Notifications">Notifications</a></li>
+			<li><a href="#Ignore users">Ignore users</a></li>
 			<li><a href="#Reputation system">Reputation system</a></li>
 			</ul>
 			
 
 			<h5 id="Creating problems">Creating problems</h5>
-			<p>
-			Creating problems are the main feature of the web site. 
-			To do this you have to click on the plus sign on the navigation bar. 
-			After that you have to fill the form and click on the button bellow.
-			 It's quite simple isn't it? :)
-			</p>
-			<img src="{{ STATIC_URL }}images/create a problem.png" width=100% height=auto/>
-			<p>There are two different kind of problems in the system, the classic problems and the confidental problems. 
-			Classic problems are the casual everyday problems, while confidental problems are more sensitive, usually involves money, or other values. 
-			In confidental problems you can define a minimum reputation limit, so only users with high reputation point will be able to leave solution suggestions to your problem.
-			When you reach 1500 reputation point you can create your own confidental problems. :)</p>
-			
+			<p align ="justify">
+				Creating problems are the main feature of the web site. 
+				To do this you have to click on the plus sign on the navigation bar. 
+				After that you have to fill the form and click on the button bellow.
+			 	It's quite simple isn't it? :)
+
+				A problem has 7 attributes, these are:
+				</p>
+				<ul>
+				<li>Title</li>
+				<li>Place</li>
+				<li>Required people</li>
+				<li>Tags</li>
+				<li>Deadline</li>
+				<li>Description</li>
+				<li>Bounty</li>
+				</ul>
+			<p align="justify">
+				The first six attributes are mandatory, while the Bounty is optional. Problems with bounty will appear at the top of the problem list, so you might get faster responses. But beware, 
+				the amount of bounty reputation will substract from your reputation. 
+				<br/>
+				There are two different kind of problems in the system, the classic problems and the confidental problems. 
+				Classic problems are the casual everyday problems, while confidental problems are more sensitive, usually involves money, or other values. 
+				In confidental problems you can also define a minimum reputation limit, so only users with high reputation point will be able to leave solution suggestions to your problem.
+				When you reach 1500 reputation point you can create your own confidental problems. :)
+				<br/>
+				After creating a problem you will receive 10 reputation point, and you can create 5 problems hourly.
+			</p>			
+			<div align="center">
+			<img src="{{ STATIC_URL }}images/create a problem.png" width=80% height=auto/>
+			</div>
 			<h5 id="Adding solutions">Adding solutions</h5>
-			<p>Ok, we talked about problems, but what about solutions? </p>
+			<p align ="justify">
+				Ok, we talked about problems, but what about solutions?
+				When you open a problem you can add your solution to it. 
+				Adding a solution is very simple, just set the amount of the served people, and some description.(e.g.: describe your suggestion and add some contact information)
+				If the problems requires more than one man, you can provide that many people in a solution.
+				It is recommended, because you gain more reputation, so bring some friends along! :)
+			</p>
+				<div align="center">
+				<img src="{{ STATIC_URL }}images/add a solution.png" width=60% height=auto />
+				</div>
 			<h5 id="Accepting solutions">Accepting solutions</h5>
-			By accepting a solutions the amount of the required people the solve the problem will decrease by 
-			the amount of the people that the solution serve. 
-			When the amount of the required people will hit zero, the problem will be closed, and after it's deadline time plus one hour passes 
-			ratings will appear to every users who contributed to solving the problem.
-		<h5 id= "Ratings">Ratings</h5>
-			<p>coming soon </p>
-		<h5 id= "Ignore users">Ignore users</h5>
+			<p align ="justify">
+				If someone offered you a solution you can accept it by by hitting the clicking the button under the suggestion.
+				By accepting a solutions the amount of the required people the solve the problem will decrease by 
+				the amount of the people that the solution serve. When the amount of the required people will hit zero, the problem will be closed, and after it's deadline time plus one hour passes 
+				ratings will appear on every user's page who contributed to solving the problem.
+			</p>
+			<h5 id= "Ratings">Ratings</h5>
+			<p align="justify">
+				After the meeting, you can rate the other users who helped you, and they will rate you as well.
+				You can open your pending ratings them by clicking the star sign on the navigation bar.
+				
+				
+				Rating is pretty simple you just have answer 4 questions about a meeting, and the helping and you are done! 
+				After you submit your rating the system will calculate a reputation point to the other user, who helped you.
+			</p>
+			
+			<h5 id="Notifications">Notifications</h5>
 			<p>coming soon</p>
-		<h5 id="Notifications">Notifications</h5>
-			<p>come soon</p>
-		<h5 id="Reputation system">Reputation system </h5>
-			<p>coming soon </p>
+				
+				In the future I want to integrate it to Facebook eh?
+			<h5 id= "Ignore users">Ignore users</h5>
+			<p>Well this is the awkward part. 
+			Sometime you will encounter people who are spamming or just generally being jerks with you. Hulyek mindig lesznek.
+						
+			 </p>
+			<h5 id="Reputation system">Reputation system  </h5>
+			
+		
+			<p>
+			In the previous point I wrote a lot about reputation point.
+			Probably you wonder why the hack we need these? 
+			To understand it you have to think about it, will you rather accept a solution from a new user, who just registered and you have no guarantee to show up and actually help you (i could be also just a bot...), 
+			or will you rather accept help from a trusted veteran who already helped a lot of people?.
+			So the answer is pretty simple: it represent the user's <i>reliability</i>.
+			<br/>
+			Okay lets 
+			
+			
+			 </p>
+		
+			
+			
+			
+			megbithatosagot tukroz
+	
+			
+			3 piler: gain loose limits
+			
 		</div>
 		
 	</div>

@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from problems.forms import UserProfileForm, SolutionForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from problems.models import Problem, Solution, UserProfile, Ignore, Notification
