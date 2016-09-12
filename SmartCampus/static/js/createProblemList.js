@@ -26,7 +26,7 @@ function createProblemList (appendElementId, jsonLink)
 			var roundBox = $('<div class="round-box">').appendTo(innerCol);
 			
 			var userLink = $('<a href='+String(obj.user_link)+' id="user-link-element"> <img src="'+String(obj.picture)+'" width="50"/> </a>').appendTo(roundBox);
-			$('<strong>'+String(obj.user)+': </strong>').appendTo(userLink);	
+			$('<strong>'+String(obj.user)+': </strong>').appendTo(roundBox);	
 			var problemLink = $('<a href="'+String(obj.problem_link)+'" id="problem-link-element">').appendTo(roundBox);
 			$('<strong>'+String(obj.title)+'</strong> <br/>').appendTo(problemLink);
 
