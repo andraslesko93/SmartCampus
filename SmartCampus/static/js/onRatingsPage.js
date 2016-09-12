@@ -6,7 +6,8 @@ $.getJSON("/get_ratings-rate_solution_author.json", function(data)
 				}
 			$.each(data, function(i, obj) 
 			{
-				var col = $('<div class ="col-md-6 col-xs-12">').appendTo('#rate_solution_authors');
+				var row = $('<div class ="row">').appendTo('#rate_solution_authors');
+				var col = $('<div class ="col-md-6 col-xs-12">').appendTo(row);
 			});
 		});
 	
@@ -16,9 +17,11 @@ $.getJSON("/get_ratings-rate_problem_author.json", function(data)
 			{
 				return;
 			}
+			
 			$.each(data, function(i, obj) 
 			{
-				var col = $('<div class ="col-md-6 col-xs-12">').appendTo('#rate_problem_authors');
+				var row = $('<div class ="row">').appendTo('#rate_problem_authors');
+				var col = $('<div class ="col-md-6 col-xs-12">').appendTo(row);
 			});
 		});
 

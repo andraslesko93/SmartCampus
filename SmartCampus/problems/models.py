@@ -33,7 +33,7 @@ class Problem(models.Model):
     title = models.CharField (max_length = 150)
     place = models.CharField (max_length = 50)
     desc = models.CharField (max_length = 2000)
-    status = models.CharField (max_length = 10, default = "pending")
+    status = models.CharField (max_length = 11, default = "pending")
     rq_ppl =models.IntegerField (default = 1)
     added_at = models.DateTimeField('date published', default = datetime.now)
     bounty = models.IntegerField(default = 0, null=True)

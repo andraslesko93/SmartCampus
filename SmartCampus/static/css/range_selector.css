@@ -9,6 +9,7 @@ body {
     display: table;
     position: relative;
     height: 25px;
+	margin-left: 6px;
     margin-top: 20px;
     background-color: rgb(245, 245, 245);
     border-radius: 4px;
@@ -108,16 +109,16 @@ body {
 }
 
 .range.range-success input[type="range"]::-webkit-slider-thumb {
-    background-color: rgb(92, 184, 92);
+    background-color: #1DA075;
 }
 .range.range-success input[type="range"]::-moz-slider-thumb {
-    background-color: rgb(92, 184, 92);
+    background-color: #1DA075;
 }
 .range.range-success output {
-    background-color: rgb(92, 184, 92);
+    background-color: #1DA075;
 }
 .range.range-success input[type="range"] {
-    outline-color: rgb(92, 184, 92);
+    outline-color: #1DA075;
 }
 
 .range.range-info input[type="range"]::-webkit-slider-thumb {
