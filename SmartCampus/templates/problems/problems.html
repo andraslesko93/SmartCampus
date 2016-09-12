@@ -20,7 +20,6 @@
 </style>
 
 <div class ="row">
-<div class ="col-xs-12">
 <div class="round-box">
 
 	<a href="/users/{{ problem.user.userprofile.slug }}">
@@ -96,7 +95,7 @@
 	        		{%if solution.status == 'pending'%}
 	        		
 		                <form action="/accept_solution/{{ solution.slug }}">
-		                	 <div align="right">
+		                	 <div align="left">
 		    				<button type="submit" class="btn btn-primary btn-basic-small">Accept</button>
 		    				</div>
 						</form>

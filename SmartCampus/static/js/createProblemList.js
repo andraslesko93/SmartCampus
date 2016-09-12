@@ -25,36 +25,28 @@ function createProblemList (appendElementId, jsonLink)
 			var innerCol = $('<div class="col-xs-12">').appendTo(row);
 			var roundBox = $('<div class="round-box">').appendTo(innerCol);
 			
-			var titleRow = $('<div class ="row">').appendTo(roundBox);
-			var pictureCol = $('<div class="col-xs-2" align = "center">').appendTo(titleRow);
-			var userLink = $('<a href='+String(obj.user_link)+' id="user-link-element"> <img src="'+String(obj.picture)+'" width="50"/> </a>').appendTo(pictureCol);
-			
-			var titleCol = $('<div class="col-xs-10">').appendTo(titleRow);
-			$('<strong>'+String(obj.user)+': </strong>').appendTo(titleCol);	
-			var problemLink = $('<a href="'+String(obj.problem_link)+'" id="problem-link-element">').appendTo(titleCol);
+			var userLink = $('<a href='+String(obj.user_link)+' id="user-link-element"> <img src="'+String(obj.picture)+'" width="50"/> </a>').appendTo(roundBox);
+			$('<strong>'+String(obj.user)+': </strong>').appendTo(userLink);	
+			var problemLink = $('<a href="'+String(obj.problem_link)+'" id="problem-link-element">').appendTo(roundBox);
 			$('<strong>'+String(obj.title)+'</strong> <br/>').appendTo(problemLink);
 
 			
-			textRow = $('<div class ="row">').appendTo(roundBox);
-			var detailCol = $('<div class="col-xs-12">').appendTo(textRow);
-			$('<br/>').appendTo(detailCol);
-			var detailProblemLink = $('<a href="'+String(obj.problem_link)+'" id="problem-link-element">').appendTo(detailCol);
-
 		
+			
 			if(typeof obj.minimum_required_reputation !== "undefined")
 			{
 				if( /Android|webOS|iPad|iPhone|BlackBerry/i.test(navigator.userAgent)== false)
 				{
-					$('<strong>Minimum required reputation: </strong>'+String(obj.minimum_required_reputation)+'<br/>').appendTo(detailProblemLink);
+					$('<strong>Minimum required reputation: </strong>'+String(obj.minimum_required_reputation)+'<br/>').appendTo(problemLink);
 				}
 				else
 				{
-					$('<strong><i class="fa fa-copyright fa-lg" aria-hidden="true"></i>:<font color="orange">'+String(obj.minimum_required_reputation)+'</strong></font><br/>').appendTo(detailProblemLink);
+					$('<strong><i class="fa fa-copyright fa-lg" aria-hidden="true"></i>:<font color="orange">'+String(obj.minimum_required_reputation)+'</strong></font><br/>').appendTo(problemLink);
 				}
 			}
 			
 		
-			var paragraph = $('<p align="justify">').appendTo(detailProblemLink);
+			var paragraph = $('<p align="justify">').appendTo(problemLink);
 			$('<strong>Deadline: </strong>'+String(obj.deadline)+'<br/>').appendTo(paragraph);
 			if( /Android|webOS|iPad|iPhone|BlackBerry/i.test(navigator.userAgent)== false)
 			{
@@ -64,10 +56,10 @@ function createProblemList (appendElementId, jsonLink)
 			
 			if(Number(obj.bounty)>0)
 			{
-				$('<strong><i class="fa fa-gift fa-lg" aria-hidden="true"></i>:<font color="green">'+String(obj.bounty)+'</strong></font><br/>').appendTo(detailProblemLink);
+				$('<strong><i class="fa fa-gift fa-lg" aria-hidden="true"></i>:<font color="green">'+String(obj.bounty)+'</strong></font><br/>').appendTo(problemLink);
 			}
 			
-			var tags = $('<strong>Tags: </strong>').appendTo(detailProblemLink);
+			var tags = $('<strong>Tags: </strong>').appendTo(problemLink);
 			$.each(obj.tags, function(i, tagObj)
 			{
 				//console.log("text: "+tagObj.tag_text+"tag_link: "+tagObj.tag_link);
