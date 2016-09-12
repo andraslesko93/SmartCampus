@@ -17,6 +17,6 @@ def edit_solution (request, solution_id_slug):
         solution.desc = desc
         solution.served_ppl = served_ppl
         solution.save()
-        retlink = '/add_solution/'+ solution.problem_id.slug+'/'
+        retlink = '/problems/'+ solution.problem_id.slug+'/'
         return HttpResponseRedirect(retlink)
     return render (request, 'problems/edit_solution.html', {'solution': solution})
