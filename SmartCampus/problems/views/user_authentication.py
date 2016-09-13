@@ -24,10 +24,11 @@ def user_login(request):
             else:
                 return HttpResponse("Your account is disabled.")
         else:
+            error_message = "Invalid login details supplied."
             # Bad login details were provided. So we can't log the user in.
             print "Invalid login details: {0}, {1}".format(username, password)
-            return HttpResponse("Invalid login details supplied.")
-
+            #return HttpResponse("Invalid login details supplied.")
+            return render(request, 'problems/login.html', {'error_message':error_message})
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
     else:

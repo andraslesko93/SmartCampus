@@ -23,9 +23,18 @@
             <br />
             <button type = "submit" class="btn btn-primary btn-basic">Login</button>
         </form>
+		        
 </div>
 </div>
 </div>
-
+{% if error_message %}
+	<div class ="row">
+		<div class ="col-xs-12">
+			<div class="round-box" align = "center" style="background:rgba(255,204,204,0.93);;">
+			<strong>{{error_message}}</strong>		
+			</div>
+		</div>
+	</div>
+{%endif%}
 {% endblock %}
 
