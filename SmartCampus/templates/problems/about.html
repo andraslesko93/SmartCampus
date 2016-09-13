@@ -56,7 +56,7 @@
 				After creating a problem you will receive 10 reputation point, and you can create 5 problems hourly.
 			</p>			
 			<div align="center">
-			<img src="{{ STATIC_URL }}images/create a problem.png" width=80% height=auto/>
+					<a class="fancybox" rel="group" href="{{ STATIC_URL }}images/create a problem.png"><img src="{{ STATIC_URL }}images/create a problem.png" alt="" width=80% height=auto /></a>
 			</div>
 			<h5 id="Adding solutions">Adding solutions</h5>
 			<p align ="justify">
@@ -67,7 +67,7 @@
 				It is recommended, because you gain more reputation, so bring some friends along! :)
 			</p>
 				<div align="center">
-				<img src="{{ STATIC_URL }}images/add a solution.png" width=60% height=auto />
+					<a class="fancybox" rel="group" href="{{ STATIC_URL }}images/add a solution.png"><img src="{{ STATIC_URL }}images/add a solution.png" alt="" width=60% height=auto /></a>			
 				</div>
 			<h5 id="Accepting solutions">Accepting solutions</h5>
 			<p align ="justify">
@@ -77,7 +77,7 @@
 				ratings will appear on every user's page who contributed to solving the problem.
 			</p>
 			<div align="center">
-			<img src="{{ STATIC_URL }}images/accept a solution.png" width=60% height=auto/>
+				<a class="fancybox" rel="group" href="{{ STATIC_URL }}images/accept a solution.png"><img src="{{ STATIC_URL }}images/accept a solution.png" alt="" width=60% height=auto /></a>			
 			</div>
 			
 			<h5 id= "Ratings">Ratings</h5>
@@ -88,11 +88,11 @@
 				After you submit your rating the system will calculate a reputation point to the other user, who helped you.
 			</p>
 			<div align="center">
-			<img src="{{ STATIC_URL }}images/rating a user.png" width=80% height=auto/>
+				<a class="fancybox" rel="group" href="{{ STATIC_URL }}images/rate a user.png"><img src="{{ STATIC_URL }}images/rate a user.png" alt="" width=80% height=auto /></a>
 			</div>
 			<h5 id="Notifications">Notifications</h5>
 			<p align="justify">
-				Notifications are also a very important, it helps you a lot to navigate through the page, let you know when something important happened!
+				Notifications are also a very important, it helps you a lot to navigate through the pages, and let you know when something important happened!
 				There are three different situations when you get a notification, these are:
 			</p>
 			<ul>
@@ -103,7 +103,7 @@
 			<p align="justify">You can always check your notifications by clicking the bell sign on the navigation bar.</p>
 			
 			<div align="center">
-				<img src="{{ STATIC_URL }}images/notification.png" width=80% height=auto/>
+				<a class="fancybox" rel="group" href="{{ STATIC_URL }}images/notification.png"><img src="{{ STATIC_URL }}images/notification.png" alt="" width=80% height=auto /></a>
 			</div>
 			
 			<h5 id= "Ignore users">Ignore users</h5>
@@ -114,7 +114,9 @@
 			After that you wont see that user, or its problems or solutions anymore, but you will loose 15 reputation.
 			Of course you can always unblock that user in the ignored users menu point.	
 			</p>
-			
+			<div align="center">
+				<a class="fancybox" rel="group" href="{{ STATIC_URL }}images/ignore a user.png"><img src="{{ STATIC_URL }}images/ignore a user.png" alt="" width=30% height=auto /></a>
+			</div>
 			<h5 id="Reputation system">Reputation system  </h5>
 			
 			<p align="justify">
@@ -157,13 +159,19 @@
 			<p>You can always check your reputation points beneath your profile.</p>
 		
 			<div align="center">
-				<img src="{{ STATIC_URL }}images/reputation.png" width=20% height=auto/>
-			</div>
-
-			
-		</div>
-		
+				<a class="fancybox" rel="group" href="{{ STATIC_URL }}images/reputation.png"><img src="{{ STATIC_URL }}images/reputation.png" alt="" width=20% height=auto /></a>
+			</div>			
+		</div>		
 	</div>
 </div>
+{% endblock %}
 
+
+{% block script_block %}
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+	
+</script>
 {% endblock %}

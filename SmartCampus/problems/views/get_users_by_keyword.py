@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from problems.models import Ignore, UserProfile
 from django.contrib.auth.models import User
@@ -17,7 +16,7 @@ def get_users_by_keyword(request):
     json_list = []
     for user in users:
         json_list.append({'picture':user.userprofile.picture_url,
-                          'user_link':"/user/"+user.userprofile.slug,
+                          'user_link':"/users/"+user.userprofile.slug,
                           'user_name':user.username,
                           'reputation':user.userprofile.reputation
                           })

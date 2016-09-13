@@ -5,10 +5,8 @@ $('#notification_button').click(function(){
     });
 });
 
-/*$('#notification_button_mobile').click(function(){
-	createNotificationList("tiny_notification_list", 10);
+$('#notification_button_mobile').click(function(){
     $.get("/check_the_unchecked_notifications.json/", function(data){
         $('#notification_count').hide();
     });
 });
-*/

@@ -48,7 +48,7 @@
 .checked-notification-item {
  padding:10px;
  margin:5px;
- background:rgba(253,253,253,0.95);;
+ background:rgba(253,253,253,0.95);
  border-radius:4px;
  }
 
@@ -56,7 +56,7 @@
 .unchecked-notification-item {
  padding:10px;
  margin:5px;
- background:rgba(248,248,248,0.8);
+ background:rgba(200,200,200,0.8);
  border-radius:4px;
  }
 
