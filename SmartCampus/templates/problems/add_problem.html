@@ -44,7 +44,7 @@
 	        <div class ="row">
 	        	<ul class="nav nav-tabs">
 				    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Classic<br/>problem</a></li>   
-				    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu1">Confidental<br/>problem</a></li>				    
+				    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu1">Confidential<br/>problem</a></li>				    
 				  </ul>
 				  </div>
 
@@ -99,7 +99,7 @@
 				    <div id="menu1" class="tab-pane fade">
 				      <br/>
 				      {% if user.userprofile.reputation >= confidence_problem_repu_limit %}
-				      <h3>Create a confidental problem!</h3>
+				      <h3>Create a confidential problem!</h3>
 		        		        
 				        <form id ="conf_problem_form" method="POST">
 		  					{% csrf_token %} 
@@ -139,7 +139,7 @@
 						</form>
 						{%else%}
 						 
-						 <p align="justify"> You don't have enough reputation point to create a confidental problem.</p>
+						 <p align="justify"> You don't have enough reputation point to create a confidential problem.</p>
 						
 						{%endif%}
 				    </div>
