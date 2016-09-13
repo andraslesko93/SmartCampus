@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, url
 from django.views.generic import TemplateView
+from django.contrib.auth.decorators import login_required
+
 import views
 
 urlpatterns = patterns('',
@@ -21,12 +23,12 @@ urlpatterns = patterns('',
         url(r'^ratings/$', views.post_ratings, name='ratings'),
         
         #TemplateView as views:
-        url(r'^about/$', TemplateView.as_view(template_name="problems/about.html"), name='about'),
-        url(r'^outdated/$', TemplateView.as_view(template_name="problems/outdated.html"), name='outdated'),
+        url(r'^about/$', login_required(TemplateView.as_view(template_name="problems/about.html")), name='about'),
+        url(r'^outdated/$', login_required(TemplateView.as_view(template_name="problems/outdated.html")), name='outdated'),
         url(r'^$', TemplateView.as_view(template_name="problems/index.html"), name='index'),
-        url(r'^notifications', TemplateView.as_view(template_name="problems/notifications.html"), name='notifications'),
-        url(r'^tag/(?P<tag_id_slug>[\w\-]+)/$', TemplateView.as_view(template_name="problems/tag.html"), name='tag_filter'),        
-        url(r'^search/$', TemplateView.as_view(template_name="problems/search.html"), name='search'),
+        url(r'^notifications', login_required(TemplateView.as_view(template_name="problems/notifications.html")), name='notifications'),
+        url(r'^tag/(?P<tag_id_slug>[\w\-]+)/$', login_required(TemplateView.as_view(template_name="problems/tag.html")), name='tag_filter'),        
+        url(r'^search/$', login_required(TemplateView.as_view(template_name="problems/search.html")), name='search'),
         #JSON URLS:
         url(r'^check_the_unchecked_notifications.json', views.check_the_unchecked_notifications),
         url(r'^get_notifications_(?P<count>[\w\-]+).json', views.get_notifications),
