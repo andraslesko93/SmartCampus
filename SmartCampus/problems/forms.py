@@ -10,11 +10,10 @@ my_default_errors = {
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
+    confirm_password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = User
-        fields = ('username', 'email', 'password')
-        def __unicode__(self):
-            return u'%s' % (self.username)
+        fields = ('username', 'email', 'password' )
         
 class UserProfileForm(forms.ModelForm):
     #has_notification = forms.BooleanField

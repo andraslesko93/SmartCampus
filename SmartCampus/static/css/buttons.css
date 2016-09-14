@@ -65,3 +65,16 @@
     background-color: #198983;
     border-color: #198983;
 }
+
+.btn-basic-file {
+  color: #ffffff;
+  background-color: #1DA075;
+  border-color: #198983;
+  width: 50px;
+  height: 25px;
+  text-align: center;
+  padding-top: 3px;
+  font-size: 13px;
+  line-height: 1.428571429;
+  border-radius: 2px;
+}
