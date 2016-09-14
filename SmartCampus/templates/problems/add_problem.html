@@ -62,11 +62,11 @@
 				        <form id ="problem_form" method="POST">
 		  					{% csrf_token %} 
 		  					<strong>Title:</strong><br/>
-		  					<input type="text" name="title">
+		  					<input type="text" pattern=".{1,30}" required title="1 to 30 characters" placeholder="Title" name="title">
 		  					<br/>
 		  					<br/>
 		  					<strong>Place:</strong><br/>
-		  					<input type="text" name="place" >
+		  					<input type="text" pattern=".{1,30}" required title="1 to 30 characters" placeholder="Place" name="place" >
 		  					<br/>
 		  					<br/>
 		  					<strong>Required people:</strong> <br/>
@@ -74,7 +74,7 @@
 							<br/>
 		  					<br/>
 		  					<strong>Tags:</strong><br/>
-		  					<input type="text" name="tags">
+		  					<input type="text" pattern=".{1,}" required title="1 characters minimum" placeholder="Tags" name="tags">
 		  					<br/>
 		  					<br/>
 		  					<strong>Deadline:</strong> <br/>
@@ -82,7 +82,7 @@
 		  					<br/>
 		  					<br/>
 		  					<strong>Description:</strong> <br/>
-		  					<textarea name="desc" form="problem_form">...</textarea>
+		  					<textarea name="desc" form="problem_form" placeholder="Some description about the problem"></textarea>
 							<br/>
 							<br/>
 							{% if user.userprofile.reputation >= bounty_limit %}
@@ -109,7 +109,7 @@
 				        <form id ="conf_problem_form" method="POST">
 		  					{% csrf_token %} 
 		  					<strong>Title:</strong><br/>
-		  					<input type="text" name="title">
+		  					<input type="text" pattern=".{1,30}" required title="1 to 30 characters" placeholder="Title" name="title">
 		  					<br/>
 		  					<br/>
 		  					<strong>Minimum required reputation:</strong> <br/>
@@ -117,7 +117,7 @@
 							<br/>
 		  					<br/>
 		  					<strong>Place:</strong><br/>
-		  					<input type="text" name="place">
+		  					<input type="text" pattern=".{1,30}" required title="1 to 30 characters" placeholder="Place" name="place">
 		  					<br/>
 		  					<br/>
 		  					<strong>Required people:</strong> <br/>
@@ -125,7 +125,7 @@
 							<br/>
 		  					<br/>
 		  					<strong>Tags:</strong><br/>
-		  					<input type="text" name="tags">
+		  					<input type="text" pattern=".{1,}" required title="1 characters minimum" placeholder="Tags" name="tags">
 		  					<br/>
 		  					<br/>
 		  					<strong>Deadline:</strong> <br/>
@@ -133,7 +133,7 @@
 		  					<br/>
 		  					<br/>
 		  					<strong>Description:</strong> <br/>
-		  					<textarea name="desc" form="conf_problem_form">...</textarea>
+		  					<textarea name="desc" form="conf_problem_form" placeholder="Some description about the problem"></textarea>
 							<br/>
 							<br/>
 	  						<strong>Bounty:</strong> <br/>
@@ -165,62 +165,6 @@
         </div>
 </div>
 </div>
-<script  type="text/javascript">
 
- var classic_form_validator = new Validator("problem_form");
- 
- classic_form_validator.addValidation("title","req","Please enter the title of the problem");
- classic_form_validator.addValidation("title","maxlen=30", "Max length for Title is 30");
- 
-
- classic_form_validator.addValidation("place","req","Please enter the place of the problem");
- classic_form_validator.addValidation("title","maxlen=30", "Max length for Place is 30");
- 
-
- classic_form_validator.addValidation("rq_ppl","req","Please enter the ammount of the required people");
- 
- classic_form_validator.addValidation("tags","req","Please enter some tags for the problem");
- 
- classic_form_validator.addValidation("deadline","req","Please enter the deadline of the problem");
- 
- classic_form_validator.addValidation("desc","req","Please enter the description of the problem"); 
-
- classic_form_validator.addValidation("desc","maxlen=300",
- "Max length for Description is 300"); 
- 
- classic_form_validator.addValidation("desc","minlen=15",
- "Min length for Description is 15"); 
- 
- {% if user.userprofile.reputation >= confidence_problem_repu_limit %}
-
- var confidence_form_validator = new Validator("conf_problem_form");
- 
- confidence_form_validator.addValidation("title","req","Please enter the title of the problem");
- confidence_form_validator.addValidation("title","maxlen=30", "Max length for Title is 30");
- 
- confidence_form_validator.addValidation("rq_repu","req","Please enter the ammount of the minimum required reputation");
- 
- confidence_form_validator.addValidation("place","req","Please enter the place of the problem");
- confidence_form_validator.addValidation("title","maxlen=30", "Max length for Place is 30");
- 
-
- confidence_form_validator.addValidation("rq_ppl","req","Please enter the ammount of the required people");
- 
- confidence_form_validator.addValidation("tags","req","Please enter some tags for the problem");
- 
- confidence_form_validator.addValidation("deadline","req","Please enter the deadline of the problem");
- 
- confidence_form_validator.addValidation("desc","req","Please enter the description of the problem"); 
-
- confidence_form_validator.addValidation("desc","maxlen=300",
- "Max length for Description is 300"); 
- 
- confidence_form_validator.addValidation("desc","minlen=15",
- "Min length for Description is 15"); 
- 
- confidence_form_validator.addValidation("FirstName","maxlen=20",
-        "Max length for FirstName is 20");
- {%endif%}
-</script>
 {% endblock %}
 

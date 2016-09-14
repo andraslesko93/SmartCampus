@@ -42,9 +42,8 @@ def switch_rating_status (request):
         except Rating.DoesNotExist:
             pass
         now = now + timezone.timedelta(0, 60)
-        now = timezone.now() + + timezone.timedelta(days=1)
         for waiting_rating in waiting_ratings:    
-            if (now >= (waiting_rating.solution.problem_id.deadline + timedelta(seconds = 30))):
+            if (now >= (waiting_rating.solution.problem_id.deadline + timedelta(seconds = 3600))):
                 waiting_rating.status = "pending"
                 waiting_rating.save()
                 

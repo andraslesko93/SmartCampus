@@ -5,8 +5,6 @@ from problems.models import UserProfile, Tag, Problem, Confidence_Problem
 from eventlog.models import Log
 from django.contrib.contenttypes.models import ContentType
 from problems.views.support_functions import reputation_adder, within_one_hour
-
-
 @login_required
 def add_problem(request):
     problem_limit = 5
@@ -78,10 +76,6 @@ def add_problem(request):
             return render(request, 'problems/add_problem.html', render_list)
         
         deadline = request.POST.get("deadline")
-        if (deadline==""):
-            error_message="Please enter the deadline of the problem"
-            render_list['error_message']=error_message
-            return render(request, 'problems/add_problem.html', render_list)
         
         desc =  request.POST.get("desc")
         if (desc==""):
@@ -99,7 +93,17 @@ def add_problem(request):
             error_message="Maximum length for Description is 300 character"
         
         rq_repu = request.POST.get("rq_repu")
+        if (rq_repu==""):
+            error_message="Please enter the amount of the minimum required reputation"
+            render_list['error_message']=error_message
+            return render(request, 'problems/add_problem.html', render_list)
+        
         bounty = request.POST.get("bounty")
+        if (bounty==""):
+            error_message="Please enter the amount of the bounty"
+            render_list['error_message']=error_message
+            return render(request, 'problems/add_problem.html', render_list)
+        
         tags = tags.lower()
         tags = tags.replace (',', ' ')
         tags = tags.replace ('  ', ' ')
