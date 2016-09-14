@@ -37,18 +37,69 @@ def add_problem(request):
             return render(request, 'problems/add_problem.html', {'reached_problem_limit': reached_problem_limit, 'problems_in_one_hour':problems_in_one_hour})
     
     
-    if request.method == 'POST': 
+    render_list =({'bounty_limit': bounty_limit, 'max_bounty': max_bounty, 'confidence_problem_repu_limit': confidence_problem_repu_limit})
+    
+    if request.method == 'POST':
         reputation = 10   
-        title = request.POST.get("title", None)
-        place = request.POST.get("place", None)
-        rq_ppl = request.POST.get("rq_ppl", None)
-        tags = request.POST.get("tags", None)
-        deadline = request.POST.get("deadline", None)
-        desc =  request.POST.get("desc", None)
-        bounty = request.POST.get("bounty", None)
         
-        rq_repu = request.POST.get("rq_repu", None)
+        title = request.POST.get("title")
+        if (title==""):
+            error_message="Please enter the title of the problem"
+            render_list['error_message']=error_message
+            return render(request, 'problems/add_problem.html', render_list)
         
+        if (len(title)>30):
+            error_message="Maximum length for the title of the problem is 30 character"
+            render_list['error_message']=error_message
+            return render(request, 'problems/add_problem.html', render_list)
+        
+        place = request.POST.get("place")
+        if (place==""):
+            error_message="Please enter the place of the problem"
+            render_list['error_message']=error_message
+            return render(request, 'problems/add_problem.html', render_list)
+        
+        if (len(place)>30):
+            error_message="Maximum length for the place of the problem is 30 character"
+            render_list['error_message']=error_message
+            return render(request, 'problems/add_problem.html', render_list)
+        
+        
+        rq_ppl = request.POST.get("rq_ppl")
+        if (rq_ppl==""):
+            error_message  = "Please enter the ammount of the required people"
+            render_list['error_message']=error_message
+            return render(request, 'problems/add_problem.html', render_list)
+        
+        tags = request.POST.get("tags")
+        if (tags==""):
+            error_message= "Please enter some tags for the problem"
+            render_list['error_message']=error_message
+            return render(request, 'problems/add_problem.html', render_list)
+        
+        deadline = request.POST.get("deadline")
+        if (deadline==""):
+            error_message="Please enter the deadline of the problem"
+            render_list['error_message']=error_message
+            return render(request, 'problems/add_problem.html', render_list)
+        
+        desc =  request.POST.get("desc")
+        if (desc==""):
+            error_message="Please enter the description of the problem"
+            render_list['error_message']=error_message
+            return render(request, 'problems/add_problem.html', render_list)
+        
+        if (len(desc)<15):
+            error_message="Minimum length for Description is 15 character"
+            render_list['error_message']=error_message
+            return render(request, 'problems/add_problem.html', render_list)
+        if (len(desc)>300):
+            render_list['error_message']=error_message
+            return render(request, 'problems/add_problem.html', render_list)
+            error_message="Maximum length for Description is 300 character"
+        
+        rq_repu = request.POST.get("rq_repu")
+        bounty = request.POST.get("bounty")
         tags = tags.lower()
         tags = tags.replace (',', ' ')
         tags = tags.replace ('  ', ' ')
@@ -101,4 +152,4 @@ def add_problem(request):
         retlink = '/'
         return HttpResponseRedirect(retlink)
 
-    return render(request, 'problems/add_problem.html', {'bounty_limit': bounty_limit, 'max_bounty': max_bounty, 'confidence_problem_repu_limit': confidence_problem_repu_limit})
+    return render(request, 'problems/add_problem.html', render_list)
