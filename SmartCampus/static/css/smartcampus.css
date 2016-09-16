@@ -123,3 +123,9 @@ a.tagCloud-5 {
 }
 .calendar-text { margin-top: .3em; }
 
+textarea {
+    resize: none;
+}
+label[name=textAreaCounter] { 
+    float: right;
+}

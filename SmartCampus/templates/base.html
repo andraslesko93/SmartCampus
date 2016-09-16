@@ -19,8 +19,8 @@
     
     <link rel="icon" href="{{ STATIC_URL }}images/icon.png">
 </head>
-<body>
 
+<body>
     {% block clear_block %}{% endblock %} {% if user.is_authenticated %}
     <div class="navbar navbar-fixed-top"id="header-wrap">
     <nav class="navbar navbar-fixed-top navbar-light" id="header" style="background-color: #1DA075;">
@@ -111,7 +111,7 @@
 
     <div class="container-fluid" id="main">
         <div class="row row-offcanvas row-offcanvas-left">
-            <div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation">
+            <div class="col-md-3 col-lg-2 col-xs-4 sidebar-offcanvas" id="sidebar" role="navigation">
                 <div class="round-box">
                    
                     
@@ -188,12 +188,12 @@
     <script src="{{ STATIC_URL }}js/onNotificationButton.js"></script>
     <script src="{{ STATIC_URL }}js/scroll.js"></script>
     <script src="{{ STATIC_URL }}js/getUrlParameter.js"></script>
+    <script src="{{ STATIC_URL }}js/setPatternToTextArea.js"></script>
+	<script src="{{ STATIC_URL }}js/setCounterToTextArea.js"></script>    
     <script type="text/javascript" src="{{ STATIC_URL }}fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
     {% block script_block %} {% endblock %}
 
     {%endif%}
-
 </body>
-
 </html>

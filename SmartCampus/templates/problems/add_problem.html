@@ -34,14 +34,19 @@
 		
 		
 </style>
+{% autoescape off %}
 		
+		{% if error_message %}
+		<div class ="row">
+			<div class ="col-xs-12 col-md-5">
+				<div class="round-box" align="center"style="background:rgba(255,204,204,0.93);;">
+					<strong>{{error_message}}</strong>		
+				</div>
+			</div>
+		</div>
+		{%endif%}
 		<div class ="row">
 		<div class ="col-xs-12 col-md-5">
-		{% if error_message %}
-			<div class="round-box" align="center"style="background:rgba(255,204,204,0.93);;">
-				<strong>{{error_message}}</strong>		
-			</div>
-{%endif%}
 		<div class="round-box">
 		{%if below_rep_limit == false %}
 	        {%if reached_problem_limit == false%}			
@@ -70,7 +75,7 @@
 		  					<br/>
 		  					<br/>
 		  					<strong>Required people:</strong> <br/>
-							<input type="number" name="rq_ppl" min="1" value = 1 >
+							<input type="number" required  name="rq_ppl" min="1" value = 1 >
 							<br/>
 		  					<br/>
 		  					<strong>Tags:</strong><br/>
@@ -78,11 +83,13 @@
 		  					<br/>
 		  					<br/>
 		  					<strong>Deadline:</strong> <br/>
-		  					<input type="datetime-local" name="deadline" >
+		  					<input type="datetime-local" required  name="deadline" >
 		  					<br/>
 		  					<br/>
 		  					<strong>Description:</strong> <br/>
-		  					<textarea name="desc" form="problem_form" placeholder="Some description about the problem"></textarea>
+		  					<textarea name="desc" form="problem_form" id="classicProblemFormTextArea" pattern=".{15,500}" maxlength=500 required title="15 to 500 characters" placeholder="Some description about the problem"></textarea>
+							<label name="textAreaCounter" id="classicProblemFormTextAreaCounter"></label>
+							
 							<br/>
 							<br/>
 							{% if user.userprofile.reputation >= bounty_limit %}
@@ -121,7 +128,7 @@
 		  					<br/>
 		  					<br/>
 		  					<strong>Required people:</strong> <br/>
-							<input type="number" name="rq_ppl" min="1" value = 1 >
+							<input type="number" required  name="rq_ppl" min="1" value = 1 >
 							<br/>
 		  					<br/>
 		  					<strong>Tags:</strong><br/>
@@ -129,11 +136,12 @@
 		  					<br/>
 		  					<br/>
 		  					<strong>Deadline:</strong> <br/>
-		  					<input type="datetime-local" name="deadline" >
+		  					<input type="datetime-local"required  name="deadline" >
 		  					<br/>
 		  					<br/>
 		  					<strong>Description:</strong> <br/>
-		  					<textarea name="desc" form="conf_problem_form" placeholder="Some description about the problem"></textarea>
+		  					<textarea name="desc" form="conf_problem_form" id="confProblemFormTextArea"  pattern=".{15,500}" maxlength=500 required title="15 to 500 characters"  placeholder="Some description about the problem"></textarea>
+							<label name="textAreaCounter" id="confProblemFormTextAreaCounter" ></label>
 							<br/>
 							<br/>
 	  						<strong>Bounty:</strong> <br/>
@@ -165,6 +173,6 @@
         </div>
 </div>
 </div>
-
+{% endautoescape %}
 {% endblock %}
 

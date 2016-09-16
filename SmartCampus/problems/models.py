@@ -32,7 +32,7 @@ class Tag (models.Model):
 class Problem(models.Model):
     title = models.CharField (max_length = 150)
     place = models.CharField (max_length = 50)
-    desc = models.CharField (max_length = 2000)
+    desc = models.CharField (max_length = 500)
     status = models.CharField (max_length = 11, default = "pending")
     rq_ppl =models.IntegerField (default = 1)
     added_at = models.DateTimeField('date published', default = datetime.now)
@@ -52,7 +52,7 @@ class Problem(models.Model):
 class Solution(models.Model):
     user_id = models.ForeignKey(User)
     problem_id = models.ForeignKey(Problem)
-    desc = models.CharField (max_length = 300)
+    desc = models.CharField (max_length = 500)
     served_ppl =models.IntegerField (default = 1)
     status = models.CharField (max_length = 10, default = "pending")
     added_at = models.DateTimeField (default = datetime.now)

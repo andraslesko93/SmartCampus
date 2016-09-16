@@ -5,6 +5,7 @@ from problems.models import UserProfile, Tag, Problem, Confidence_Problem
 from eventlog.models import Log
 from django.contrib.contenttypes.models import ContentType
 from problems.views.support_functions import reputation_adder, within_one_hour
+import datetime
 @login_required
 def add_problem(request):
     problem_limit = 5
@@ -76,7 +77,25 @@ def add_problem(request):
             return render(request, 'problems/add_problem.html', render_list)
         
         deadline = request.POST.get("deadline")
+        if (deadline==""):
+            error_message="Please enter the deadline of the problem"
+            render_list['error_message']=error_message
+            return render(request, 'problems/add_problem.html', render_list)
+                
+        date_in = deadline 
+        date_out = datetime.datetime(*[int(v) for v in date_in.replace('T', '-').replace(':', '-').split('-')])
         
+        if(date_out<(datetime.datetime.now())):
+            error_message="You can't create a problem in the past"
+            render_list['error_message']=error_message
+            return render(request, 'problems/add_problem.html', render_list)
+        
+        if(date_out<(datetime.datetime.now() + datetime.timedelta(days=0, hours=1))):
+            error_message="You can't create a problem with such a close deadline. There should be at least 1 hour until its deadline passes." +str(deadline)
+            render_list['error_message']=error_message
+            return render(request, 'problems/add_problem.html', render_list)
+        
+        #deadline = date_out.timetz()
         desc =  request.POST.get("desc")
         if (desc==""):
             error_message="Please enter the description of the problem"
@@ -87,7 +106,7 @@ def add_problem(request):
             error_message="Minimum length for Description is 15 character"
             render_list['error_message']=error_message
             return render(request, 'problems/add_problem.html', render_list)
-        if (len(desc)>300):
+        if (len(desc)>500):
             render_list['error_message']=error_message
             return render(request, 'problems/add_problem.html', render_list)
             error_message="Maximum length for Description is 300 character"

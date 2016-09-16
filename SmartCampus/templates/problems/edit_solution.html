@@ -20,22 +20,29 @@
 		
 		
 </style>
-<div class ="row">
+{% if error_message %}
+	<div class ="row">
+		<div class ="col-xs-12 col-md-5">
+			<div class="round-box" align="center"style="background:rgba(255,204,204,0.93);;">
+				<strong>{{error_message}}</strong>		
+			</div>
+		</div>
+	</div>
+{%endif%}
+{% if solution %}
+<div class ="row" id="edit-solution-row">
 <div class ="col-xs-12 col-md-5">
 <div class="round-box">
-	{%if solution.user_id == user %}
-
 		<br/>
 		<h4> Edit your solution:</h4>
-		
-		
 		<form id="edit_solution_form" method="POST" >			        	
     		{% csrf_token %} 
             <strong>Served people:</strong> <br/>
-			<input type="number" name="served_ppl" min="1" max = "{{solution.problem_id.rq_ppl}}" value = "{{solution.served_ppl}}" > 
+			<input type="number" name="served_ppl" min="1" required max = "{{solution.problem_id.rq_ppl}}" value = "{{solution.served_ppl}}" > 
         	<br/>
 			<br/>
-			<textarea name="desc" form="edit_solution_form">{{solution.desc}}</textarea>
+			<textarea name="desc" form="edit_solution_form" id="editSolutionFormTextArea" pattern=".{15,500}" maxlength=500 required title="15 to 500 characters" >{{solution.desc}}</textarea>
+			<label name="textAreaCounter" id="editSolutionFormTextAreaCounter"></label>
 			<br/>
 			<br/>
 			
@@ -50,23 +57,9 @@
     		<button style="width:200px"; type="submit" class="btn btn-default">Cancel <span class="glyphicon glyphicon-ban-circle"></span></button>
 		</form>
 		</div>
-	
-	{%endif%}		
 	</div>
 	</div>
-	</div>        
-<script type="text/javascript">
-
-var solution_form_validator = new Validator("edit_solution_form");
-
-solution_form_validator.addValidation("desc","req","Please enter the description of the problem"); 
-
-solution_form_validator.addValidation("desc","maxlen=300",
-"Max length for Description is 300"); 
-
-solution_form_validator.addValidation("desc","minlen=15",
-"Min length for Description is 15"); 
-
-</script>			        
+	</div>  
+{% endif %}   
 {% endblock %}
 

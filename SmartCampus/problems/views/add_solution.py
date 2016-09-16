@@ -20,11 +20,11 @@ def add_solution(request, problem_title_slug):
         own_solutions = Solution.objects.filter(problem_id__exact = problem, user_id__exact= request.user)
     except (UserProfile.DoesNotExist, Problem.DoesNotExist, Ignore.DoesNotExist, Solution.DoesNotExist):
         pass
-    
-    user_added_solution = False
+    user_added_solution = False 
+    render_list =({'problem':problem, 'solutions':solutions, 'user_added_solution':user_added_solution })
     if (own_solutions.count()>0):
         user_added_solution = True
-        return render(request, 'problems/problems.html',{'problem':problem, 'solutions':solutions, 'user_added_solution':user_added_solution } )
+        return render(request, 'problems/problems.html', render_list)
 
     if request.method == 'POST':    
         reputation = 15
@@ -32,6 +32,31 @@ def add_solution(request, problem_title_slug):
         desc =  request.POST.get("desc", None)
         pk_in = request.POST.get ("problems", None)
         problem = get_object_or_404(Problem, pk = pk_in)
+        
+        if (served_ppl==""):
+            render_list['error_message']="Please add the amount of the people you serve in your solution"
+            return render(request, 'problems/problems.html', render_list)
+                
+        if (int(served_ppl) < 1):
+            render_list['error_message']="You have to serve at least one people in your solution"
+            return render(request, 'problems/problems.html', render_list)
+        
+        if (int(served_ppl) > problem.rq_ppl):
+            render_list['error_message']="You cannot serve more people than the problem requires"
+            return render(request, 'problems/problems.html', render_list)
+        
+        if (desc==""):
+            render_list['error_message']="You have to add some description to your solution"
+            return render(request, 'problems/problems.html', render_list)
+            pass
+           
+        if (len(desc)<15):
+            render_list['error_message']="The description should be at least 15 character long"
+            return render(request, 'problems/problems.html', render_list)
+        
+        if (len(desc)>500):
+            render_list['error_message']="The description should be maximum 300 character long"
+            return render(request, 'problems/problems.html', render_list)
         
         new_solution = Solution(user_id = request.user,
                                 served_ppl = served_ppl,
@@ -57,4 +82,4 @@ def add_solution(request, problem_title_slug):
         reputation_adder(userprofile.user, reputation)  
         retlink = '/problems/'+ problem.slug+'/'
         return HttpResponseRedirect(retlink)
-    return render(request, 'problems/problems.html',{'problem':problem, 'user_added_solution': user_added_solution, 'solutions':solutions} )
+    return render(request, 'problems/problems.html', render_list)
