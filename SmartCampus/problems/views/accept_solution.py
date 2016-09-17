@@ -4,21 +4,19 @@ from django.contrib.auth.decorators import login_required
 from problems.models import Solution, Rating, Notification
 from eventlog.models import Log
 from django.contrib.contenttypes.models import ContentType
-    
+from django.shortcuts import get_object_or_404
 
 @login_required
-def accept_solution(request, solution_id_slug):
-    context_dict = {}
-    try:
-        
-        solution = Solution.objects.get(slug=solution_id_slug)
-        problem = solution.problem_id
-        context_dict['solution'] = solution
-        
-    except Solution.DoesNotExist:
-        # We get here if we didn't find the specified category.
-        # Don't do anything - the template displays the "no category" message for us.
-        pass
+def accept_solution(request, solution_id_slug):    
+    solution = get_object_or_404(Solution, slug = solution_id_slug)
+    problem = solution.problem_id
+    if(problem.user!=request.user):
+        error_message="You can not accept solutions for other's problems."
+        return render(request, 'problems/accept_solution.html', {'error_message':error_message})
+    
+    if(solution.status!="pending"):
+        error_message="You have already accepted that solution."
+        return render(request, 'problems/accept_solution.html', {'error_message':error_message}) 
     
     if request.method == 'POST' and request.user == problem.user:   
         solution.status = 'accepted'
@@ -74,9 +72,6 @@ def accept_solution(request, solution_id_slug):
                                 object_id = solution.pk
                                 )
         new_log_entry.save()
-        
-        
-        
         retlink = '/problems/'+ problem.slug+'/'
         return HttpResponseRedirect(retlink)
-    return render(request, 'problems/accept_solution.html', context_dict)
+    return render(request, 'problems/accept_solution.html', {'solution':solution})

@@ -13,7 +13,7 @@ def post_user_ignore(request, user_id_slug):
         userprofile = UserProfile.objects.get(user__exact = request.user)
     except UserProfile.DoesNotExist:
         pass
-    if request.method == 'POST':# and request.is_ajax():
+    if request.method == 'POST':
         check = Ignore.objects.all()
         check = check.filter (user_id__exact=request.user)
         check = check.filter (ref_user_id__exact=ref_user.user)

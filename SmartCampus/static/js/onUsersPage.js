@@ -7,12 +7,12 @@ $.getJSON("/get_user_details_by_id-"+urlParameter+".json", function(data)
         $("#ignore_button").hide();
         return;
     }
-	console.log("picture: "+data.picture+
+	/*console.log("picture: "+data.picture+
 			"username: "+data.username+ 
 			"email: " + data.email+ 
 			"joined_at: "+ data.joined_at+ 
 			"last_login: "+data.last_login+ 
-			"reputation: "+data.reputation);
+			"reputation: "+data.reputation);*/
 	$('<img src='+String(data.picture)+' width="200"/> <br>').appendTo("#user_details");
 	$('<br/> <c><strong>Username: </strong>'+String(data.username)+'</c>').appendTo("#user_details");
 	$('<br/> <c><strong>Email address: </strong>'+String(data.email)+'</c>').appendTo("#user_details");

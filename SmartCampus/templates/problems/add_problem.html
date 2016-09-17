@@ -33,20 +33,18 @@
 		}
 		
 		
-</style>
-{% autoescape off %}
-		
-		{% if error_message %}
-		<div class ="row">
-			<div class ="col-xs-12 col-md-5">
-				<div class="round-box" align="center"style="background:rgba(255,204,204,0.93);;">
-					<strong>{{error_message}}</strong>		
-				</div>
+</style>		
+{% if error_message %}
+	<div class ="row">
+		<div class ="col-xs-12 col-md-5">
+			<div class="round-box" align="center"style="background:rgba(255,204,204,0.93);;">
+				<strong>{{error_message}}</strong>		
 			</div>
 		</div>
-		{%endif%}
-		<div class ="row">
-		<div class ="col-xs-12 col-md-5">
+	</div>
+{%endif%}
+<div class ="row">
+	<div class ="col-xs-12 col-md-5">
 		<div class="round-box">
 		{%if below_rep_limit == false %}
 	        {%if reached_problem_limit == false%}			
@@ -105,8 +103,7 @@
 		  					
 							<button type="submit" class="btn btn-primary btn-basic">Create a problem</button>
 		
-						</form>
-				    
+						</form>  
 				    </div>
 				    <div id="menu1" class="tab-pane fade">
 				      <br/>
@@ -161,18 +158,14 @@
 			</div>
 	
 	        {%else%}
-	        <div class="round-box">
-	        	<h4>You reached your hourly problem limit</h4>
-	        </div>
+	        	<strong>You reached your hourly problem limit</strong>
 	        {%endif%}
 		{%else%}
-		<div class="round-box">
-        	<h4>You cannot create a problem with low reputation. You should help others first</h4>
+        	<strong>You cannot create a problem with low reputation. You should help others first</strong>
         {%endif%}
-        </div>
-        </div>
+
 </div>
 </div>
-{% endautoescape %}
+</div>
 {% endblock %}
 

@@ -74,75 +74,71 @@
 		</div>     
 	</div>
 </div>
-        <br/>
+<br/>
         
-        {% if solutions %}
-	        {% for solution in solutions %}
-	     <div class="row">
-	        <div class="col-xs-12">
-		        <div class="round-box">
-		        	
-						<a href="/users/{{ solution.user_id.userprofile }}">
-		        			<img src="{{solution.user_id.userprofile.picture_url}}" width="50"/>
-		        			<strong><a href="/users/{{ solution.user_id }}">{{solution.user_id}}</a></strong>  offered a solution: 
-		        		</a> 
-					<br/>
-					<br/>
-					<strong>Served people:</strong> {{solution.served_ppl}} <br/>
-					<strong>Description:</strong> <p align ="justify">{{solution.desc}}</p>
-		        	{%if solution.status == 'pending'%}
-		            	<strong>Status:</strong>  <font color="orange"><strong>{{solution.status}}</strong> </font>
-		        	
-		        	{%else%}
-		        	<strong>Status:</strong>  <font color="green"><strong>{{solution.status}}</strong> </font>
-		        	{%endif%}
-		        	
-		        	{%if solution.user_id == user and solution.status == 'pending'%}
-		        		<br/>
-		        		<strong><a href="/edit_solution/{{ solution.slug }}"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit </a> </strong>
-		        	{%endif%}
-		        
-		        	{% if problem.user == user and problem.status == 'pending' %}
-		        		{%if solution.status == 'pending'%}
-		        		
-			                <form action="/accept_solution/{{ solution.slug }}">
-			                	 <div align="left">
-			    				<button type="submit" class="btn btn-primary btn-basic-small">Accept</button>
-			    				</div>
-							</form>
-						{% endif %}	
-					
-	               
-	                {% endif %}
-	                </div>
-            </div>
-          </div>
-                 <br/>
-	        {% endfor %}
-        {% else %}
-        	{% if problem.user == user %}
-        	<div class="row">
-	        	<div class="col-xs-12">
-		        	 <div class="round-box">
-				        <div style="color:#C8C8C8">
-				            <b>There are no solutions yet.</b>
-				        </div>
-				     </div>
-			     </div>
-		     </div>
-		    {% endif %}
-        {% endif %}
+{% if solutions %}
+	{% for solution in solutions %}
+	   <div class="row">
+	      <div class="col-xs-12">
+	       <div class="round-box">
+	       	
+				<a href="/users/{{ solution.user_id.userprofile }}">
+	       			<img src="{{solution.user_id.userprofile.picture_url}}" width="50"/>
+	       			<strong><a href="/users/{{ solution.user_id }}">{{solution.user_id}}</a></strong>  offered a solution: 
+	       		</a> 
+			<br/>
+			<br/>
+			<strong>Served people:</strong> {{solution.served_ppl}} <br/>
+			<strong>Description:</strong> <p align ="justify">{{solution.desc}}</p>
+	       	{%if solution.status == 'pending'%}
+	           	<strong>Status:</strong>  <font color="orange"><strong>{{solution.status}}</strong> </font>
+	       	
+	       	{%else%}
+	       	<strong>Status:</strong>  <font color="green"><strong>{{solution.status}}</strong> </font>
+	       	{%endif%}
+	       	
+	       	{%if solution.user_id == user and solution.status == 'pending'%}
+	       		<br/>
+	       		<strong><a href="/edit_solution/{{ solution.slug }}"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit </a> </strong>
+	       	{%endif%}
+	       
+	       	{% if problem.user == user and problem.status == 'pending' %}
+	       		{%if solution.status == 'pending'%}
+	       		
+	                <form action="/accept_solution/{{ solution.slug }}">
+	                	 <div align="left">
+	    				<button type="submit" class="btn btn-primary btn-basic-small">Accept</button>
+	    				</div>
+					</form>
+				{% endif %}
+	         {% endif %}
+	              </div>
+	         </div>
+	       </div>
+	              <br/>
+	{% endfor %}
+{% else %}
+    {% if problem.user == user %}
+     <div class="row">
+      	<div class="col-xs-12">
+       	 <div class="round-box">
+	        <div style="color:#C8C8C8">
+	            <b>There are no solutions yet.</b>
+	        </div>
+	     </div>
+     </div>
+    </div>
+   {% endif %}
+{% endif %}
         
         
-        
-        {% if problem.status == 'pending' %}
-	        {% if problem.user != user %}	        
-		        {%if user_added_solution == False %}
-		        
+    
+{% if problem.status == 'pending' %}
+	{% if problem.user != user %}	        
+		{%if user_added_solution == False %}
 		        	<div class="row">
 			        	<div class="col-xs-12">
 			        		<div class="round-box">
-				        
 						        {% if problem.confidence_problem.min_rq_reputation %}
 			                		{% if user.userprofile.reputation >= problem.confidence_problem.min_rq_reputation %}
 			                			<h3>Add a solution!</h3>
@@ -161,10 +157,8 @@
 											
 											<br/><button type="submit" class="btn btn-primary btn-basic">Add a solution!</button> <br/>		
 								        </form>
-								          
-									
 			                		{%else%}
-			                			<p>You don't have enough reputation to solve this problem</p>
+			                			<strong>You don't have enough reputation to solve this problem</strong>
 			                		{%endif%}
 						        {%else%}
 		
@@ -184,15 +178,13 @@
 										<br/><button type="submit" class="btn btn-primary btn-basic">Add a solution!</button> <br/>		
 							        </form>   
 						        {%endif%}
-						        
 						        </div>
 						    </div>
 				        </div>
-			        {% endif %}
-			    {%endif%}
-		    {%endif%}
-	    
-        
+		{% endif %}
+	{%endif%}
+{%endif%}
+
 
 {% endblock %}
 

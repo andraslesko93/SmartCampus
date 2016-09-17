@@ -11,7 +11,6 @@ urlpatterns = patterns('',
         url(r'^login/$', views.user_login, name='login'),
         url(r'^logout/$', views.user_logout, name='logout'),
         url(r'^add_problem/$', views.add_problem, name='add_problem'),
-        url(r'^own_problems/$', views.own_problems, name='own_problems'),
         url(r'^problems/(?P<problem_title_slug>[\w\-]+)/$', views.add_solution, name='add_solution'),
         url(r'^accept_solution/(?P<solution_id_slug>[\w\-]+)/$', views.accept_solution, name='accept_solution'),     
        

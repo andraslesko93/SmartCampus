@@ -25,7 +25,6 @@ def add_problem(request):
         prev_problems = prev_problems.order_by('-added_at')[:problem_limit]
     except UserProfile.DoesNotExist, Problem.DoesNotExist:
         pass
-    
     problems_in_one_hour = 0
     for prev_problem in prev_problems:
             if (within_one_hour(prev_problem.added_at)):
@@ -34,51 +33,49 @@ def add_problem(request):
     if (problems_in_one_hour == problem_limit):
             reached_problem_limit = True
             return render(request, 'problems/add_problem.html', {'reached_problem_limit': reached_problem_limit, 'problems_in_one_hour':problems_in_one_hour})
-    
-    
+
     render_list =({'bounty_limit': bounty_limit, 'max_bounty': max_bounty, 'confidence_problem_repu_limit': confidence_problem_repu_limit})
-    
     if request.method == 'POST':
         reputation = 10   
         
         title = request.POST.get("title")
         if (title==""):
-            error_message="Please enter the title of the problem"
+            error_message="Please enter the title of the problem."
             render_list['error_message']=error_message
             return render(request, 'problems/add_problem.html', render_list)
         
         if (len(title)>30):
-            error_message="Maximum length for the title of the problem is 30 character"
+            error_message="Maximum length for the title of the problem is 30 character."
             render_list['error_message']=error_message
             return render(request, 'problems/add_problem.html', render_list)
         
         place = request.POST.get("place")
         if (place==""):
-            error_message="Please enter the place of the problem"
+            error_message="Please enter the place of the problem."
             render_list['error_message']=error_message
             return render(request, 'problems/add_problem.html', render_list)
         
         if (len(place)>30):
-            error_message="Maximum length for the place of the problem is 30 character"
+            error_message="Maximum length for the place of the problem is 30 character."
             render_list['error_message']=error_message
             return render(request, 'problems/add_problem.html', render_list)
         
         
         rq_ppl = request.POST.get("rq_ppl")
         if (rq_ppl==""):
-            error_message  = "Please enter the ammount of the required people"
+            error_message  = "Please enter the amount of the required people."
             render_list['error_message']=error_message
             return render(request, 'problems/add_problem.html', render_list)
         
         tags = request.POST.get("tags")
         if (tags==""):
-            error_message= "Please enter some tags for the problem"
+            error_message= "Please enter some tags for the problem."
             render_list['error_message']=error_message
             return render(request, 'problems/add_problem.html', render_list)
         
         deadline = request.POST.get("deadline")
         if (deadline==""):
-            error_message="Please enter the deadline of the problem"
+            error_message="Please enter the deadline of the problem."
             render_list['error_message']=error_message
             return render(request, 'problems/add_problem.html', render_list)
                 
@@ -86,7 +83,7 @@ def add_problem(request):
         date_out = datetime.datetime(*[int(v) for v in date_in.replace('T', '-').replace(':', '-').split('-')])
         
         if(date_out<(datetime.datetime.now())):
-            error_message="You can't create a problem in the past"
+            error_message="You can't create a problem in the past."
             render_list['error_message']=error_message
             return render(request, 'problems/add_problem.html', render_list)
         
@@ -94,11 +91,9 @@ def add_problem(request):
             error_message="You can't create a problem with such a close deadline. There should be at least 1 hour until its deadline passes." +str(deadline)
             render_list['error_message']=error_message
             return render(request, 'problems/add_problem.html', render_list)
-        
-        #deadline = date_out.timetz()
         desc =  request.POST.get("desc")
         if (desc==""):
-            error_message="Please enter the description of the problem"
+            error_message="Please enter the description of the problem."
             render_list['error_message']=error_message
             return render(request, 'problems/add_problem.html', render_list)
         
@@ -109,20 +104,15 @@ def add_problem(request):
         if (len(desc)>500):
             render_list['error_message']=error_message
             return render(request, 'problems/add_problem.html', render_list)
-            error_message="Maximum length for Description is 300 character"
+            error_message="Maximum length for Description is 300 character."
         
         rq_repu = request.POST.get("rq_repu")
         if (rq_repu==""):
-            error_message="Please enter the amount of the minimum required reputation"
+            error_message="Please enter the amount of the minimum required reputation."
             render_list['error_message']=error_message
             return render(request, 'problems/add_problem.html', render_list)
         
         bounty = request.POST.get("bounty")
-        if (bounty==""):
-            error_message="Please enter the amount of the bounty"
-            render_list['error_message']=error_message
-            return render(request, 'problems/add_problem.html', render_list)
-        
         tags = tags.lower()
         tags = tags.replace (',', ' ')
         tags = tags.replace ('  ', ' ')
