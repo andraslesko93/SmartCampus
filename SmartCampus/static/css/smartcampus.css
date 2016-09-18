@@ -84,6 +84,36 @@ a.tagCloud-5 {
     bottom: 0;
     right: 0;
 }
+#notification-link-element
+{
+	text-decoration:none; 
+	color:rgba(55,58,60,1);
+}
+
+#problem-link-element
+{
+	text-decoration:none; 
+	color:rgba(55,58,60,1);
+}
+
+#user-link-element
+{
+	text-decoration:none; 
+	color:#c8c8c8;
+}
+.calendar-text { margin-top: .3em; }
+
+textarea {
+    resize: none;
+}
+label[name=textAreaCounter] { 
+    float: right;
+}
+
+.name-and-link-container{
+    padding-left: 9%;
+}
+
 @media(min-width:62em)
 {
 	body {
@@ -101,31 +131,9 @@ a.tagCloud-5 {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-	}est01
+	}
+	.name-and-link-container{
+    padding-left: 20%;
+}
 }
 
-#notification-link-element
-{
-	text-decoration:none; 
-	color:rgba(55,58,60,1);
-}
-
-#problem-link-element
-{
-	text-decoration:none; 
-	color:rgba(55,58,60,1);
-}
-
-#user-link-element
-{
-	text-decoration:none; 
-	color:rgba(55,58,60,1);
-}
-.calendar-text { margin-top: .3em; }
-
-textarea {
-    resize: none;
-}
-label[name=textAreaCounter] { 
-    float: right;
-}

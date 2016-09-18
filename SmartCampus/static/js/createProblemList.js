@@ -25,47 +25,48 @@ function createProblemList (appendElementId, jsonLink)
 			var innerCol = $('<div class="col-xs-12">').appendTo(row);
 			var roundBox = $('<div class="round-box">').appendTo(innerCol);
 			
-			var userLink = $('<a href='+String(obj.user_link)+' id="user-link-element"> <img src="'+String(obj.picture)+'" width="50"/> </a>').appendTo(roundBox);
-			$('<strong>'+String(obj.user)+': </strong>').appendTo(roundBox);	
-			var problemLink = $('<a href="'+String(obj.problem_link)+'" id="problem-link-element">').appendTo(roundBox);
-			$('<strong>'+String(obj.title)+'</strong> <br/>').appendTo(problemLink);
-
 			
-		
+			var titleRow = $('<div class = "row">').appendTo(roundBox);
+			var pictureCol =$('<div class ="col-xs-1">').appendTo(titleRow);
+			$('<a href='+String(obj.user_link)+' id="user-link-element"> <img src="'+String(obj.picture)+'" width="50"/> </a>').appendTo(pictureCol);
+			var nameAndLinkCol = $('<div class ="col-xs-9 col-md-9 col-lg-9">').appendTo(titleRow);
+			var nameAndLinkContainer = $('<div class ="name-and-link-container">').appendTo(nameAndLinkCol);
+			var nameAndLinkParagraph = $('<p>').appendTo(nameAndLinkContainer);
 			
+			$('<a href="'+String(obj.problem_link)+'" id="problem-link-element"><strong>'+String(obj.title)+'</strong></a>').appendTo(nameAndLinkParagraph);
+			$('<br/>').appendTo(nameAndLinkParagraph);
+			
+			$('<i><small>by: <strong><a href='+String(obj.user_link)+' id="user-link-element">'+String(obj.user)+'</a><strong></i></small>').appendTo(nameAndLinkParagraph);
+			var problemLink = $('<a href="'+String(obj.problem_link)+'" id="problem-link-element">').appendTo(roundBox);			
+			var detailsParagraph = $('<p align="justify">').appendTo(problemLink);
 			if(typeof obj.minimum_required_reputation !== "undefined")
 			{
 				if( /Android|webOS|iPad|iPhone|BlackBerry/i.test(navigator.userAgent)== false)
 				{
-					$('<strong>Minimum required reputation: </strong>'+String(obj.minimum_required_reputation)+'<br/>').appendTo(problemLink);
+					$('<strong>Minimum required reputation: </strong>'+String(obj.minimum_required_reputation)+'<br/>').appendTo(detailsParagraph);
 				}
 				else
 				{
-					$('<strong><i class="fa fa-copyright fa-lg" aria-hidden="true"></i>:<font color="orange">'+String(obj.minimum_required_reputation)+'</strong></font><br/>').appendTo(problemLink);
+					$('<strong><i class="fa fa-copyright fa-lg" aria-hidden="true"></i>:<font color="orange">'+String(obj.minimum_required_reputation)+'</strong></font><br/>').appendTo(detailsParagraph);
 				}
-			}
-			
-		
-			var paragraph = $('<p align="justify">').appendTo(problemLink);
-			$('<strong>Deadline: </strong>'+String(obj.deadline)+'<br/>').appendTo(paragraph);
+			}	
+			$('<strong>Deadline: </strong>'+String(obj.deadline)+'<br/>').appendTo(detailsParagraph);
 			if( /Android|webOS|iPad|iPhone|BlackBerry/i.test(navigator.userAgent)== false)
 			{
-				$('<strong>Description: </strong>'+String(obj.description)+'<br/>').appendTo(paragraph);
+				$('<strong>Description: </strong>'+String(obj.description)+'<br/>').appendTo(detailsParagraph);
 			}
-			$('<br/>').appendTo(innerCol);
 			
 			if(Number(obj.bounty)>0)
 			{
-				$('<strong><i class="fa fa-gift fa-lg" aria-hidden="true"></i>:<font color="green">'+String(obj.bounty)+'</strong></font><br/>').appendTo(problemLink);
+				$('<strong><i class="fa fa-gift fa-lg" aria-hidden="true"></i>:<font color="green">'+String(obj.bounty)+'</strong></font>').appendTo(detailsParagraph);
 			}
-			
 			var tags = $('<strong>Tags: </strong>').appendTo(problemLink);
 			$.each(obj.tags, function(i, tagObj)
 			{
 				//console.log("text: "+tagObj.tag_text+"tag_link: "+tagObj.tag_link);
 				$('<a href='+String(tagObj.tag_link)+'>'+String(tagObj.tag_text)+" "+'</a>').appendTo(tags);
-			}		
-			);
+			});
+			$('<br/>').appendTo(innerCol);
 			
 		});
 	});
