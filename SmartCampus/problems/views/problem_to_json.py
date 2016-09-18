@@ -1,5 +1,6 @@
 from django.http.response import HttpResponse
 import json
+from django.utils.html import escape
 
 def problem_to_json(problems, problem_type):
     json_list = []
@@ -14,7 +15,7 @@ def problem_to_json(problems, problem_type):
                           'user_link':"/users/"+problem.user.userprofile.slug,
                           'title': problem.title,
                           'problem_link':"/problems/"+problem.slug,
-                          'description': problem.desc,
+                          'description': escape(problem.desc),
                           'deadline': problem.deadline.strftime('%Y-%m-%d %H:%M'),
                           'tags':tag_list,
                           'bounty': problem.bounty
@@ -59,4 +60,6 @@ def problem_to_json(problems, problem_type):
                           'minimum_required_reputation': problem.confidence_problem.min_rq_reputation
             })      
             
+    for json_list_element in json_list:
+        escape(json_list_element)
     return HttpResponse(json.dumps(json_list, ensure_ascii=False).encode('utf8'))             

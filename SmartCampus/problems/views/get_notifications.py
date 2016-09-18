@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from problems.models import Notification
 from django.http.response import HttpResponse
 import json
+from django.utils.html import escape
 
 @login_required
 def get_notifications(request, count):
@@ -61,4 +62,6 @@ def get_notifications(request, count):
                               'granted_reputation':100,
                               'reputation':100,
                               })
+    for json_list_element in json_list:
+        escape(json_list_element)
     return HttpResponse(json.dumps(json_list, ensure_ascii=False).encode('utf8'))

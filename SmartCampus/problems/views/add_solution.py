@@ -28,6 +28,7 @@ def add_solution(request, problem_title_slug):
     
     if (own_solutions.count()>0):
         user_added_solution = True
+        render_list['user_added_solution']=user_added_solution
         return render(request, 'problems/problems.html', render_list)
     
     if(problem.status!="pending"):

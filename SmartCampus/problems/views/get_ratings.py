@@ -1,6 +1,10 @@
 from problems.models import Rating
 from django.http.response import HttpResponse
 import json
+
+from django.utils.html import escape
+
+
 def get_ratings(request, requested_type):
     try:
         ratings = Rating.objects.filter(user__exact = request.user, status__exact = "pending")
@@ -23,5 +27,6 @@ def get_ratings(request, requested_type):
                           'solution_description': rating.solution.desc,
                           })
 
-    
+    for json_list_element in json_list:
+        escape(json_list_element)
     return HttpResponse(json.dumps(json_list, ensure_ascii=False).encode('utf8'))

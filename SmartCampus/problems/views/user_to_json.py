@@ -1,5 +1,6 @@
 from django.http.response import HttpResponse
 import json
+from django.utils.html import escape
 
 def user_to_json(curr_user, user):
     if(user==[]):
@@ -13,4 +14,5 @@ def user_to_json(curr_user, user):
                 })
     if(user==curr_user):
         json_list.update({'ignore': "forbidden"})
+    json_list=escape(json_list)
     return HttpResponse(json.dumps(json_list, ensure_ascii=False).encode('utf8'))
