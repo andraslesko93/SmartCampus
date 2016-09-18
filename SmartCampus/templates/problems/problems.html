@@ -53,13 +53,14 @@
 				</div>
 			</div>
 				{% if problem %}
-		            
-		                <br/> <br/>
-		                <p align="justify"><strong>Place:</strong> {{problem.place}} </p>
-		                <p align="justify"><strong>Descripton:</strong> {{problem.desc}} </p>
+		                <p align="justify">
+		                <strong>Place:</strong> {{problem.place}}
+		                <br/>
+		                <strong>Descripton:</strong> {{problem.desc}}
+		                <br/>
 		                <strong>Required people:</strong> {{problem.rq_ppl}}
-		                <br/> <strong>Deadline:</strong> {{problem.deadline}}
-		                
+		                <br/>
+		                <strong>Deadline:</strong> {{problem.deadline}}
 		                {% if problem.confidence_problem.min_rq_reputation %}
 		                <br/> <strong>Minimum required reputation:</strong> {{problem.confidence_problem.min_rq_reputation}}
 		                {% endif %}
@@ -68,11 +69,11 @@
 		                {% for tag in problem.tags.all %}
 							<strong><a href="/tag/{{ tag.slug }}">{{tag.tag_text}}</a></strong>
 		                {%endfor%} 
-		                <br/>
-		                {%if problem.bounty %}             					
+		                {%if problem.bounty %} 
+		                		<br/>            					
 		               			<font color="green"><strong>Bounty:{{problem.bounty}}</strong></font> <font size="2"> <span class="glyphicon glyphicon-gift"></span></font>
 		               	{%endif%}
-						<br/>
+		               	<p/>
 		        {% endif %}
 		        {% if problem.status == 'in_progress' %}
 			        <b style="color:lightgreen">
@@ -116,20 +117,21 @@
 						</div>
 					</div>
 				</div>
+			<p align ="justify">
 			<strong>Served people:</strong> {{solution.served_ppl}} <br/>
-			<strong>Description:</strong> <p align ="justify">{{solution.desc}}</p>
+			<strong>Description:</strong> {{solution.desc}}
+	       	<br/>
 	       	{%if solution.status == 'pending'%}
 	           	<strong>Status:</strong>  <font color="orange"><strong>{{solution.status}}</strong> </font>
-	       	
 	       	{%else%}
-	       	<strong>Status:</strong>  <font color="green"><strong>{{solution.status}}</strong> </font>
+	       		<strong>Status:</strong>  <font color="green"><strong>{{solution.status}}</strong> </font>
 	       	{%endif%}
 	       	
 	       	{%if solution.user_id == user and solution.status == 'pending'%}
 	       		<br/>
 	       		<strong><a href="/edit_solution/{{ solution.slug }}"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit </a> </strong>
 	       	{%endif%}
-	       
+	       	</p>
 	       	{% if problem.user == user and problem.status == 'pending' %}
 	       		{%if solution.status == 'pending'%}
 	       		
