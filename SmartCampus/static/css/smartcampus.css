@@ -9,15 +9,9 @@ padding-bottom: 25px;
 padding-left: 15px;
 box-sizing: border-box;
 }
-
-.text-breaker {
-	word-break: break-all;
+p{
+overflow-wrap: break-word;
 }
-
-.text-breaker-sidebar {
-	word-break: keep-all;
-}
-
 a.tagCloud-0 {
     font-size: x-small;
     color: #669EC2;

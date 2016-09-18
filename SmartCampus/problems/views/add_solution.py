@@ -32,7 +32,6 @@ def add_solution(request, problem_title_slug):
         return render(request, 'problems/problems.html', render_list)
     
     if(problem.status!="pending"):
-        render_list['error_message']="You cannot add a solution to a closed problem."
         return render(request, 'problems/problems.html', render_list)
     
     if(problem.user==request.user):
