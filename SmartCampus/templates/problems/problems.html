@@ -30,13 +30,28 @@
 <div class ="row">
 	<div class="col-xs-12">
 		<div class="round-box">
-			<a href="/users/{{ problem.user.userprofile.slug }}">
-				<img src="{{problem.user.userprofile.picture_url}}" width="50"/>
-			</a>
-				<strong><a href="/users/{{ problem.user.userprofile.slug }}">{{problem.user}}</a></strong>:  
-				<strong>{{problem.title}}</strong>
-		
-				
+			<div class="row">
+				<div class= "col-xs-12 col-md-6">
+					<div class="row">
+						<div class="col-xs-1">
+								<a href="/users/{{ problem.user.userprofile.slug }}">
+									<img src="{{problem.user.userprofile.picture_url}}" width="50"/>
+								</a>
+						</div>
+						<div class ="col-xs-9 col-md-9 col-lg-9">
+							<div class ="name-and-link-container">
+							<p>
+								<strong>{{problem.title}}</strong>
+								<br/>
+								
+								<i><small>by: <strong><a href="/users/{{ problem.user.userprofile.slug }}" id="user-link-element">{{problem.user}}</a></strong></small></i>
+								
+							</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 				{% if problem %}
 		            
 		                <br/> <br/>
@@ -81,13 +96,26 @@
 	   <div class="row">
 	      <div class="col-xs-12">
 	       <div class="round-box">
-	       	
-				<a href="/users/{{ solution.user_id.userprofile }}">
-	       			<img src="{{solution.user_id.userprofile.picture_url}}" width="50"/>
-	       			<strong><a href="/users/{{ solution.user_id }}">{{solution.user_id}}</a></strong>  offered a solution: 
-	       		</a> 
-			<br/>
-			<br/>
+		       	<div class="row">
+					<div class= "col-xs-12 col-md-6">
+						<div class="row">
+							<div class="col-xs-1">
+									<a href="/users/{{ solution.user_id.userprofile.slug }}">
+										<img src="{{solution.user_id.userprofile.picture_url}}" width="50"/>
+									</a>
+							</div>
+							<div class ="col-xs-9 col-md-9 col-lg-9">
+								<div class ="name-and-link-container">
+								<p>
+									Solution
+									<br/>
+									<i><small>by: <strong><a href="/users/{{ solution.user_id.userprofile.slug}}" id="user-link-element">{{solution.user_id}}</a></strong></small></i>				
+								</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			<strong>Served people:</strong> {{solution.served_ppl}} <br/>
 			<strong>Description:</strong> <p align ="justify">{{solution.desc}}</p>
 	       	{%if solution.status == 'pending'%}
