@@ -81,7 +81,7 @@
 		  					<br/>
 		  					<br/>
 		  					<strong>Deadline:</strong> <br/>
-		  					<input type="datetime-local" required  name="deadline" >
+		  					<input type="datetime-local" id=classisProblemFormDateTime required name="deadline" >
 		  					<br/>
 		  					<br/>
 		  					<strong>Description:</strong> <br/>
@@ -133,7 +133,7 @@
 		  					<br/>
 		  					<br/>
 		  					<strong>Deadline:</strong> <br/>
-		  					<input type="datetime-local"required  name="deadline" >
+		  					<input type="datetime-local" id=confProblemFormDateTime required  name="deadline" >
 		  					<br/>
 		  					<br/>
 		  					<strong>Description:</strong> <br/>
@@ -168,4 +168,6 @@
 </div>
 </div>
 {% endblock %}
-
+{% block script_block %}
+<script src="{{ STATIC_URL }}js/compareDateTimeToCurrentDateTime.js"></script> 
+{% endblock %}
