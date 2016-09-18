@@ -4,7 +4,6 @@ from add_solution import *
 from problems.views.post_user_unblock import *
 from problems.views.post_user_ignore import *
 from outdated_problems import *
-from own_problems import *
 from problems.views.post_ratings import *
 from register import *
 from user_authentication import *
