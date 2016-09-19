@@ -107,7 +107,9 @@ label[name=textAreaCounter] {
 .name-and-link-container{
     padding-left: 9%;
 }
-
+.sidebar-element{
+	white-space: nowrap;
+}
 @media(min-width:62em)
 {
 	body {
@@ -128,6 +130,9 @@ label[name=textAreaCounter] {
 	}
 	.name-and-link-container{
     padding-left: 20%;
+	}
+	.sidebar-element{
+	white-space: normal;
 }
 }
 
