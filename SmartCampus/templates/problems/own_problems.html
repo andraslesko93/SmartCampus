@@ -7,16 +7,17 @@
 {% block body_block %}
 <div class ="row">
 	<div class="col-xs-12">
-		<div class="round-box">
-			<div class="container">
+		<div class="container">
+			<div class="round-box" align="center">
 				<div class ="row">
-					<ul class="nav nav-tabs">
-						<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#pending">Pending problems</a></li>   
+					<ul class="nav nav-pills nav-basic">
+						<li class="nav-item"><a class="nav-link nav-link-basic active" data-toggle="tab" href="#pending">Pending problems</a></li>   
 			  			<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#in_progress">In progress problems</a></li>	
 			  			<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#solved">Solved problems</a></li>				    
 					</ul>
 				</div>
-			
+			</div>
+			<br/>
 				<div class="tab-content">
 			  		<div id="pending" class="tab-pane fade in active">
 						{% if pending_problems %}
@@ -78,8 +79,13 @@
 									<br/>
 						       	{% endfor %}
 						    {% else %}
-						    <br/>
-					    	<p>You don't have any pending problems</p>
+						    <div class ="row">
+								<div class="col-xs-12">
+									<div class="round-box">
+					    				You don't have any pending problems.
+					    			</div>
+					    		</div>
+					    	</div>
 						    {%endif%}
 			  		</div>
 			  		<div id="in_progress" class="tab-pane fade">
@@ -140,8 +146,13 @@
 								<br/>
 					        {% endfor %}
 					    {% else %}
-					    <br/>
-					    <p>You don't have any in progress problems</p>
+					  	<div class ="row">
+							<div class="col-xs-12">
+								<div class="round-box">
+					    			You don't have any in progress problems.
+					    		</div>
+					    	</div>
+					    </div>
 					    {% endif %}
 			  		</div>
 			  		<div id="solved" class="tab-pane fade">
@@ -203,8 +214,13 @@
 								<br/>
 					        {% endfor %}
 					    {% else %}
-					    <br/>
-					    <p>You don't have any solved problems</p>
+					    <div class ="row">
+							<div class="col-xs-12">
+								<div class="round-box">
+					   	 			You don't have any solved problems.
+					   	 		</div>
+					   	 	</div>
+					   	 </div>
 					    {% endif %}
 					    
 			  		</div>
