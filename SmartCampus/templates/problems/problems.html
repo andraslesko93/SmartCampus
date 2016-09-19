@@ -27,6 +27,7 @@
 		</div>
 	</div>
 {%endif%}
+{% if problem %}
 <div class ="row">
 	<div class="col-xs-12">
 		<div class="round-box">
@@ -52,7 +53,7 @@
 					</div>
 				</div>
 			</div>
-				{% if problem %}
+				
 		                <p align="justify">
 		                <strong>Place:</strong> {{problem.place}}
 		                <br/>
@@ -74,10 +75,10 @@
 		               			<font color="green"><strong>Bounty:{{problem.bounty}}</strong></font> <font size="2"> <span class="glyphicon glyphicon-gift"></span></font>
 		               	{%endif%}
 		               	<p/>
-		        {% endif %}
+		        
 		        {% if problem.status == 'in_progress' %}
 			        <b style="color:lightgreen">
-			            <strong>The solution of the problem is in progress</strong> 
+			            <strong>The solving of the problem is in progress</strong> 
 			        </b>
 			        
 		        {% endif %}
@@ -91,7 +92,7 @@
 	</div>
 </div>
 <br/>
-        
+{% endif %}   
 {% if solutions %}
 	{% for solution in solutions %}
 	   <div class="row">

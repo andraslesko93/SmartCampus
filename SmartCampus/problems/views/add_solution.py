@@ -13,13 +13,14 @@ def add_solution(request, problem_title_slug):
     try:
         ignored_users = Ignore.objects.all()
         ignored_users = Ignore.objects.filter(ref_user_id__exact=request.user)
-        problem = Problem.objects.get(slug=problem_title_slug)
         userprofile = UserProfile.objects.get(user__exact = request.user)
+        problem = get_object_or_404(Problem, slug = problem_title_slug)
         solutions = Solution.objects.filter (problem_id__exact = problem)
         solutions = solutions.filter( ~Q(user_id=ignored_users.values('ref_user_id')))        
         own_solutions = Solution.objects.filter(problem_id__exact = problem, user_id__exact= request.user)
     except (UserProfile.DoesNotExist, Problem.DoesNotExist, Ignore.DoesNotExist, Solution.DoesNotExist):
         pass
+    
     user_added_solution = False 
     render_list =({'problem':problem, 'solutions':solutions, 'user_added_solution':user_added_solution })
 

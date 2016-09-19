@@ -6,7 +6,6 @@
 
 {% block clear_block %}
 
-{% if user.is_authenticated == false %}
 <div class ="row">
 <div class ="col-xs-12">
 <div class="round-box" align = "center">
@@ -29,15 +28,15 @@
 </div>
 </div>
 </div>
-{% if error_message %}
-	<div class ="row">
-		<div class ="col-xs-12">
-			<div class="round-box" align = "center" style="background:rgba(255,204,204,0.93);;">
-			<strong>{{error_message}}</strong>		
+	{% if error_message %}
+		<div class ="row">
+			<div class ="col-xs-12">
+				<div class="round-box" align = "center" style="background:rgba(255,204,204,0.93);;">
+				<strong>{{error_message}}</strong>		
+				</div>
 			</div>
 		</div>
-	</div>
-{%endif%}
-{%endif%}
+	{%endif%}
+
 {% endblock %}
 

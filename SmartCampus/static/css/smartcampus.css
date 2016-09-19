@@ -9,6 +9,19 @@ padding-bottom: 25px;
 padding-left: 15px;
 box-sizing: border-box;
 }
+
+.round-box-dark{
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+background:rgba(220,220,220,0.7);
+padding-top: 25px;
+padding-right: 25px;
+padding-bottom: 25px;
+padding-left: 15px;
+box-sizing: border-box;
+}
+
 p{
 overflow-wrap: break-word;
 }
