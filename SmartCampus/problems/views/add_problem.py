@@ -8,7 +8,7 @@ from problems.views.support_functions import reputation_adder, within_one_hour
 import datetime
 @login_required
 def add_problem(request):
-    problem_limit = 5
+    hourly_problem_limit = 5
     reputation_limit = 50
     bounty_limit = 1000
     max_bounty = 100
@@ -22,7 +22,7 @@ def add_problem(request):
     try:
         userprofile = UserProfile.objects.get(user__exact = request.user)
         prev_problems = Problem.objects.filter(user__exact = request.user)
-        prev_problems = prev_problems.order_by('-added_at')[:problem_limit]
+        prev_problems = prev_problems.order_by('-added_at')[:hourly_problem_limit]
     except UserProfile.DoesNotExist, Problem.DoesNotExist:
         pass
     problems_in_one_hour = 0
@@ -30,7 +30,7 @@ def add_problem(request):
             if (within_one_hour(prev_problem.added_at)):
                 problems_in_one_hour = problems_in_one_hour +1
         
-    if (problems_in_one_hour == problem_limit):
+    if (problems_in_one_hour == hourly_problem_limit):
             reached_problem_limit = True
             return render(request, 'problems/add_problem.html', {'reached_problem_limit': reached_problem_limit, 'problems_in_one_hour':problems_in_one_hour})
 

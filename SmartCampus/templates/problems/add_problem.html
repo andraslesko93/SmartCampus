@@ -4,36 +4,7 @@
 
 {% block title %}{% endblock %}
 
-{% block body_block %}
-
-<style>
-		input[type="number"]
-		{
-				width:100%;
-		}
-
-		input[type="text"]
-		{
-				width:100%;
-		}
-		
-		input[type="datetime-local"]
-		{
-				width:100%;
-		}
-		
-		textarea
-		{
-				width:100%;
-				height:150px;
-		}
-		
-		#textBox {
-    			width:100%;
-		}
-		
-		
-</style>		
+{% block body_block %}	
 {% if error_message %}
 	<div class ="row">
 		<div class ="col-xs-12 col-md-5">
@@ -91,7 +62,7 @@
 							<br/>
 							<br/>
 							{% if user.userprofile.reputation >= bounty_limit %}
-								<div  id="textBox">
+								<div  id="bountyTextBox">
 								<p align="justify">Since you got more than {{bounty_limit}} reputation you can now add a maximum {{max_bounty}} bounty reputation to your problems.</p> <br/><br/>
 								</div>
 		  						<strong>Bounty:</strong> <br/>

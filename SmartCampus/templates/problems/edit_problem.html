@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{% endblock %}
+
+{% block body_block %}
+
+{% if error_message %}
+	<div class ="row">
+		<div class ="col-xs-12 col-md-5">
+			<div class="round-box" align="center"style="background:rgba(255,204,204,0.93);;">
+				<strong>{{error_message}}</strong>		
+			</div>
+		</div>
+	</div>
+{%endif%}
+{% if problem %}
+<div class ="row" id="edit-solution-row">
+<div class ="col-xs-12 col-md-5">
+<div class="round-box">
+		<br/>
+		<h4> Edit your problem:</h4>
+		<form id="edit_problem_form" method="POST" >			        	
+    		{% csrf_token %} 
+     		<strong>Title:</strong>
+     		<br/>
+			<input type="text" pattern=".{1,30}" required title="1 to 30 characters" placeholder="Title" name="title">
+			<br/>
+			<br/>
+			<strong>Minimum required reputation:</strong> <br/>
+			<input type="number" name="rq_repu" min="1000" value = 1000 >
+			<br/>
+			<br/>
+			<strong>Place:</strong><br/>
+			<input type="text" pattern=".{1,30}" required title="1 to 30 characters" placeholder="Place" name="place">
+			<br/>
+			<br/>
+			<strong>Required people:</strong> <br/>
+			<input type="number" required  name="rq_ppl" min="1" value = 1 >
+			<br/>
+			<br/>
+			<strong>Tags:</strong><br/>
+			<input type="text" pattern=".{1,}" required title="1 characters minimum" placeholder="Tags" name="tags">
+			<br/>
+			<br/>
+			<strong>Deadline:</strong> <br/>
+			<input type="datetime-local" id=confProblemFormDateTime required  name="deadline" >
+			<br/>
+			<br/>
+			<strong>Description:</strong> <br/>
+			<textarea name="desc" form="edit_problem_form" id="editProblemFormTextArea"  pattern=".{15,500}" maxlength=500 required title="15 to 500 characters"  placeholder="Some description about the problem"></textarea>
+			<label name="textAreaCounter" id="editProblemFormTextAreaCounter" ></label>
+			<br/>
+			<br/>
+			<strong>Bounty:</strong> <br/>
+			<input type="number" value ="0" name="bounty" min="0" max={{max_bounty}} >
+			<br/>
+				
+			
+			<div align ="center">
+			<br/><button style="width:200px" type="submit" class="btn btn-primary btn-basic">Apply changes<span class="glyphicon glyphicon-ok"></span></button> <br/>	
+			</div>
+        </form>
+        
+		
+		<br/>
+		<div align ="center">	
+		<form id ="no_button" action="/own_problems/">
+    		<button style="width:200px"; type="submit" class="btn btn-default">Cancel <span class="glyphicon glyphicon-ban-circle"></span></button>
+		</form>
+		</div>
+	</div>
+	</div>
+	</div>  
+{% endif %}   
+{% endblock %}
+

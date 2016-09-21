@@ -15,7 +15,8 @@ urlpatterns = patterns('',
         url(r'^accept_solution/(?P<solution_id_slug>[\w\-]+)/$', views.accept_solution, name='accept_solution'),     
         url(r'^own_problems/$', views.own_problems, name='own_problems'),
         url(r'^edit_solution/(?P<solution_id_slug>[\w\-]+)/$', views.edit_solution, name='edit_solution'),
-        
+        url(r'^edit_problem/(?P<problem_title_slug>[\w\-]+)/$', views.edit_problem, name='edit_problem'),
+
         #Urls with Post methods:
         url(r'^users/(?P<user_id_slug>[\w\-]+)/$', views.post_user_ignore, name='users'),
         url(r'^ignored_users/$', views.post_user_unblock, name='post_user_unblock'),
