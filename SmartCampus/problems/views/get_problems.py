@@ -9,7 +9,7 @@ def get_problems(request, deadline, problem_type):
     ignored_users = Ignore.objects.filter (user_id__exact=request.user)
     problems= Problem.objects.all()        
     problems = problems.order_by('-bounty', 'deadline')
-    problems = problems.filter (status__exact="pending")
+    problems = problems.filter (Q(status__exact = "pending") | Q(status__exact = "new"))   
     problems = problems.filter(~Q(user=ignored_users.values('ref_user_id')))    
     if (deadline == "in_time"):
         problems = problems.filter(deadline__gte=datetime.now())

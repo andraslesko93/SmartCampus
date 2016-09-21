@@ -7,11 +7,11 @@
 {% block body_block %}
 <div class ="row">
 	<div class="col-xs-12">
-		<div class="container">
-			<div class="round-box" align="center">
+			<div class="round-box">
 				<div class ="row">
 					<ul class="nav nav-pills nav-basic">
-						<li class="nav-item"><a class="nav-link nav-link-basic active" data-toggle="tab" href="#pending">Pending problems</a></li>   
+						<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#new">New problems</a></li>   
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#pending">Pending problems</a></li>   
 			  			<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#in_progress">In progress problems</a></li>	
 			  			<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#solved">Solved problems</a></li>				    
 					</ul>
@@ -19,9 +19,18 @@
 			</div>
 			<br/>
 				<div class="tab-content">
-			  		<div id="pending" class="tab-pane fade in active">
-						{% if pending_problems %}
-								{% for problem in pending_problems %}
+						<div id="new" class="tab-pane fade in active">
+
+						<div class ="row">
+							<div class="col-xs-12">
+								<div class="round-box">
+								New problems are the problems that don't have any solution suggestions, therefore can edit these.
+								</div>
+								<br/>
+							</div>
+						</div>
+						{% if new_problems %}
+								{% for problem in new_problems %}
 									<div class ="row">
 										<div class="col-xs-12">
 											<div class="round-box">
@@ -88,8 +97,90 @@
 					    	</div>
 						    {%endif%}
 			  		</div>
+			  		<div id="pending" class="tab-pane fade">
+
+						<div class ="row">
+							<div class="col-xs-12">
+								<div class="round-box">
+								Pending problems are the problems that have at least one solution suggestion.
+								</div>
+								<br/>
+							</div>
+						</div>
+						{% if pending_problems %}
+								{% for problem in pending_problems %}
+									<div class ="row">
+										<div class="col-xs-12">
+											<div class="round-box">
+												<div class="row">
+													<div class= "col-xs-12 col-md-6">
+														<div class="row">
+															<div class="col-xs-1">
+																	<a href="/users/{{ problem.user.userprofile.slug }}">
+																		<img src="{{problem.user.userprofile.picture_url}}" width="50"/>
+																	</a>
+															</div>
+															<div class ="col-xs-9 col-md-9 col-lg-9">
+																<div class ="name-and-link-container">
+																<p>
+																	<strong>{{problem.title}}</strong>
+																	<br/>
+																	
+																	<i><small>by: <strong><a href="/users/{{ problem.user.userprofile.slug }}" id="user-link-element">{{problem.user}}</a></strong></small></i>
+																	
+																</p>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+													
+								                <p align="justify">
+								                <strong>Place:</strong> {{problem.place}}
+								                <br/>
+								                <strong>Descripton:</strong> {{problem.desc}}
+								                <br/>
+								                <strong>Required people:</strong> {{problem.rq_ppl}}
+								                <br/>
+								                <strong>Deadline:</strong> {{problem.deadline}}
+								                {% if problem.confidence_problem.min_rq_reputation %}
+								                <br/> <strong>Minimum required reputation:</strong> {{problem.confidence_problem.min_rq_reputation}}
+								                {% endif %}
+								                
+								                <br/> <strong>Tags:</strong>
+								                {% for tag in problem.tags.all %}
+													<strong><a href="/tag/{{ tag.slug }}">{{tag.tag_text}}</a></strong>
+								                {%endfor%} 
+								                {%if problem.bounty %} 
+								                		<br/>            					
+								               			<font color="green"><strong>Bounty:{{problem.bounty}}</strong></font> <font size="2"> <span class="glyphicon glyphicon-gift"></span></font>
+								               	{%endif%}									        
+											</div>     
+										</div>
+									</div>
+									<br/>
+						       	{% endfor %}
+						    {% else %}
+						    <div class ="row">
+								<div class="col-xs-12">
+									<div class="round-box">
+					    				You don't have any pending problems.
+					    			</div>
+					    		</div>
+					    	</div>
+						    {%endif%}
+			  		</div>
 			  		<div id="in_progress" class="tab-pane fade">
-					    {% if in_progress_problems %}
+					    <div class ="row">
+							<div class="col-xs-12">
+								<div class="round-box">
+								If you accept enough solutions for the problem it's status will change to "In progress". 
+								</div>
+								<br/>
+							</div>
+						</div>
+						{% if in_progress_problems %}
+					    
 					     	{% for problem in in_progress_problems %}
 								<div class ="row">
 									<div class="col-xs-12">
@@ -156,7 +247,15 @@
 					    {% endif %}
 			  		</div>
 			  		<div id="solved" class="tab-pane fade">
-					    {% if solved_problems %}
+					    <div class ="row">
+							<div class="col-xs-12">
+								<div class="round-box">
+								After everyone who contributed in the solving of the problem rate the other the status of the problem will change to "solved"
+								</div>
+								<br/>
+							</div>
+						</div>
+						{% if solved_problems %}
 					       	{% for problem in solved_problems %}
 								<div class ="row">
 									<div class="col-xs-12">
@@ -225,7 +324,6 @@
 					    
 			  		</div>
 				</div>
-			</div>
 		</div>
 	</div>
 </div>

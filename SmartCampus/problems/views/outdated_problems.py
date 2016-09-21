@@ -11,7 +11,7 @@ def outdated(request):
         ignored_users = ignored_users.filter (user_id__exact=request.user)
         problem_list = Problem.objects.all()
         problem_list = Problem.objects.order_by('-deadline')
-        problem_list = problem_list.filter (status__exact="pending")
+        problem_list = problem_list.filter (Q(status__exact = "pending") | Q(status__exact = "new")) 
         problem_list = problem_list.filter (deadline__lte=datetime.now())
         problem_list = problem_list.filter(~Q(user=ignored_users.values('ref_user_id')))
         classic_problem_list = problem_list.filter(confidence_problem__isnull = True)

@@ -32,7 +32,7 @@ def add_solution(request, problem_title_slug):
         render_list['user_added_solution']=user_added_solution
         return render(request, 'problems/problems.html', render_list)
     
-    if(problem.status!="pending"):
+    if(problem.status!="pending" or problem.status!="new"):
         return render(request, 'problems/problems.html', render_list)
     
     if(problem.user==request.user):
@@ -76,6 +76,9 @@ def add_solution(request, problem_title_slug):
                                 problem_id = problem
                                 )
         new_solution.save()
+        if(problem.status=="new"):
+            problem.status="pending"
+            problem.save()
         new_log_entry = Log(user = request.user, 
                                 action = "New Solution", 
                                 content_type= ContentType.objects.get_for_model(new_solution),

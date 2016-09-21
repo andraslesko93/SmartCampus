@@ -25,38 +25,42 @@
     		{% csrf_token %} 
      		<strong>Title:</strong>
      		<br/>
-			<input type="text" pattern=".{1,30}" required title="1 to 30 characters" placeholder="Title" name="title">
+			<input type="text" pattern=".{1,30}" required title="1 to 30 characters" placeholder="Title"name="title" value = "{{problem.title}}" >
 			<br/>
 			<br/>
+			
+			{%if is_confidence%}
 			<strong>Minimum required reputation:</strong> <br/>
-			<input type="number" name="rq_repu" min="1000" value = 1000 >
+			<input type="number" name="rq_repu" min="1000" value = "{{problem.confidence_problem.min_rq_reputation}}" >
 			<br/>
 			<br/>
+			{%endif%}
 			<strong>Place:</strong><br/>
-			<input type="text" pattern=".{1,30}" required title="1 to 30 characters" placeholder="Place" name="place">
+			<input type="text" pattern=".{1,30}" required title="1 to 30 characters" placeholder="Place" name="place" value = "{{problem.place}}">
 			<br/>
 			<br/>
 			<strong>Required people:</strong> <br/>
-			<input type="number" required  name="rq_ppl" min="1" value = 1 >
+			<input type="number" required  name="rq_ppl" min="1" value = 1 value = "{{problem.min_rq_ppl}}">
 			<br/>
 			<br/>
 			<strong>Tags:</strong><br/>
-			<input type="text" pattern=".{1,}" required title="1 characters minimum" placeholder="Tags" name="tags">
+			<input type="text" pattern=".{1,}" required title="1 characters minimum" placeholder="Tags" name="tags" value = "{{tags}}">
 			<br/>
 			<br/>
 			<strong>Deadline:</strong> <br/>
-			<input type="datetime-local" id=confProblemFormDateTime required  name="deadline" >
+			<input type="datetime-local" id=confProblemFormDateTime required  name="deadline" value = "{{deadline}}" >
 			<br/>
 			<br/>
 			<strong>Description:</strong> <br/>
-			<textarea name="desc" form="edit_problem_form" id="editProblemFormTextArea"  pattern=".{15,500}" maxlength=500 required title="15 to 500 characters"  placeholder="Some description about the problem"></textarea>
+			<textarea name="desc" form="edit_problem_form" id="editProblemFormTextArea"  pattern=".{15,500}" maxlength=500 required title="15 to 500 characters"  placeholder="Some description about the problem">{{problem.desc}}</textarea>
 			<label name="textAreaCounter" id="editProblemFormTextAreaCounter" ></label>
 			<br/>
 			<br/>
+			{% if user.userprofile.reputation >= bounty_limit %}
 			<strong>Bounty:</strong> <br/>
-			<input type="number" value ="0" name="bounty" min="0" max={{max_bounty}} >
+			<input type="number" value ="0" name="bounty" min="0" max={{max_bounty}}  value="{{problem.bounty}}">
 			<br/>
-				
+			{%endif%}
 			
 			<div align ="center">
 			<br/><button style="width:200px" type="submit" class="btn btn-primary btn-basic">Apply changes<span class="glyphicon glyphicon-ok"></span></button> <br/>	

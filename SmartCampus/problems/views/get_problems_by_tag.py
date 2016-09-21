@@ -1,7 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from problems.models import Problem, Tag
 from problems.views.problem_to_json import problem_to_json
-from django.http.response import HttpResponse
 
 @login_required
 def get_problems_by_tag(request, tag_id_slug, problem_type):

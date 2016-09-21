@@ -6,16 +6,13 @@ from eventlog.models import Log
 from django.contrib.contenttypes.models import ContentType
 from problems.views.support_functions import reputation_adder, within_one_hour
 import datetime
+from problems.views.reputation_system_settings import hourly_problem_limit, classic_problem_repu_limit, bounty_limit, max_bounty, confidence_problem_repu_limit
+
 @login_required
-def add_problem(request):
-    hourly_problem_limit = 5
-    reputation_limit = 50
-    bounty_limit = 1000
-    max_bounty = 100
-    confidence_problem_repu_limit = 1500  
+def add_problem(request): 
     reached_problem_limit = True
     
-    if (request.user.userprofile.reputation < reputation_limit):
+    if (request.user.userprofile.reputation < classic_problem_repu_limit):
             below_rep_limit = True
             return render(request, 'problems/add_problem.html', {'below_rep_limit': below_rep_limit})
     
