@@ -164,6 +164,9 @@ label[name=textAreaCounter] {
 	}
 	.sidebar-element{
 	font-size:x-small;
+	}	
+	.sidebar-element{
+	font-size:small;
 	}
 }
 
