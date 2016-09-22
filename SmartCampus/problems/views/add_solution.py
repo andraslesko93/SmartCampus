@@ -32,7 +32,7 @@ def add_solution(request, problem_title_slug):
         render_list['user_added_solution']=user_added_solution
         return render(request, 'problems/problems.html', render_list)
     
-    if(problem.status!="pending" or problem.status!="new"):
+    if((problem.status!="pending") and (problem.status!="new")):
         return render(request, 'problems/problems.html', render_list)
     
     if(problem.user==request.user):

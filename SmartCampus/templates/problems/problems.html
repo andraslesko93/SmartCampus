@@ -164,7 +164,7 @@
         
         
     
-{% if problem.status == 'pending' %}
+{% if problem.status == 'pending' or problem.status == 'new' %}
 	{% if problem.user != user %}	        
 		{%if user_added_solution == False %}
 		        	<div class="row">

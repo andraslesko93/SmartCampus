@@ -10,18 +10,6 @@ padding-left: 15px;
 box-sizing: border-box;
 }
 
-.round-box-transparent{
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
-border-radius: 5px;
-padding-top: 25px;
-padding-right: 25px;
-padding-bottom: 25px;
-padding-left: 15px;
-box-sizing: border-box;
-}
-
-
 .nav-basic {
 	display: flex;
     justify-content: center;

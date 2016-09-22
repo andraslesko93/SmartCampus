@@ -48,7 +48,7 @@
 			<br/>
 			<br/>
 			<strong>Deadline:</strong> <br/>
-			<input type="datetime-local" id=confProblemFormDateTime required  name="deadline" value = "{{deadline}}" >
+			<input type="datetime-local" id=editProblemFormDateTime required  name="deadline" value = "{{deadline}}" >
 			<br/>
 			<br/>
 			<strong>Description:</strong> <br/>
@@ -77,6 +77,9 @@
 	</div>
 	</div>
 	</div>  
-{% endif %}   
+{% endif %}
 {% endblock %}
 
+{% block script_block %}
+<script src="{{ STATIC_URL }}js/OnEditProblemPage.js"></script> 
+{% endblock %}

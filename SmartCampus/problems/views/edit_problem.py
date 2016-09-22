@@ -9,6 +9,15 @@ from django.http import HttpResponseRedirect
 
 def edit_problem (request, problem_title_slug):    
     problem = get_object_or_404(Problem, slug = problem_title_slug)
+    
+    if(problem.user!=request.user):
+        error_message="You can not edit other's problems."
+        return render(request, 'problems/edit_problem.html', {'error_message':error_message})
+    
+    if(problem.status!="new"):
+        error_message="You can not edit a pending problem."
+        return render(request, 'problems/edit_problem.html', {'error_message':error_message})
+ 
     tags=""
     for tag in problem.tags.all():
         tags += tag.tag_text 
@@ -67,12 +76,12 @@ def edit_problem (request, problem_title_slug):
         date_out = datetime.datetime(*[int(v) for v in date_in.replace('T', '-').replace(':', '-').split('-')])
         
         if(date_out<(datetime.datetime.now())):
-            error_message="You can't create a problem in the past."
+            error_message="You can't edit a problem's deadline to the past."
             render_list['error_message']=error_message
             return render(request, 'problems/add_problem.html', render_list)
         
         if(date_out<(datetime.datetime.now() + datetime.timedelta(days=0, hours=1))):
-            error_message="You can't create a problem with such a close deadline. There should be at least 1 hour until its deadline passes." +str(deadline)
+            error_message="You can't edit a problem's deadline to such a close deadline. There should be at least 1 hour until its deadline passes." +str(deadline)
             render_list['error_message']=error_message
             return render(request, 'problems/add_problem.html', render_list)
         desc =  request.POST.get("desc")

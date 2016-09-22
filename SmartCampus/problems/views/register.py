@@ -15,6 +15,9 @@ def register(request):
         # Note that we make use of both UserForm and UserProfileForm.
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileForm(data=request.POST)
+        if (request.POST.get('accept_terms', None)==None):
+            error_message="You have to accept the terms of use before register to the application"
+            return render(request, 'problems/register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered, 'error_message':error_message} )
         
         if (request.POST.get('username')==""):
             error_message="Username field is required"

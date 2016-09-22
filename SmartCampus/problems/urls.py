@@ -29,6 +29,8 @@ urlpatterns = patterns('',
         url(r'^notifications', login_required(TemplateView.as_view(template_name="problems/notifications.html")), name='notifications'),
         url(r'^tag/(?P<tag_id_slug>[\w\-]+)/$', login_required(TemplateView.as_view(template_name="problems/tag.html")), name='tag_filter'),        
         url(r'^search/$', login_required(TemplateView.as_view(template_name="problems/search.html")), name='search'),
+        url(r'^terms_of_use/$', TemplateView.as_view(template_name="problems/terms_of_use.html"), name='terms_of_use'),
+        
         #JSON URLS:
         url(r'^check_the_unchecked_notifications.json', views.check_the_unchecked_notifications),
         url(r'^get_notifications_(?P<count>[\w\-]+).json', views.get_notifications),

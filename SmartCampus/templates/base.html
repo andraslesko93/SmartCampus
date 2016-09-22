@@ -165,7 +165,7 @@
                     		<div class = "col-xs-1">
                     			<div class="sidebar-element">
                     				<a href = "/own_problems/">
-                    					Your problem
+                    					Your problems
                     				</a>
                     			</div>
                     		</div>
@@ -259,6 +259,7 @@
         </div>
 
     </div>
+    {%endif%}
     <!--scripts loaded here-->
 	<script src="{{ STATIC_URL }}js/tether.min.js"></script><!-- Tether for Bootstrap --> 
     <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
@@ -271,10 +272,11 @@
     <script src="{{ STATIC_URL }}js/getUrlParameter.js"></script>
     <script src="{{ STATIC_URL }}js/setPatternToTextArea.js"></script>
 	<script src="{{ STATIC_URL }}js/setCounterToTextArea.js"></script>    
+	<script src="{{ STATIC_URL }}js/getCurrentDate.js"></script>    
     <script type="text/javascript" src="{{ STATIC_URL }}fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
     {% block script_block %} {% endblock %}
 
-    {%endif%}
+    
 </body>
 </html>
