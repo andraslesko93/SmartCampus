@@ -43,8 +43,9 @@
 			<input type="number" required  name="rq_ppl" min="1" value = 1 value = "{{problem.min_rq_ppl}}">
 			<br/>
 			<br/>
-			<strong>Tags:</strong><br/>
-			<input type="text" pattern=".{1,}" required title="1 characters minimum" placeholder="Tags" name="tags" value = "{{tags}}">
+			<strong>Add an additional tag:</strong> <br>
+			<small>Current tags: {{tags}}</small><br/>
+			<input type="text" pattern=".{1,}" title="1 characters minimum" placeholder="{{tags}}" name="tags">
 			<br/>
 			<br/>
 			<strong>Deadline:</strong> <br/>
