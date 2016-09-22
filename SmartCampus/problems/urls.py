@@ -1,7 +1,6 @@
 from django.conf.urls import patterns, url
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
-
 import views
 
 urlpatterns = patterns('',
@@ -42,4 +41,7 @@ urlpatterns = patterns('',
         url(r'^get_users_by_keyword/$', views.get_users_by_keyword, name='get_users_by_keyword'),
         url(r'^get_ignored_users.json', views.get_ignored_users, name='get_ignored_users'),
         url(r'^get_ratings-(?P<requested_type>[\w\-]+).json', views.get_ratings),
+        
+        #robots:
+        url(r'^robots\.txt$', TemplateView.as_view(template_name="problems/robots.txt"), name='robots.txt'),
 )
