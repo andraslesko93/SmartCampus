@@ -1,0 +1,11 @@
+Django==1.8
+django-jsonfield==1.0.1
+eventlog==0.11.0
+oauthlib==2.0.0
+Pillow==3.4.2
+PyJWT==1.4.2
+python-openid==2.2.5
+python-social-auth==0.2.21
+requests==2.11.1
+requests-oauthlib==0.7.0
+six==1.10.0
