@@ -109,7 +109,7 @@ input[type="text"]
 {%endif%}
 
 {% block script_block %}
-<script src="{{ STATIC_URL }}js/onRegisterPage.js"></script>
+<script src="{% static 'js/onRegisterPage.js'%}"></script>
 {%endblock%}
 
 {% endblock %}
