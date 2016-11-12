@@ -34,7 +34,7 @@
 				      <h3>Create a classic problem!</h3>
 		        		        
 				        <form id ="problem_form" method="POST">
-		  					{% csrf_token %} 
+		  					{% csrf_token %}
 		  					<strong>Title:</strong><br/>
 		  					<input type="text" pattern=".{1,30}" required title="1 to 30 characters" placeholder="Title" name="title">
 		  					<br/>

@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 import views
 
 urlpatterns = patterns('',
-        
         url(r'^outdated/$', views.outdated, name='outdated'),
         url(r'^register/$', views.register, name='register'),
         url(r'^login/$', views.user_login, name='login'),
