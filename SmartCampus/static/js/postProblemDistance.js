@@ -1,6 +1,6 @@
 function postProblemDistance(distance)
 {
-	console.log(distance);
+	//console.log(distance);
 	$.ajax({
 		type: 'POST',
 	    url: "/post_problem_disctance/",
