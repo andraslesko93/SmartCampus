@@ -6,7 +6,7 @@ background:rgba(251,251,251,0.93);
 padding-top: 25px;
 padding-right: 25px;
 padding-bottom: 25px;
-padding-left: 15px;
+padding-left: 25px;
 box-sizing: border-box;
 }
 
@@ -164,3 +164,10 @@ label[name=textAreaCounter] {
 	}
 }
 
+#map_canvas {
+  padding: 0;
+  height: 69vh;
+
+  width: 100%;
+  position: fixed;
+}

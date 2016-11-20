@@ -7,7 +7,7 @@ from django.contrib.contenttypes.models import ContentType
 from problems.views.support_functions import reputation_adder, within_one_hour
 import datetime
 from problems.views.reputation_system_settings import hourly_problem_limit, classic_problem_repu_limit, bounty_limit, max_bounty, confidence_problem_repu_limit
-
+from geoposition import Geoposition
 @login_required
 def add_problem(request): 
     reached_problem_limit = True
@@ -45,18 +45,6 @@ def add_problem(request):
             error_message="Maximum length for the title of the problem is 30 character."
             render_list['error_message']=error_message
             return render(request, 'problems/add_problem.html', render_list)
-        
-        place = request.POST.get("place")
-        if (place==""):
-            error_message="Please enter the place of the problem."
-            render_list['error_message']=error_message
-            return render(request, 'problems/add_problem.html', render_list)
-        
-        if (len(place)>30):
-            error_message="Maximum length for the place of the problem is 30 character."
-            render_list['error_message']=error_message
-            return render(request, 'problems/add_problem.html', render_list)
-        
         
         rq_ppl = request.POST.get("rq_ppl")
         if (rq_ppl==""):
@@ -115,10 +103,15 @@ def add_problem(request):
         tags = tags.replace ('  ', ' ')
         tag_list = tags.split()
         
+        place = request.POST.get("location")      
+        lat = request.POST.get("lat")
+        lng = request.POST.get("lng")
+        coordinates =Geoposition(latitude=lat, longitude=lng)
         if (rq_repu != None):
         
             new_problem = Confidence_Problem(title = title,
                                              place = place,
+                                             coordinates=coordinates,
                                              desc = desc,
                                              rq_ppl = rq_ppl,
                                              deadline = deadline,
@@ -132,6 +125,7 @@ def add_problem(request):
         else:
             new_problem = Problem(title = title,
                                   place = place,
+                                  coordinates=coordinates,
                                   desc = desc,
                                   rq_ppl = rq_ppl,
                                   deadline = deadline,

@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'problems',
     'eventlog',
     'social.apps.django_app.default',
+    'geoposition',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -151,3 +152,9 @@ GRAPH_MODELS = {
   #'group_models': True,
   'problems'
 }
+
+GEOPOSITION_GOOGLE_MAPS_API_KEY = 'AIzaSyDR63fIf4SOUmDD7Kx9ZT92OaPtvrh9WCY'
+
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#SESSION_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True

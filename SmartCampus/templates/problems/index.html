@@ -25,6 +25,25 @@
 
 <br/>
 
+<div class = "row">
+	<div class = "col-xs-12">
+		<div class="round-box">
+		<div align ="center">
+		<p><strong>Set a maximum distance for the problems from you:</strong></p>
+		</div>
+			<div class="range range-success">
+					{% csrf_token %}
+					<input type="range" name = "distanceRange" id = "distanceRange" value="{{user.userprofile.max_problem_distance}}" min="1" max="50" oninput="distanceRangeOutput.value = distanceRange.value+' km'" onchange="postProblemDistance(value)">
+					<output name="distanceRangeOutput" id="distanceRangeOutput">{{user.userprofile.max_problem_distance}}km</output>
+
+			</div>
+		</div>
+	</div>
+	<br/>
+</div>
+
+<br/>
+
 <div class="row">	
 	<div id="classic_problem_list"></div>
 	<div id="confidence_problem_list"></div>
@@ -40,5 +59,6 @@
 
 {% block script_block %}
 <script src="{% static 'js/onIndexPage.js'%}"></script>
+<script src="{% static 'js/postProblemDistance.js'%}"></script>
 {%endblock%}
 

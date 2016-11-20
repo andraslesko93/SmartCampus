@@ -1,7 +1,9 @@
 function createNotificationList (appendElementId, uncheckedNotificationNumber, location)
 {
-	var row = $('<div class="row">').appendTo("#"+appendElementId);
+	var appendElement= $('<div id="'+appendElementId+'"></div>');
+	var row = $('<div class="row">').appendTo(appendElement);
 	jsonLink= "/get_notifications_"+String(uncheckedNotificationNumber)+".json"
+	
 	$.getJSON(jsonLink, function(data)
 	{
 		$.each(data, function(i, obj) 
@@ -96,4 +98,5 @@ function createNotificationList (appendElementId, uncheckedNotificationNumber, l
 						}
 		});
 	});
+	$('#'+appendElementId+'').replaceWith(appendElement);
 }

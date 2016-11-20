@@ -4,6 +4,7 @@ from django.template.defaultfilters import slugify
 from datetime import datetime
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+from geoposition.fields import GeopositionField
 
 class UserProfile(models.Model):
    
@@ -11,7 +12,7 @@ class UserProfile(models.Model):
     local_picture = models.ImageField(upload_to='profile_images', blank=True, default='profile_images/default.png')
     picture_url=models.URLField(blank=True)
     reputation = models.IntegerField(default=100)
-    
+    max_problem_distance=models.IntegerField(default=5)
     slug = models.SlugField(unique=True)
     def save(self, *args, **kwargs):
                 super(UserProfile, self).save(*args, **kwargs)
@@ -32,6 +33,7 @@ class Tag (models.Model):
 class Problem(models.Model):
     title = models.CharField (max_length = 150)
     place = models.CharField (max_length = 50)
+    coordinates = GeopositionField()
     desc = models.CharField (max_length = 500)
     status = models.CharField (max_length = 11, default = "new")
     rq_ppl =models.IntegerField (default = 1)

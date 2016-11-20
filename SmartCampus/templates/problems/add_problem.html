@@ -39,8 +39,10 @@
 		  					<input type="text" pattern=".{1,30}" required title="1 to 30 characters" placeholder="Title" name="title">
 		  					<br/>
 		  					<br/>
-		  					<strong>Place:</strong><br/>
-		  					<input type="text" pattern=".{1,30}" required title="1 to 30 characters" placeholder="Place" name="place" >
+		  					<strong>Location:</strong> <br/>
+							<input type="text" class="clearText" name="location" id="classicProblemLocation" value="" size=20 autocomplete="off">
+		  					<input type="hidden" name="lat" id="classicProblemLat">
+							<input type="hidden" name="lng" id="classicProblemLng">
 		  					<br/>
 		  					<br/>
 		  					<strong>Required people:</strong> <br/>
@@ -58,6 +60,7 @@
 		  					<strong>Description:</strong> <br/>
 		  					<textarea name="desc" form="problem_form" id="classicProblemFormTextArea" pattern=".{15,500}" maxlength=500 required title="15 to 500 characters" placeholder="Some description about the problem"></textarea>
 							<label name="textAreaCounter" id="classicProblemFormTextAreaCounter"></label>
+							
 							
 							<br/>
 							<br/>
@@ -92,8 +95,10 @@
 							<input type="number" name="rq_repu" min="1000" value = 1000 >
 							<br/>
 		  					<br/>
-		  					<strong>Place:</strong><br/>
-		  					<input type="text" pattern=".{1,30}" required title="1 to 30 characters" placeholder="Place" name="place">
+		  					<strong>Location:</strong> <br/>
+							<input type="text" class="clearText" name="location"  id="confidenceProblemLocation" size=20 autocomplete="off">
+							<input type="hidden" name="lat" id="confidenceProblemLat">
+							<input type="hidden" name="lng" id="confidenceProblemLng">
 		  					<br/>
 		  					<br/>
 		  					<strong>Required people:</strong> <br/>
@@ -138,6 +143,11 @@
 
 </div>
 </div>
+	<div class="col-md-7">
+		<div class="round-box">
+			<div id="map_canvas"></div>
+		</div>
+	</div>
 </div>
 {% endblock %}
 {% block script_block %}

@@ -2,6 +2,7 @@ from django.conf.urls import patterns, url
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 import views
+from problems.views.post_problem_distance import post_problem_disctance
 
 urlpatterns = patterns('',
         url(r'^outdated/$', views.outdated, name='outdated'),
@@ -14,7 +15,7 @@ urlpatterns = patterns('',
         url(r'^own_problems/$', views.own_problems, name='own_problems'),
         url(r'^edit_solution/(?P<solution_id_slug>[\w\-]+)/$', views.edit_solution, name='edit_solution'),
         url(r'^edit_problem/(?P<problem_title_slug>[\w\-]+)/$', views.edit_problem, name='edit_problem'),
-
+        url(r'^post_problem_disctance/$', post_problem_disctance, name='post_problem_disctance'),
         #Urls with Post methods:
         url(r'^users/(?P<user_id_slug>[\w\-]+)/$', views.post_user_ignore, name='users'),
         url(r'^ignored_users/$', views.post_user_unblock, name='post_user_unblock'),
