@@ -163,8 +163,8 @@ EMAIL_BACKEND = 'django_ses.SESBackend'
 
 # These are optional -- if they're set as environment variables they won't
 # need to be set here as well
-AWS_ACCESS_KEY_ID = 'AKIAJIH7J6LRWHRDXQ2A'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = ''
+AWS_SECRET_ACCESS_KEY = ''
 
 # Additionally, if you are not using the default AWS region of us-east-1,
 # you need to specify a region, like so:
