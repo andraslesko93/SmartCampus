@@ -32,6 +32,10 @@ $('#confProblemFormDateTime').on( "input change propertychange", function(){
     }
 });
 
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	$('#canvas-column').hide();
+}
+
 var myOptions = {
    	mapTypeId: google.maps.MapTypeId.ROADMAP,
    	mapTypeControl: false

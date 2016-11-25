@@ -20,3 +20,4 @@ from problems.views.get_ignored_users import *
 from problems.views.get_ratings import *
 from problems.views.own_problems import *
 from problems.views.edit_problem import *
+from problems.views.sendmail import *

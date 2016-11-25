@@ -5,6 +5,8 @@ import views
 from problems.views.post_problem_distance import post_problem_disctance
 
 urlpatterns = patterns('',
+                       
+        url(r'^sendmail/$', views.sendmail, name='sendmail'),
         url(r'^outdated/$', views.outdated, name='outdated'),
         url(r'^register/$', views.register, name='register'),
         url(r'^login/$', views.user_login, name='login'),

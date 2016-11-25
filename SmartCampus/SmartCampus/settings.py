@@ -155,6 +155,18 @@ GRAPH_MODELS = {
 
 GEOPOSITION_GOOGLE_MAPS_API_KEY = 'AIzaSyDR63fIf4SOUmDD7Kx9ZT92OaPtvrh9WCY'
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#SESSION_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True
+
+EMAIL_BACKEND = 'django_ses.SESBackend'
+
+# These are optional -- if they're set as environment variables they won't
+# need to be set here as well
+AWS_ACCESS_KEY_ID = 'AKIAJIH7J6LRWHRDXQ2A'
+AWS_SECRET_ACCESS_KEY = '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'
+
+# Additionally, if you are not using the default AWS region of us-east-1,
+# you need to specify a region, like so:
+AWS_SES_REGION_NAME = 'eu-west-1'
+AWS_SES_REGION_ENDPOINT = 'email.eu-west-1.amazonaws.com'
